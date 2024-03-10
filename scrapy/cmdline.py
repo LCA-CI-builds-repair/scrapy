@@ -69,7 +69,6 @@ def _get_commands_dict(settings, inproject):
         cmds.update(_get_commands_from_module(cmds_module, inproject))
     return cmds
 
-
 def _pop_command_name(argv):
     for i, v in enumerate(argv):
         if v.startswith('-'):
@@ -78,6 +77,40 @@ def _pop_command_name(argv):
 
 
 def _print_header(settings, inproject):
+    import os
+    from scrapy import __version__
+    from scrapy.utils.misc import get_scrapymiddleware
+    from scrapy.utils.project import get_project_settings
+
+    project_name = os.path.basename(os.getcwd())
+    if not project_name:
+        print('No project directory found in current working directory')
+        return None
+    project_settings = get_project_settings()
+    cmd_name = _pop_command_name(sys.argv)
+    if cmd_name is None:
+        print('No valid command name found')
+        return None
+    if cmd_name.startswith('scrapy'):
+        import importlib
+        loader = importlib.machinery.SourceFileLoader('scrapy', 'scrapy/__init__.py')
+        module = types.ModuleType(loader.name)
+        loader.exec_module(module)
+        module.main()
+    elif cmd_name in project_settings.getlist('commands'):
+        module_path = project_settings.get('commands.' + cmd_name)
+        if module_path is None:
+            print('Command not found: %s' % cmd_name)
+            return None
+        module_name = os.path.splitext(os.path.basename(module_path))[0]
+        import importlib
+        loader = importlib.machinery.SourceFileLoader(module_name, module_path)
+        module = types.ModuleType(loader.name)
+        loader.exec_module(module)
+        module.main()
+    else:
+        print('Command not found: %s' % cmd_name)
+        return None
     version = scrapy.__version__
     if inproject:
         print(f"Scrapy {version} - active project: {settings['BOT_NAME']}\n")

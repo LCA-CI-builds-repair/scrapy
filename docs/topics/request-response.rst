@@ -190,23 +190,22 @@ Request objects
         The request body as bytes.
 
         This attribute is read-only. To change the body of a Request use
-        :meth:`replace`.
 
-    .. attribute:: Request.meta
+.. attribute:: Request.meta
 
-        A dict that contains arbitrary metadata for this request. This dict is
-        empty for new Requests, and is usually  populated by different Scrapy
-        components (extensions, middlewares, etc). So the data contained in this
-        dict depends on the extensions you have enabled.
+    A dict that contains arbitrary metadata for this request. This dict is
+    empty for new Requests, and is usually  populated by different Scrapy
+    components (extensions, middlewares, etc). So the data contained in this
+    dict depends on the extensions you have enabled.
 
-        See :ref:`topics-request-meta` for a list of special meta keys
-        recognized by Scrapy.
+    See :ref:`topics-request-meta` for a list of special meta keys
+    recognized by Scrapy.
 
-        This dict is :doc:`shallow copied <library/copy>` when the request is
-        cloned using the ``copy()`` or ``replace()`` methods, and can also be
-        accessed, in your spider, from the ``response.meta`` attribute.
+    This dict is :doc:`shallow copied <library/copy>` when the request is
+    cloned using the ``copy()`` or ``replace()`` methods, and can also be
+    accessed, in your spider, from the ``response.meta`` attribute.
 
-    .. attribute:: Request.cb_kwargs
+.. attribute:: Request.cb_kwargs
 
         A dictionary that contains arbitrary metadata for this request. Its contents
         will be passed to the Request's callback as keyword arguments. It is empty
