@@ -108,13 +108,16 @@ class Crawler:
 
         lf_cls: Type[LogFormatter] = load_object(self.settings["LOG_FORMATTER"])
         self.logformatter = lf_cls.from_crawler(self)
+```python
 
         self.request_fingerprinter = build_from_crawler(
             load_object(self.settings["REQUEST_FINGERPRINTER_CLASS"]),
             crawler=self,
+            method=ssl_method,  # <--- Edited: Added 'method=ssl_method' argument to ensure request fingerprinter works as intended
         )
 
         reactor_class: str = self.settings["TWISTED_REACTOR"]
+```
         event_loop: str = self.settings["ASYNCIO_EVENT_LOOP"]
         if self._init_reactor:
             # this needs to be done after the spider settings are merged,

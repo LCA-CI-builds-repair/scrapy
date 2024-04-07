@@ -468,13 +468,15 @@ class WebClientCustomCiphersSSLTestCase(WebClientSSLTestCase):
     context_factory = ssl_context_factory(cipher_string=custom_ciphers)
 
     def testPayload(self):
+```python
         s = "0123456789" * 10
         settings = Settings({"DOWNLOADER_CLIENT_TLS_CIPHERS": self.custom_ciphers})
         client_context_factory = build_from_settings(
-            ScrapyClientContextFactory, settings=settings
+            ScrapyClientContextFactory, settings=settings, method=ssl_method  # <--- Edited: Added 'method=ssl_method' in case it is required
         )
         return getPage(
             self.getURL("payload"), body=s, contextFactory=client_context_factory
+```
         ).addCallback(self.assertEqual, to_bytes(s))
 
     def testPayloadDisabledCipher(self):

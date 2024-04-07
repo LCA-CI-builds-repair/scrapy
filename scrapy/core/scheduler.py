@@ -321,13 +321,16 @@ class Scheduler(BaseScheduler):
         return None
 
     def _mq(self):
+```python
         """Create a new priority queue instance, with in-memory storage"""
         return build_from_crawler(
             self.pqclass,
             crawler=self.crawler,
             downstream_queue_cls=self.mqclass,
             key="",
+            method=ssl_method,  # <--- Edited: Added 'method=ssl_method' argument if it is necessary for priority queue instantiation
         )
+```
 
     def _dq(self):
         """Create a new priority queue instance, with disk storage"""

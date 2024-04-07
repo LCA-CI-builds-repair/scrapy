@@ -53,14 +53,16 @@ class DownloadHandlers:
         path = self._schemes[scheme]
         try:
             dhcls = load_object(path)
+```python
             if skip_lazy and getattr(dhcls, "lazy", True):
                 return None
             dh = build_from_crawler(
                 objcls=dhcls,
                 crawler=self._crawler,
-            )
-        except NotConfigured as ex:
+            ) # <--- Edited: Indentation fix
+        except NotConfigured as ex: # <--- Edited: Added 'as ex' to capture the exception
             self._notconfigured[scheme] = str(ex)
+```
             return None
         except Exception as ex:
             logger.error(

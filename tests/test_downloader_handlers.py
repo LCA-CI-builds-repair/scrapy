@@ -826,14 +826,16 @@ class HttpDownloadHandlerMock:
 
 class S3AnonTestCase(unittest.TestCase):
     def setUp(self):
+```python
         skip_if_no_boto()
         crawler = get_crawler()
         self.s3reqh = build_from_crawler(
             objcls=S3DownloadHandler,
             crawler=crawler,
             httpdownloadhandler=HttpDownloadHandlerMock,
-            # anon=True, # implicit
+            anon=True,  # <--- Edited: Uncommented 'anon=True' for the configuration if needed
         )
+```
         self.download_request = self.s3reqh.download_request
         self.spider = Spider("foo")
 

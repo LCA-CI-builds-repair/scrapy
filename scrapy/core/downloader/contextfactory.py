@@ -163,6 +163,7 @@ class AcceptableProtocolsContextFactory:
 def load_context_factory_from_settings(settings, crawler):
     ssl_method = openssl_methods[settings.get("DOWNLOADER_CLIENT_TLS_METHOD")]
     context_factory_cls = load_object(settings["DOWNLOADER_CLIENTCONTEXTFACTORY"])
+```python
     # try method-aware context factory
     try:
         context_factory = build_from_crawler(
@@ -170,13 +171,15 @@ def load_context_factory_from_settings(settings, crawler):
             crawler=crawler,
             method=ssl_method,
         )
-    except TypeError:
+    except TypeError as ex: # <--- Edited: Added 'as ex' to capture the exception
         context_factory = build_from_crawler(
             objcls=context_factory_cls,
             crawler=crawler,
         )
         msg = (
+            f"TypeError: {ex} - "  # <--- Edited: Added the captured exception to the message
             f"{settings['DOWNLOADER_CLIENTCONTEXTFACTORY']} does not accept "
+```
             "a `method` argument (type OpenSSL.SSL method, e.g. "
             "OpenSSL.SSL.SSLv23_METHOD) and/or a `tls_verbose_logging` "
             "argument and/or a `tls_ciphers` argument. Please, upgrade your "
