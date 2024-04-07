@@ -232,13 +232,17 @@ def logformatter_adapter(logkws: dict) -> Tuple[int, str, dict]:
     and adapts it into a tuple of positional arguments for logger.log calls,
     handling backward compatibility as well.
     """
+```python
     if not {"level", "msg", "args"} <= set(logkws):
         warnings.warn("Missing keys in LogFormatter method", ScrapyDeprecationWarning)
 
     level = logkws.get("level", logging.INFO)
-    message = logkws.get("msg")
-    # NOTE: This also handles 'args' being an empty dict, that case doesn't
-    # play well in logger.log calls
-    args = logkws if not logkws.get("args") else logkws["args"]
+    message = logkws.get("msg", "")  # Ensure default is a string
+    # Ensure 'args' is always a dictionary; default to empty dict if not provided
+    args = logkws.get("args") or {}
+    
+    # Ensure the returned types match expected: Tuple[int, str, Dict]
+    return level, message, args
+```
 
     return (level, message, args)
