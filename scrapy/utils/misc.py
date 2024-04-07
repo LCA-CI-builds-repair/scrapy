@@ -56,7 +56,7 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
 #             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None)
 #     else: 
 #         instance = objcls(*args, **kwargs)
-#         method_name = "__new__"
+#         method_////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 #     return instance
 
