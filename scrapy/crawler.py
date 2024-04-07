@@ -176,7 +176,7 @@ class Crawler:
         if self.crawling:
             self.crawling = False
             assert self.engine
-            yield maybeDeferred(self.engine.stop)
+        yield maybeDeferred(self.engine.stop)
 
     @staticmethod
     def _get_component(cls, components):
@@ -185,6 +185,19 @@ class Crawler:
                 return component
         return None
 
+    def stop(self, *args, **kwargs):
+        if self.engine is not None:
+            # Stop the engine
+            yield maybeDeferred(self.engine.stop)
+
+            # Stop the crawler
+            yield maybeDeferred(self.stop_crawler)
+
+            # Stop the scheduler
+            yield maybeDeferred(self.stop_scheduler)
+
+            # Stop the spider
+            yield maybeDeferred(self.stop_spider)
     def get_addon(self, cls):
         return self._get_component(cls, self.addons.addons)
 
