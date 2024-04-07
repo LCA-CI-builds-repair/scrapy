@@ -69,7 +69,6 @@ def _get_commands_dict(settings, inproject):
         cmds.update(_get_commands_from_module(cmds_module, inproject))
     return cmds
 
-
 def _pop_command_name(argv):
     for i, v in enumerate(argv):
         if v.startswith('-'):
