@@ -44,24 +44,25 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
     if arg is None:
         return []
     if not isinstance(arg, _ITERABLE_SINGLE_VALUES) and hasattr(arg, "__iter__"):
-        return cast(Iterable[Any], arg)
-    return [arg]
+```python
+# Remove the block comment at line 193 with '#'
+# ...
 
-# def build_from_crawler(objcls, crawler, none, *args, **kwargs):
-#     if crawler 
-#         if hasattr(objcls, "from_crawler"):
-#             instance = objcls.from_crawler(crawler, *args, **kwargs)
-#             method_name = "from_crawler"
-#         if instance is None: 
-#             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None)
-#     else: 
-#         instance = objcls(*args, **kwargs)
-#         method_name = "__new__"
+# Fix trailing whitespace at lines 198-212
+# ...
 
-#     return instance
+def build_from_settings(objcls, settings):
+    # changes create_instance call to build_from_settings
+    return build_from_crawler(objcls, None, None, settings=settings)
 
-def load_object(path: Union[str, Callable]) -> Any:
-    """Load an object given its absolute object path, and return it.
+# Replace create_instance call with build_from_settings at lines 33, 178, 56, and 57
+# ...
+
+# Add missing import statement for build_from_crawler at line 358
+from scrapy.utils.misc import build_from_crawler
+
+# Replace create_instance call with build_from_settings at line 111
+# ...
 
     The object can be the import path of a class, function, variable or an
     instance, e.g. 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware'.

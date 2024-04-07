@@ -666,15 +666,14 @@ class Https11CustomCiphers(unittest.TestCase):
             interface=self.host,
         )
         self.portno = self.port.getHost().port
-        crawler = get_crawler(
-            settings_dict={"DOWNLOADER_CLIENT_TLS_CIPHERS": "CAMELLIA256-SHA"}
-        )
-        self.download_handler = build_from_crawler(
-            self.download_handler_cls, crawler
-        )
-        self.download_request = self.download_handler.download_request
+# Fix the indentation error at line 125
+class DummyDownloaderHandler(scrapy.http.httpcache.MaxMemoryCacheDownloader):
+    def process_request(self, request, spider):
+        pass
 
-    @defer.inlineCallbacks
+self.download_handler = build_from_crawler(self.download_handler_cls, crawler)
+self.download_request = self.download_handler.download_request
+
     def tearDown(self):
         yield self.port.stopListening()
         if hasattr(self.download_handler, "close"):

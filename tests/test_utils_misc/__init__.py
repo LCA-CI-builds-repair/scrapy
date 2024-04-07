@@ -92,12 +92,20 @@ class UtilsMiscTestCase(unittest.TestCase):
         self.assertEqual(list(arg_to_iter(c for c in "abc")), ["a", "b", "c"])
         self.assertEqual(list(arg_to_iter([1, 2, 3])), [1, 2, 3])
         self.assertEqual(list(arg_to_iter({"a": 1})), [{"a": 1}])
-        self.assertEqual(
-            list(arg_to_iter(TestItem(name="john"))), [TestItem(name="john")]
-        )
+self.assertEqual(
+    list(arg_to_iter(TestItem(name="john"))), [TestItem(name="john")]
+)
+
+class TestArgToIter(unittest.TestCase):
     def test_build_from_crawler(self):
         crawler = mock.MagicMock(spec_set=["settings"])
         args = (True, 100.0)
+        settings = Settings()
+        settings.update(crawler.settings)
+        self.assertEqual(
+            list(arg_to_iter(TestItem(name="john"), settings=settings)),
+            [TestItem(name="john")]
+        )
         kwargs = {"key": "val"}
 
         def _test_with_crawler(mock, settings, crawler):
