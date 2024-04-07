@@ -61,6 +61,7 @@ class DownloadHandlers:
             )
         except NotConfigured as ex:
             self._notconfigured[scheme] = str(ex)
+
             return None
         except Exception as ex:
             logger.error(
