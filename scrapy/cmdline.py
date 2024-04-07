@@ -78,6 +78,17 @@ def _pop_command_name(argv):
 
 
 def _print_header(settings, inproject):
+    print("""
+Scrapy %(version)s - version %(version)s
+
+Usage:
+    scrapy <command> [options] [args]
+
+Available commands:
+    fetch    Fetch a web page and print it to standard output.
+    shell    Interactive Python shell with Scrapy environment
+    version  Print Scrapy version.
+""" % {'version': __version__})
     version = scrapy.__version__
     if inproject:
         print(f"Scrapy {version} - active project: {settings['BOT_NAME']}\n")
