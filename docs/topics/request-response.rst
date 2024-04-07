@@ -190,12 +190,11 @@ Request objects
         The request body as bytes.
 
         This attribute is read-only. To change the body of a Request use
-        :meth:`replace`.
-
+```python
     .. attribute:: Request.meta
 
         A dict that contains arbitrary metadata for this request. This dict is
-        empty for new Requests, and is usually  populated by different Scrapy
+        empty for new Requests, and is usually populated by different Scrapy
         components (extensions, middlewares, etc). So the data contained in this
         dict depends on the extensions you have enabled.
 
@@ -208,6 +207,13 @@ Request objects
 
     .. attribute:: Request.cb_kwargs
 
+        A dict containing keyword arguments (i.e., keyword-based parameters/values) to be passed to the callback function specified in the
+        :attr:`Request.callback` attribute. For more information, see :ref:`topics-request-callbacks`.
+
+        The ``cb_kwargs`` attribute is empty until a value is explicitly set.
+        Once the ``cb_kwargs`` attribute is set, it is not changed when the request is
+        cloned using the ``copy()`` or ``replace()`` methods.
+```
         A dictionary that contains arbitrary metadata for this request. Its contents
         will be passed to the Request's callback as keyword arguments. It is empty
         for new Requests, which means by default callbacks only get a :class:`Response`
