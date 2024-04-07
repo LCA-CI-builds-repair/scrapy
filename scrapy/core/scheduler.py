@@ -321,13 +321,13 @@ class Scheduler(BaseScheduler):
         return None
 
     def _mq(self):
-        """Create a new priority queue instance, with in-memory storage"""
-        return build_from_crawler(
-            self.pqclass,
-            crawler=self.crawler,
-            downstream_queue_cls=self.mqclass,
-            key="",
-        )
+"""Create a new priority queue instance, with in-memory storage"""
+return build_from_crawler(
+self.pqclass,
+crawler=self.crawler,
+downstream_queue_cls=self.mqclass,
+key="",
+)
 
     def _dq(self):
         """Create a new priority queue instance, with disk storage"""
