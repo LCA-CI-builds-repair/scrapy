@@ -11,7 +11,7 @@ from scrapy.utils.response import (
     get_meta_refresh,
     open_in_browser,
     response_status_message,
-)
+]
 
 __doctests__ = ["scrapy.utils.response"]
 
