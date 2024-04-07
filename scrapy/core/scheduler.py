@@ -326,7 +326,7 @@ class Scheduler(BaseScheduler):
             self.pqclass,
             crawler=self.crawler,
             downstream_queue_cls=self.mqclass,
-            key="",
+            key="", # Add key="" argument
         )
 
     def _dq(self):

@@ -33,6 +33,7 @@ class HTTP10DownloadHandler:
             client_context_factory = build_from_crawler(
                 objcls=self.ClientContextFactory,
                 crawler=self._crawler,
+                method=None, # Add method=None argument
             )
             return reactor.connectSSL(host, port, factory, client_context_factory)
         return reactor.connectTCP(host, port, factory)
