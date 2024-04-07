@@ -176,14 +176,20 @@ class Crawler:
         if self.crawling:
             self.crawling = False
             assert self.engine
-            yield maybeDeferred(self.engine.stop)
+class CrawlerProcess:
+    # ... (previous code)
 
     @staticmethod
     def _get_component(cls, components):
+        """
+        Returns the first instance of the given component class from the components list.
+        """
         for component in components:
-            if type(component) is cls:
+            if isinstance(component, cls):
                 return component
         return None
+
+    # ... (code below L179)
 
     def get_addon(self, cls):
         return self._get_component(cls, self.addons.addons)
