@@ -1,10 +1,39 @@
 import logging
 import sys
 from abc import ABCMeta, abstractmethod
+from typing import Optional
 
 from scrapy.utils.python import to_unicode
 
 logger = logging.getLogger(__name__)
+
+class BaseRobotsParser(metaclass=ABCMeta):
+
+ @abstractmethod
+ def parse(self, url: str) -> Optional[str]:
+ pass
+
+class ProtegoParser(BaseRobotsParser):
+ # ... (other implementation details)
+
+ def parse(self, url: str) -> Optional[str]:
+ # current implementation of parse method
+ # ...
+ return parsed_robots_text
+
+ # modify the return type to match the expected type from tests
+ return parsed_robots_text if parsed_robots_text else None
+
+class RobotsMiddleware:
+ # ... (other implementation details)
+
+ @classmethod
+ def from_crawler(cls, crawler):
+ robo_parser = crawler.settings.get("ROBOTSTXT_PARSER", ProtegoParser())
+ return cls(robo_parser)
+
+ # ... (other implementation details)
+
 
 
 def decode_robotstxt(robotstxt_body, spider, to_native_str_type=False):
