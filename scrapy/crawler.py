@@ -180,8 +180,18 @@ class Crawler:
 
     @staticmethod
     def _get_component(cls, components):
+        """
+        Retrieve a component that is an instance of the given class from a list of components.
+
+        Args:
+            cls: The class of the component to retrieve.
+            components: A list of components to search through.
+
+        Returns:
+            The component that is an instance of the given class, or None if not found.
+        """
         for component in components:
-            if type(component) is cls:
+            if isinstance(component, cls):  # Replaced 'type' with 'isinstance'
                 return component
         return None
 
