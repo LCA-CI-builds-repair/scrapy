@@ -95,6 +95,7 @@ class UtilsMiscTestCase(unittest.TestCase):
         self.assertEqual(
             list(arg_to_iter(TestItem(name="john"))), [TestItem(name="john")]
         )
+
     def test_build_from_crawler(self):
         crawler = mock.MagicMock(spec_set=["settings"])
         args = (True, 100.0)
