@@ -1,6 +1,7 @@
 import logging
 import sys
 from abc import ABCMeta, abstractmethod
+from typing import Optional, List
 
 from scrapy.utils.python import to_unicode
 

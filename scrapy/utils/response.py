@@ -58,6 +58,46 @@ def response_status_message(status: Union[bytes, float, int, str]) -> str:
 def open_in_browser(
     response: Union[
         "scrapy.http.response.html.HtmlResponse",
+        "scrapy.http.response.xml.XmlResponse",
+    ]
+) -> None:
+    import webbrowser
+
+    webbrowser.open(f"file://{os.path.abspath(response.body)}")
+
+
+def response_status_message(
+    status_int: int, message: Optional[str] = None
+) -> str:
+    message = message or http.HTTP_STATUS_CODES.get(status_int, "")
+    return f"{status_int} {to_unicode(message)}"
+
+
+def get_base_url(
+    response: Union["scrapy.http.response.html.HtmlResponse", "scrapy.http.response.xml.XmlResponse"]
+) -> str:
+    # NOTE: There are many more attributes we could look at, but this is what
+    # works for most cases
+    if hasattr(response, "base_url"):
+        return response.base_url
+    elif hasattr(response, "url"):
+        return response.url
+    else:
+        raise ValueError("Response does not have a URL or base_url attribute")
+
+
+def get_meta_refresh(
+    response: Union["scrapy.http.response.html.HtmlResponse", "scrapy.http.response.xml.XmlResponse"]
+) -> Optional[int]:
+    refresh = response.meta.get("refresh")
+    if refresh is None:
+        return None
+    if isinstance(refresh, int):
+        return refresh
+    elif isinstance(refresh, str):
+        return int(refresh)
+    else:
+        raise ValueError(f"Invalid refresh meta value: {refresh}")
         "scrapy.http.response.text.TextResponse",
     ],
     _openfunc: Callable[[str], Any] = webbrowser.open,
