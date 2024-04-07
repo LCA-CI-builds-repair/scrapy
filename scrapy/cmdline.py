@@ -74,8 +74,8 @@ def _pop_command_name(argv):
     for i, v in enumerate(argv):
         if v.startswith('-'):
             continue
-        return argv.pop(i)
-
+        argv.pop(i)
+        return
 
 def _print_header(settings, inproject):
     version = scrapy.__version__
