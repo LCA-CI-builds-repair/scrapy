@@ -48,14 +48,10 @@ class S3DownloadHandler:
                 botocore.credentials.Credentials(
                     aws_access_key_id, aws_secret_access_key, aws_session_token
                 )
-            )
-
-        _http_handler = build_from_crawler(
-            objcls=httpdownloadhandler,
+        self._download_http = build_from_crawler(
+            objcls=self.download_http,
             crawler=crawler,
         )
-        self._download_http = _http_handler.download_request
-
     @classmethod
     def from_crawler(cls, crawler, **kwargs):
         return cls(crawler.settings, crawler=crawler, **kwargs)
