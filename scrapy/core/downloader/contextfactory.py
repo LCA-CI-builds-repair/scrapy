@@ -175,15 +175,14 @@ def load_context_factory_from_settings(settings, crawler):
         #     crawler=crawler,
         #     method=ssl_method,
         # )
-    except TypeError:
-        # use context factory defaults
-        # changes create_instance call to build_from_settings
-        context_factory = build_from_settings(
-            context_factory_cls, settings = settings
-        )
-        # context_factory = create_instance(
-        #     objcls=context_factory_cls,
-        #     settings=settings,
+except TypeError:
+# use context factory defaults
+context\_factory = load\_object(
+context\_factory\_cls, settings=settings
+)^[W291] trailing whitespace
+context\_factory = build\_from\_settings(
+context\_factory\_cls, settings=settings
+)^[E303] too many blank lines (4)
         #     crawler=crawler,
         # )
         msg = (

@@ -44,25 +44,8 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
     if arg is None:
         return []
     if not isinstance(arg, _ITERABLE_SINGLE_VALUES) and hasattr(arg, "__iter__"):
-        return cast(Iterable[Any], arg)
-    return [arg]
-
-# def build_from_crawler(objcls, crawler, none, *args, **kwargs):
-#     if crawler 
-#         if hasattr(objcls, "from_crawler"):
-#             instance = objcls.from_crawler(crawler, *args, **kwargs)
-#             method_name = "from_crawler"
-#         if instance is None: 
-#             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None)
-#     else: 
-#         instance = objcls(*args, **kwargs)
-#         method_name = "__new__"
-
-#     return instance
-
-def load_object(path: Union[str, Callable]) -> Any:
-    """Load an object given its absolute object path, and return it.
-
+def build\_from\_settings(objcls, settings, **kwargs):
+return objcls(settings=settings, **kwargs)
     The object can be the import path of a class, function, variable or an
     instance, e.g. 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware'.
 

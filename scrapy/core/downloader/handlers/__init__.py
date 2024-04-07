@@ -53,15 +53,11 @@ class DownloadHandlers:
         path = self._schemes[scheme]
         try:
             dhcls = load_object(path)
-            if skip_lazy and getattr(dhcls, "lazy", True):
-                return None
-            # change create_instance call to build_from_settings
-            dh = build_from_settings(
-                dhcls, settings=self._crawler.settings
-            )
-            # dh = create_instance(
-            #     objcls=dhcls,
-            #     settings=self._crawler.settings,
+if skip\_lazy and getattr(dhcls, "lazy", True):
+return None
+dh = build\_from\_settings(
+dhcls, settings=self.\_crawler.settings
+)^[E303] too many blank lines (4)
             #     crawler=self._crawler,
             # )
         except NotConfigured as ex:

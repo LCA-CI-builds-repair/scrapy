@@ -25,13 +25,12 @@ from scrapy.extensions.postprocessing import PostProcessingManager
 from scrapy.utils.boto import is_botocore_available
 from scrapy.utils.conf import feed_complete_default_values_from_settings
 from scrapy.utils.defer import maybe_deferred_to_future
-from scrapy.utils.deprecate import create_deprecated_class
-from scrapy.utils.ftp import ftp_store_file
-from scrapy.utils.log import failure_to_exc_info
-from scrapy.utils.misc import build_from_settings, build_from_crawler, load_object
-from scrapy.utils.python import without_none_values
-
-logger = logging.getLogger(__name__)
+def build\_from\_crawler(objcls, crawler, **kwargs):
+if hasattr(objcls, "from\_crawler"):
+instance = objcls.from\_crawler(crawler, **kwargs)
+else:
+instance = objcls(**kwargs)
+return instance
 
 try:
     import boto3  # noqa: F401

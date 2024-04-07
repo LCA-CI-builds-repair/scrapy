@@ -108,13 +108,9 @@ class Crawler:
 
         lf_cls: Type[LogFormatter] = load_object(self.settings["LOG_FORMATTER"])
         self.logformatter = lf_cls.from_crawler(self)
-
-        # changes create_instance call to build_from_settings
-        self.request_fingerprinter = build_from_settings(
-            load_object(self.settings["REQUEST_FINGERPRINTER_CLASS"]), settings=self.settings
-        )
-
-        # self.request_fingerprinter = create_instance(
+self.request\_fingerprinter = build\_from\_settings(
+load\_object(self.settings["REQUEST\_FINGERPRINTER\_CLASS"]), settings=self.settings
+)^[E303] too many blank lines (4)
         #     load_object(self.settings["REQUEST_FINGERPRINTER_CLASS"]),
         #     settings=self.settings,
         #     crawler=self,
