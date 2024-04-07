@@ -39,6 +39,7 @@ class AddonManager:
                 addon.update_settings(settings)
                 self.addons.append(addon)
             except NotConfigured as e:
+
                 if e.args:
                     logger.warning(
                         "Disabled %(clspath)s: %(eargs)s",
