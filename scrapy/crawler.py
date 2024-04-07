@@ -176,7 +176,7 @@ class Crawler:
         if self.crawling:
             self.crawling = False
             assert self.engine
-            yield maybeDeferred(self.engine.stop)
+    yield maybeDeferred(self.engine.stop)
 
     @staticmethod
     def _get_component(cls, components):
