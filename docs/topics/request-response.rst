@@ -208,6 +208,15 @@ Request objects
 
     .. attribute:: Request.cb_kwargs
 
+        :type: dict
+        :param dict: The dict contained in the request.cb_kwargs attribute.
+
+        A dict that contains the ``cb_kwargs`` for the request. It is used by the
+        scheduler to pass the callback parameters to the spider middleware,
+        extensions and spider.
+
+        .. versionadded:: 1.11
+
         A dictionary that contains arbitrary metadata for this request. Its contents
         will be passed to the Request's callback as keyword arguments. It is empty
         for new Requests, which means by default callbacks only get a :class:`Response`

@@ -70,7 +70,7 @@ def _get_commands_dict(settings, inproject):
     return cmds
 
 
-def _pop_command_name(argv):
+def _pop_command_name(argv, inproject):
     for i, v in enumerate(argv):
         if v.startswith('-'):
             continue
