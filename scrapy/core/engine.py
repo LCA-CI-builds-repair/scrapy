@@ -355,7 +355,7 @@ class ExecutionEngine:
         self, spider: Spider, start_requests: Iterable = (), close_if_idle: bool = True
     ) -> Generator[Deferred, Any, None]:
         if self.slot is not None:
-            raise RuntimeError(f"No free spider slot when opening {spider.name!r}")
+        raise RuntimeError(f"No free spider slot when opening {spider.name!r}")
         logger.info("Spider opened", extra={"spider": spider})
         nextcall = CallLaterOnce(self._next_request)
         scheduler = build_from_crawler(self.scheduler_cls, crawler=self.crawler)
