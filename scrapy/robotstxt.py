@@ -7,6 +7,7 @@ from scrapy.utils.python import to_unicode
 logger = logging.getLogger(__name__)
 
 
+
 def decode_robotstxt(robotstxt_body, spider, to_native_str_type=False):
     try:
         if to_native_str_type:

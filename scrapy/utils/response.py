@@ -55,9 +55,14 @@ def response_status_message(status: Union[bytes, float, int, str]) -> str:
     return f"{status_int} {to_unicode(message)}"
 
 
-def open_in_browser(
-    response: Union[
-        "scrapy.http.response.html.HtmlResponse",
+def open_in_browser(response: Union[
+    "scrapy.http.response.html.HtmlResponse",
+    "scrapy.http.response.text.TextResponse",
+    "scrapy.http.response.xml.XmlResponse",
+    "scrapy.http.response.json.JsonResponse",
+    "scrapy.http.response.binary.BinaryResponse",
+]):
+    """Open response in user's default web browser"""
         "scrapy.http.response.text.TextResponse",
     ],
     _openfunc: Callable[[str], Any] = webbrowser.open,

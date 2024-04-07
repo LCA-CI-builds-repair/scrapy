@@ -1037,13 +1037,12 @@ RobotsTxtMiddleware
 
     Scrapy ships with support for the following robots.txt_ parsers:
 
-    * :ref:`Protego <protego-parser>` (default)
-    * :ref:`RobotFileParser <python-robotfileparser>`
-    * :ref:`Reppy <reppy-parser>`
-    * :ref:`Robotexclusionrulesparser <rerp-parser>`
+* :ref:`Protego <protego-parser>` (default)
+* :ref:`RobotFileParser <python-robotfileparser>`
+* :ref:`Reppy <reppy-parser>`
+* :ref:`Robotexclusionrulesparser <rerp-parser>`
 
-    You can change the robots.txt_ parser with the :setting:`ROBOTSTXT_PARSER`
-    setting. Or you can also :ref:`implement support for a new parser <support-for-new-robots-parser>`.
+You can change the robots.txt_ parser with the :setting:`ROBOTSTXT_PARSER` setting. Or you can also :ref:`implement support for a new parser <support-for-new-robots-parser>`.
 
 .. reqmeta:: dont_obey_robotstxt
 

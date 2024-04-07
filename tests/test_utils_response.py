@@ -7,10 +7,12 @@ from scrapy.exceptions import ScrapyDeprecationWarning
 from scrapy.http import HtmlResponse, Response, TextResponse
 from scrapy.utils.python import to_bytes
 from scrapy.utils.response import (
+from scrapy.http import Response
+from scrapy.utils.response import (
+    response_status_message,
     get_base_url,
     get_meta_refresh,
     open_in_browser,
-    response_status_message,
 )
 
 __doctests__ = ["scrapy.utils.response"]
