@@ -174,6 +174,7 @@ def load_context_factory_from_settings(settings, crawler):
         context_factory = build_from_crawler(
             objcls=context_factory_cls,
             crawler=crawler,
+            method=None, # Add method=None argument
         )
         msg = (
             f"{settings['DOWNLOADER_CLIENTCONTEXTFACTORY']} does not accept "

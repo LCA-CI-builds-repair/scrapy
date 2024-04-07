@@ -55,12 +55,13 @@ class DownloadHandlers:
             dhcls = load_object(path)
             if skip_lazy and getattr(dhcls, "lazy", True):
                 return None
-            dh = build_from_crawler(
-                objcls=dhcls,
-                crawler=self._crawler,
-            )
-        except NotConfigured as ex:
-            self._notconfigured[scheme] = str(ex)
+            try: # Add try block
+                dh = build_from_crawler(
+                    objcls=dhcls,
+                    crawler=self._crawler,
+                )
+            except NotConfigured as ex:
+                self._notconfigured[scheme] = str(ex)
             return None
         except Exception as ex:
             logger.error(
