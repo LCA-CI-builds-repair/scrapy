@@ -36,3 +36,71 @@ class HTTP10DownloadHandler:
             )
             return reactor.connectSSL(host, port, factory, client_context_factory)
         return reactor.connectTCP(host, port, factory)
+[end of scrapy/core/downloader/handlers/http10.        host, port = to_unicode(factory.host), factory.port
+    if factory.scheme == b"https":
+        client_context_factory = build_from_crawler(
+            objcls=self.ClientContextFactory,
+            crawler=self._crawler,
+        )
+        return reactor.connectSSL(host, port, factory, client_context_factory)
+    return reactor.connectTCP(host, port, factory)
+
+
+        host, port = to_unicode(factory.host), factory.port
+        if factory.scheme == b"https":
+            client_context_factory = build_from_crawler(
+                objcls=self.ClientContextFactory,
+                crawler=self._crawler,
+            )
+            return reactor.connectSSL(host, port, factory, client_context_factory)
+        return reactor.connectTCP(host, port, factory)
+
+
+        host, port = to_unicode(factory.host), factory		host, port = to_unicode(factory.host), factory.port
+    if factory.scheme == b"https":
+        client_context_factory = build_from_crawler(
+            objcls=self.ClientContextFactory,
+            crawler=self._crawler,
+        )
+        return reactor.connectSSL(host, port, factory, client_context_factory)
+    return reactor.connectTCP(host, port, factory)
+
+
+        host, port = to_unicode(factory.host), factory.port
+    if factory.scheme == b"https":
+        client_context_factory = build_from_crawler(
+            objcls=self.ClientContextFactory,
+            crawler=self._crawler,
+        )
+        return reactor.connectSSL(host, port, factory, client_context_factory)
+    return reactor.connectTCP(host, port, factory)
+
+
+        host, port = to_unicode(factory.host), factory.port
+    if factory.scheme == b"https":
+        client_context_factory = build_from_crawler(
+            objcls=self.ClientContextFactory,
+            crawler=self._crawler,
+        )
+        return reactor.connectSSL(host, port, factory, client_context_factory)
+    return reactor.connectTCP(host, port, factory)
+
+
+        host, port = to_unicode(factory.host), factory.port
+    if factory.scheme == b"https":
+        client_context_factory = build_from_crawler(
+            objcls=self.ClientContextFactory,
+            crawler=self._crawler,
+        )
+        return reactor.connectSSL(host, port, factory, client_context_factory)
+    return reactor.connectTCP(host, port, factory)
+
+
+        host, port = to_unicode(factory.host), factory.port
+    if factory.scheme == b"https":
+        client_context_factory = build_from_crawler(
+            objcls=self.ClientContextFactory,
+            crawler=self._crawler,
+        )
+        return reactor.connectSSL(host, port, factory, client_context_factory)
+    return reactor.connectTCP(host, port, factory)
