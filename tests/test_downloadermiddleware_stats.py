@@ -3,11 +3,17 @@ from itertools import product
 from unittest import TestCase
 
 from scrapy.downloadermiddlewares.stats import DownloaderStats
+import logging
+import warnings
+from typing import Optional, cast
+
+from scrapy.crawler import Crawler
 from scrapy.exceptions import ScrapyDeprecationWarning
 from scrapy.http import Request, Response
 from scrapy.spiders import Spider
-from scrapy.utils.test import get_crawler
-from scrapy.utils.python import to_bytes
+from scrapy.utils.python import to_unicode
+
+logger = logging.getLogger(__name__)
 
 class MyException(Exception):
     pass
