@@ -54,7 +54,13 @@ Deprecation removals
 
     .. note:: If you are using this Scrapy version on Scrapy Cloud with a stack
               that includes an older Scrapy version and get a "TypeError:
-              Unexpected options: binary" error, you may need to add
+              Unexpected options: binary    (:issue:`4518`, :issue:`4615`, :issue:`3727`)
+
+*   Added a `Pylint <https://www.pylint.org/>`_ job to Travis CI (:issue:`3727`)
+
+*   Added a `Mypy <http://mypy-lang.org/>`_ job to Travis CI (:issue:`4637`)
+
+*   Made use of set literals in tests (:issue:`4573`) you may need to add
               ``scrapinghub-entrypoint-scrapy >= 0.14.1`` to your project
               requirements or switch to a stack that includes Scrapy 2.11.
 
