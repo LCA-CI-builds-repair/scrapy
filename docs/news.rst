@@ -39,7 +39,10 @@ Backward-incompatible changes
 
 -   The :meth:`TextResponse.json <scrapy.http.TextResponse.json>` method now
     requires the response to be in a valid JSON encoding (UTF-8, UTF-16, or
-    UTF-32). If you need to deal with JSON documents in an invalid encoding,
+    UTF-32). If you nee    (:issue:`4986`, :issue:`5020`, :issue:`5022`, :issue:`5027`, :issue:`5052`,
+    :issue:`5053`, :issue:`4911`, :issue:`4982`, :issue:`5001`, :issue:`5002`, :issue:`5076`)
+
+-   Implemented code refactorings, style fixes, and cleanups.eal with JSON documents in an invalid encoding,
     use ``json.loads(response.text)`` instead. (:issue:`6016`)
 
 -   :class:`~scrapy.exporters.PythonItemExporter` used the binary output by
