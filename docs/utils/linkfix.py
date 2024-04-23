@@ -2,7 +2,14 @@
 
 """
 
-Linkfix - a companion to sphinx's linkcheck builder.
+Linkfix - a c    for line in output_lines:
+        match = re.match(line_re, line)
+
+        if match:
+            newfilename = match.group(1)
+            errortype = match.group(2)
+
+            # Broken links can't be fixed and to sphinx's linkcheck builder.
 
 Uses the linkcheck's output file to fix links in docs.
 

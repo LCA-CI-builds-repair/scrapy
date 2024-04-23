@@ -6,7 +6,11 @@ from scrapy.utils.sitemap import Sitemap, sitemap_urls_from_robots
 class SitemapTest(unittest.TestCase):
     def test_sitemap(self):
         s = Sitemap(
-            b"""<?xml version="1.0" encoding="UTF-8"?>
+            b"""<?xml versi        """Assert we can deal with starting blank lines before <xml> tag"""
+        s = Sitemap(
+            b"""
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">0" encoding="UTF-8"?>
 <urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
   <url>
     <loc>http://www.example.com/</loc>

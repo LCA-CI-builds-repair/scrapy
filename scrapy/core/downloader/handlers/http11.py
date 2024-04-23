@@ -4,8 +4,11 @@ import ipaddress
 import logging
 import re
 from contextlib import suppress
-from io import BytesIO
-from time import time
+from io import BytesIO        """
+        self._connectBuffer += rcvd_bytes
+        # make sure that enough (all) bytes are consumed
+        # and that we've got all HTTP headers (ending with a blank line)
+        # from the proxy so that we don't send those bytes to the TLS layertime import time
 from urllib.parse import urldefrag, urlunparse
 
 from twisted.internet import defer, protocol, ssl

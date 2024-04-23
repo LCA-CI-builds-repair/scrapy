@@ -8,7 +8,9 @@ Item Exporters
    :synopsis: Item Exporters
 
 Once you have scraped your items, you often want to persist or export those
-items, to use the data in some other application. That is, after all, the whole
+items, to use the data in some other appli        all items in the same line with no indentation
+      * ``indent<=0`` each item on its own line, no indentation
+      * ``indent>0`` each item on its own line, indented with the provided numeric valueon. That is, after all, the whole
 purpose of the scraping process.
 
 For this purpose Scrapy provides a collection of Item Exporters for different

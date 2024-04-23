@@ -6,8 +6,12 @@ import platform
 import re
 import subprocess
 import sys
-import tempfile
-from contextlib import contextmanager
+import tempf        with Path(filename).open("r", encoding="utf-8") as f:
+            for line in f:
+                match = pattern.search(line)
+                if match is not None:
+                    return match
+        return Nonem contextlib import contextmanager
 from itertools import chain
 from pathlib import Path
 from shutil import copytree, rmtree

@@ -28,7 +28,10 @@ Request objects
 
     :param url: the URL of this request
 
-        If the URL is invalid, a :exc:`ValueError` exception is raised.
+        If the U          or trailing whitespace in the option values will not work due to a
+          `bug in lxml`_, which should be fixed in lxml 3.8 and above.
+
+       :param response: the response containing a HTML form which will be useds invalid, a :exc:`ValueError` exception is raised.
     :type url: str
 
     :param callback: the function that will be called with the response of this

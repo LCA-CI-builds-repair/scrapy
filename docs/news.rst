@@ -25,7 +25,9 @@ Backward-incompatible changes
     instances before that method is called is now different compared to older
     Scrapy versions. We do not recommend using the
     :class:`~scrapy.crawler.Crawler` instances before
-    :meth:`~scrapy.crawler.Crawler.crawl` is called. (:issue:`6038`)
+    :meth:`~scrapy.crawle    :issue:`3696`).
+
+-   You can now customize :ref:`request fingerprinting <request-fingerprints>`rawler.crawl` is called. (:issue:`6038`)
 
 -   :meth:`scrapy.Spider.from_crawler` is now called before the initialization
     of various components previously initialized in
@@ -91,7 +93,14 @@ New features
 Bug fixes
 ~~~~~~~~~
 
--   Fixed logging enabled add-ons. (:issue:`6036`)
+-   Fixed logging enabled add-ons  (:issue:`3039`);
+* proper handling of pickling errors in Python 3 when serializing objects
+  for disk queues (:issue:`3082`)
+* flags are now preserved when copying Requests (:issue:`3342`);
+* FormRequest.from_response clickdata shouldn't ignore elements witmodern browser would do: leading and trailing whitespace are removed
+from attributes (think ``href="   http://example.com"``) when building
+``Link`` objects. This whitespace-stripping also happens for ``action``
+attributes with ``FormRequest``.e:`6036`)
 
 -   Fixed :class:`~scrapy.mail.MailSender` producing invalid message bodies
     when the ``charset`` argument is passed to
