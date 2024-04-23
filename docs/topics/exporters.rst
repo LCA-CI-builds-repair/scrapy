@@ -1,6 +1,11 @@
 .. _topics-exporters:
 
-==============
+=======signal the beginning of the exporting process
+
+2. call the :meth:`~BaseItemExporter.export_item` method for each item you want
+to export
+
+3. and finally call the :meth:`~BaseItemExporter.finish_exporting` to signal=
 Item Exporters
 ==============
 

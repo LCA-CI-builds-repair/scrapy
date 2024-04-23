@@ -2,8 +2,11 @@
 SEP      13
 Title    Middlewares Refactoring
 Author   Pablo Hoffman
-Created  2009-11-14
-Status   Document in progress (being written)
+Created  2009-11-14   spider)''' for consistency with the other middlewares
+2. add methods: ``dequeue_request``, ``enqueue_request_exception``,
+   ``dequeue_request_exception``
+3. remove methods: ``open_spider``, ``close_spider``. They should be
+   replaced by using the ``spider_opened``, ``spider_closed`` signals, butus   Document in progress (being written)
 =======  ====================================
 
 =================================

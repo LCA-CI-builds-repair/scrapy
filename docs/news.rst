@@ -50,7 +50,25 @@ Deprecation removals
 
 -   Removed the binary export mode of
     :class:`~scrapy.exporters.PythonItemExporter`, deprecated in Scrapy 1.1.0.
-    (:issue:`6006`, :issue:`6007`)
+    (:issue:`6006`,    :issue:`4645`)
+
+*   Renewed the localhost certificate used for SSL tests (:issue:`4650`)
+
+*   Removed cookie-handling code specific to Python 2 (:issue:`4682`)
+
+*   Stopped using Python 2 unicode literal     scenarios involving duplicate spider names (:issue:`4549`, :issue:`4560`)
+
+*   Configured Travis CI to also run the tests with Python 3.5.2
+    (:issue:`4518`, :issue:`4615`)
+
+*   Added a `Pylint <https://www.pylint.org/>`_ job to Travis CI
+    (:issue:`3727`)
+
+*   Added a `Mypy <http://mypy-lang.org/>`_ job to Travis CI (:issue:`4637`)
+
+*   Made use of set literals in tests (:issue:`4573`)
+
+*   Cleaned up the Travis CI configuration (:issue:`4517`, :issue:`4519`,e:`4704`):`6007`)
 
     .. note:: If you are using this Scrapy version on Scrapy Cloud with a stack
               that includes an older Scrapy version and get a "TypeError:
@@ -85,7 +103,10 @@ New features
     <scrapy.http.TextResponse.json>` by removing unnecessary body decoding.
     (:issue:`5968`, :issue:`6016`)
 
--   Links to ``.webp`` files are now ignored by :ref:`link extractors
+-   Links to ``.webp`` files are now ignored by :- Fix :command:`view` command ; it was a regression in v1.3.0 (:issue:`2503`).
+- Fix tests regarding ``*_EXPIRES settings`` with Files/Images pipelines (:issue:`2460`).
+- Fix name of generated pipeline class when using basic project template (:issue:`2466`).
+- Fix compatibility with Twisted 17+ (:issue:`2496`, :issue:`2528`).`link extractors
     <topics-link-extractors>`. (:issue:`6021`)
 
 Bug fixes
@@ -102,7 +123,14 @@ Bug fixes
     (:issue:`6049`, :issue:`6050`)
 
 -   :meth:`scrapy.settings.BaseSettings.getdictorlist`, used to parse
-    :setting:`FEED_EXPORT_FIELDS`, now handles tuple values. (:issue:`6011`,
+    :setting:`FEED_EXPORT_FIELDS`, now  (:issue:`1168`)
+- Fix deprecated settings API in tests (:issue:`1152`)
+- Add test for webclient with POST method and no body given (:issue:`1089`)
+- py3-ignores.txt supports comments (:issue:`1044`)
+- modernize some of the asserts (:issue:`835`)les tuple values- Multiple fixes to memory stats (:issue:`531`, :issue:`530`, :issue:`529`)
+- Fix overriding url in ``FormRequest.from_response()`` (:issue:`507`)
+- Fix tests runner under pip 1.5 (:issue:`513`)
+- Fix logging error when spider name is unicode (:issue:`479`)ssue:`6011`,
     :issue:`6013`)
 
 -   Calls to ``datetime.utcnow()``, no longer recommended to be used, have been
