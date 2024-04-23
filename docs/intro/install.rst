@@ -1,6 +1,27 @@
 .. _intro-install:
 
-==================
+====  conda install -c conda-forge scrapy
+
+Alternatively, if you’re already familiar with installation of Python packages,
+you can instyou can install scrapy with ``pip`` after that::
+
+    pip install scrapy
+
+.. note::
+    The same non-Pytreinstall twisted with the :code:`tls` extra option::
+
+    pip install twisted[tls]
+
+For details, see [Issue #2473](https://github.com/scrapy/scrapy/issues/2473).
+
+.. _Python: https://www.python.org/endencies can be used to install scrapy in Debian Jessie (8.0) and later versions.y and its dependencies from PyPI with::
+
+    pip install scrapy
+
+We strongly recommend that you install scrapy in :ref:`a dedicated virtualenv <intro-using-virtualenv>`,
+to avoid conflicting with your system packages.
+
+Note that sometimes this may require solving compilation issues for some scrapy==
 Installation guide
 ==================
 

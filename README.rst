@@ -1,5 +1,14 @@
 .. image:: https://scrapy.org/img/scrapylogo.png
-   :target: https://scrapy.org/
+   :target: https:/.. code:: bash
+
+    pip install Scrapy
+
+See the install section in the documentation at [Scrapy Install Documentation](https://docs.scrapy.org/en/latest/intro/install.html) for more details.
+
+Documentation
+=============
+
+Documentation is available online at [Scrapy Documentation](https://docs.scrapy.org/) and in the ``docs``
    
 ======
 Scrapy

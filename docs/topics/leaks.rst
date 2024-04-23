@@ -5,7 +5,13 @@ Debugging memory leaks
 ======================
 
 In Scrapy, objects such as requests, responses and items have a finite
-lifetime: they are created, used for a while, and finally destroyed.
+lifetime: they are created, used for a while, and finally .. _Pympler: https://pypi.org/project/Pympler/
+
+If you use ``pip``, you can install muppy with the following command::
+
+    pip install muppy
+
+Here's an example to view all Python objects available ind.
 
 From all those objects, the Request is probably the one with the longest
 lifetime, as it stays waiting in the Scheduler queue until it's time to process

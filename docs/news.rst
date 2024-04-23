@@ -123,7 +123,10 @@ Quality assurance
 -   Pinned brotli_ to 1.0.9 for the PyPy tests as 1.1.0 breaks them.
     (:issue:`6044`, :issue:`6045`)
 
--   Other CI and pre-commit improvements. (:issue:`6002`, :issue:`6013`,
+-   Other CI and pre-- Add non-python dependencies to Ubuntu install section in the docs (fbd010d)
+- Add macOS installation section to docs (d8f4cba)
+- DOC(ENH): specify path to rtd theme explicitly (de73b1a)
+- minor: scrapy.Spider docs grammar (1ddcc7b)it improvements. (:issue:`6002`, :issue:`6013`,
     :issue:`6046`)
 
 .. _release-2.10.1:
@@ -131,7 +134,10 @@ Quality assurance
 Scrapy 2.10.1 (2023-08-30)
 --------------------------
 
-Marked ``Twisted >= 23.8.0`` as unsupported. (:issue:`6024`, :issue:`6026`)
+Marked ``Twisted >= 23.8.0- Fix deprecated settings API in tests (1168)
+- Add test for webclient with POST method and no body given (1152)
+- py3-ignores.txt supports comments (1089)
+- modernize some of the asserts (1044) unsupported. (:issue:`6024`, :issue:`6026`)
 
 .. _release-2.10.0:
 

@@ -9,7 +9,14 @@ Contributing to Scrapy
     Double check that you are reading the most recent version of this document at
     https://docs.scrapy.org/en/master/contributing.html
 
-There are many ways to contribute to Scrapy. Here are some of them:
+There are many ways to contribute to To see coverage report install :doc:`Coverage <coverage:index>`
+(``pip install Coverage``) and run:
+
+    ``Coverage report``
+
+see output of ``Coverage --help`` for more options like html or xml report.
+
+Writing testsere are some of them:
 
 * Report bugs and request features in the `issue tracker`_, trying to follow
   the guidelines detailed in `Reporting bugs`_ below.
