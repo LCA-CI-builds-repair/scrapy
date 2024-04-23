@@ -50,7 +50,9 @@ Deprecation removals
 
 -   Removed the binary export mode of
     :class:`~scrapy.exporters.PythonItemExporter`, deprecated in Scrapy 1.1.0.
-    (:issue:`6006`, :issue:`6007`)
+    (:issue:`6006`,* Renewed the localhost certificate used for SSL tests (:issue:`4650`)
+* Removed cookie-handling code specific to Python 2 (:issue:`4682`)
+* Stopped using Python 2 unicode literal syntax (:issue:`4704`):`6007`)
 
     .. note:: If you are using this Scrapy version on Scrapy Cloud with a stack
               that includes an older Scrapy version and get a "TypeError:
@@ -58,7 +60,10 @@ Deprecation removals
               ``scrapinghub-entrypoint-scrapy >= 0.14.1`` to your project
               requirements or switch to a stack that includes Scrapy 2.11.
 
--   Removed the ``CrawlerRunner.spiders`` attribute, deprecated in Scrapy
+-   * The :command:`crawl` command now also exits with exit code 1 when an
+  exception happens before the crawling starts (:issue:`4175`, :issue:`4207`)
+
+* :class:`LinkExtractor.extract_links`d the ``CrawlerRunner.spiders`` attribute, deprecated in Scrapy
     1.0.0, use :attr:`CrawlerRunner.spider_loader
     <scrapy.crawler.CrawlerRunner.spider_loader>` instead. (:issue:`6010`)
 
@@ -123,7 +128,12 @@ Quality assurance
 -   Pinned brotli_ to 1.0.9 for the PyPy tests as 1.1.0 breaks them.
     (:issue:`6044`, :issue:`6045`)
 
--   Other CI and pre-commit improvements. (:issue:`6002`, :issue:`6013`,
+-   Other CI and pre-commit improvements.- Fix deprecated settings API in tests (:issue:`1152`)
+- Add test for webclient with POST method and no body given (:issue:`1089`)
+- py3-ignores.txt su- Update SEP-19 for GSoC project ``per-spider settings`` (:issue:`705`)
+- Set exit code to non-zero when contracts fail (:issue:`727`)
+- Add a setting to control what class is instantiated as Downloader component (:issue:`738`)ts comments (:issue:`1044`)
+- Modernize some of the asserts (:issue:`835`)sue:`6002`, :issue:`6013`,
     :issue:`6046`)
 
 .. _release-2.10.1:

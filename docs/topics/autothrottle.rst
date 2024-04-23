@@ -4,7 +4,16 @@
 AutoThrottle extension
 ======================
 
-This is an extension for automatically throttling crawling speed based on load
+This is an extension for aThe maximum download delay (in seconds) to be set in case of high latencies.
+
+.. setting:: AUTOTHROTTLE_TARGET_CONCURRENCY
+
+AUTOTHROTTLE_TARGET_CONCURRENCY
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Default: ``1.0``
+
+Average number of requests Scrapy should be sending in parallel to remote servers.y throttling crawling speed based on load
 of both the Scrapy server and the website you are crawling.
 
 Design goals

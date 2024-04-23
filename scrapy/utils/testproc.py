@@ -1,7 +1,9 @@
 from __future__ import annotations
 
-import os
-import sys
+impomsg += f"\n>>> stdout <<<\n{pp.out.decode()}"
+msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
+raise RuntimeError(msg)
+return cast(int, pp.exitcode), pp.out, pp.errimport sys
 from typing import Iterable, List, Optional, Tuple, cast
 
 from twisted.internet.defer import Deferred

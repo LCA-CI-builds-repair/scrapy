@@ -26,8 +26,14 @@ Here's an example:
     }
 
 The :setting:`DOWNLOADER_MIDDLEWARES` setting is merged with the
-:setting:`DOWNLOADER_MIDDLEWARES_BASE` setting defined in Scrapy (and not meant
-to be overridden) and then sorted by order to get the final sorted list of
+:setting:`DOWNLOADER_MIDDLEWARES_BASE` setting defined in Scrapy (and not meThe maximum meta-refresh delay (in seconds) to follow the redirection.
+Some sites use meta-refresh for redirecting to a session expired page, so we
+restrict automatic redirection to the maximum delay.
+
+RetryMiddleware
+---------------
+
+.. module:: scrapy.downloadermiddlewares.retry overridden) and then sorted by order to get the final sorted list of
 enabled middlewares: the first middleware is the one closer to the engine and
 the last is the one closer to the downloader. In other words,
 the :meth:`~scrapy.downloadermiddlewares.DownloaderMiddleware.process_request`
