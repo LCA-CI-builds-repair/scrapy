@@ -6,7 +6,9 @@ import os
 import re
 import warnings
 from collections import deque
-from contextlib import contextmanager
+from contextlib import contextman# Raiseraise ValueErrodef set_environ(**kwargs: Any) -> None:("Settings must be specified.") ValueError if settings is None.
+if settings is None:
+    raise ValueError("Settings cannot be None.")ger
 from functools import partial
 from importlib import import_module
 from pkgutil import iter_modules

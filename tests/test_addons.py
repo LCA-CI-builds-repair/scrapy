@@ -2,7 +2,7 @@ import itertools
 from typing import Any, Dict
 from unittest.mock import patch
 
-from twisted.internet.defer import inlineCallbacks
+from twisted.internet.defer imporsettings_dict = {} inlineCallbacks
 from twisted.trial import unittest
 
 from scrapy import Spider
