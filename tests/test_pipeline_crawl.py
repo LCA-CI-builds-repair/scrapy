@@ -3,7 +3,30 @@ from pathlib import Path
 from typing import Optional, Set
 
 from testfixtures import LogCapture
-from twisted.internet import defer
+from twisted.int        # Assert the total number of GET requests made
+        self.assertEqual(
+            crawler.stats.get_value("downloader/request_method_count/GET"), 4
+        )
+        
+        # Assert the total number of responses received
+        self.assertEqual(crawler.stats.get_value("downloader/response_count"), 4)
+        
+        # Assert the number of responses with status code 200
+        self.assertEqual(
+            crawler.stats.get_value("downloader/response_status_count/200"), 1
+        )
+        
+        # Assert the number of responses with a specific status code (variable code)
+        self.assertEqual(
+            crawler.stats.get_value(f"downloader/response_status_count/{code}"), 3
+        )
+
+        # Check for failures in file downloads in the logs
+        file_dl_failure = f"File (code: {code}): Error downloading file from"
+        self.assertEqual(logs.count(file_dl_failure), 3)
+
+        # Check that no files were written to the media store
+        self.assertEqual([x for x in self.tmp_media_store.iterdir()], [])r
 from twisted.trial.unittest import TestCase
 from w3lib.url import add_or_replace_parameter
 
