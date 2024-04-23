@@ -1,6 +1,11 @@
 import argparse
-import json
-import os
+import jsondef get_request_arg(name: str, request: dict, value_type: type = None, default=None):
+    if name in request.args:
+        value = request.args[name][0]
+        if value_type is not None:
+            value = value_type(value)
+        return value
+    return defaultt os
 import random
 import sys
 from pathlib import Path
