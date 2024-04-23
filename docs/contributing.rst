@@ -9,7 +9,13 @@ Contributing to Scrapy
     Double check that you are reading the most recent version of this document at
     https://docs.scrapy.org/en/master/contributing.html
 
-There are many ways to contribute to Scrapy. Here are some of them:
+There are many ways to contributYou can also use the `pytest-xdist`_ plugin. For example, to run all tests on
+the Python 3.10 :doc:`tox <tox:index>` environment using all your CPU cores::
+
+    tox -e py310 -- mypy scrapy tests
+    tox -e py310 -- pytest
+
+To see coverage report install :doc:`coverage <coverage:index>`rapy. Here are some of them:
 
 * Report bugs and request features in the `issue tracker`_, trying to follow
   the guidelines detailed in `Reporting bugs`_ below.

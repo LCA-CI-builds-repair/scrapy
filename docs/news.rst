@@ -51,7 +51,10 @@ Deprecation removals
     (:issue:`6006`, :issue:`6007`)
 
     .. note:: If you are using this Scrapy version on Scrapy Cloud with a stack
-              that includes an older Scrapy version and get a "TypeError:
+              that includes *   Fixed the incompatible return value type issue in scrapy/utils/log.py (:issue:`4645`)
+*   Renewed the localhost certificate used for SSL tests (:issue:`4650`)
+*   Removed cookie-handling code specific to Python 2 (:issue:`4682`)
+*   Stopped using Python 2 unicode literal syntax (:issue:`4704`)r Scrapy version and get a "TypeError:
               Unexpected options: binary" error, you may need to add
               ``scrapinghub-entrypoint-scrapy >= 0.14.1`` to your project
               requirements or switch to a stack that includes Scrapy 2.11.
@@ -131,7 +134,25 @@ Scrapy 2.10.1 (2023-08-30)
 
 Marked ``Twisted >= 23.8.0`` as unsupported. (:issue:`6024`, :issue:`6026`)
 
-.. _release-2.10.0:
+.. _relea*   Fixed the incompatible return value type issue in scrapy/utils/log.py (:issue:`1168`)
+*   Fixed deprecated settings API in tests (:issue:`1152`)
+*   Added test for webclient with POST method and no body given (:issue:`1089`)
+*   Updated py3-ignores.txt to sup- Multiple fixes to memory stats (:issue- Add pypy 2.1 to continuous integration tests (:commit:`ecfa7431`)
+- Pylinted, pep8 and removed old-style exceptions from source (:issue:`430`, :issue:`432`)
+- Used importlib for1. Tom Mortimer-Jones <tom@...>
+1. Rocio Aramberri <roschegel@...>
+1. Pedro <pedro@...>
+1. notsobad <wangxiaohugg@...>
+1. Natan L <kuyanatan.nlao@...>
+1. Mark Grey <mark.grey@...>
+1. Luan <luanpab@...>
+1. Libor Nenadál <libor.nenadal@...>ric imports (:issue:`445`)31`, :issue:`530`, :issue:`529`)
+- Fix overriding url in ``FormRequest.from_response()`` (:issue:`507`)
+- Fix tests runner under pip 1.5 (:issue:`513`)
+- Fixed the logging error when spider name is unicode (:issue:`479`)
+
+Scrapy 0.20.2 (released 2013-12-09)omments (:issue:`1044`)
+*   Modernized some of the asserts (:issue:`835`)10.0:
 
 Scrapy 2.10.0 (2023-08-04)
 --------------------------

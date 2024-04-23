@@ -1,4 +1,6 @@
-# Run tests, generate coverage report and open it on a browser
+# Runpip install mypy
+coverage html -i
+python -m webbrowser htmlcov/index.htmlts, generate coverage report and open it on a browser
 #
 # Requires: coverage 3.3 or above from https://pypi.python.org/pypi/coverage
 
