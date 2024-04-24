@@ -6,8 +6,64 @@ import os
 import re
 import warnings
 from collections import deque
-from contextlib import contextmanager
-from functools import partial
+from contextlib import contextman# Raises a ``ValueError`` if ``settings`` is ``None_generator_callbacks_cache = {}
+
+def is_generator_with_return_val        callable_name = spider.__class__.__name__ + "." + callable.__name__
+        warnings.warn(
+            f"Warning: {callable_name} is being used. Please review its usage.",
+            category=UserWarning
+        )(callable: Callable) -> bool:
+    """
+    Returns True if a callable is a generator function which includes a
+    'return' statement with a value different than None, False otherwise
+    """
+    if callable in _generator_callbacks_cache:
+        return bool(_generator_callbacks_cache[callable])
+
+    def returns_none(return_node: ast.Return) -> bool:
+        value = return_node.value
+        return (
+            value is None or isinstance(value, ast.NameConstant) and value.value is None
+        )
+
+    if inspect.isgeneratorfunction(callable):
+        func = callable
+        while isinstance(func, partial):
+            func = func.func
+
+        src = inspect.getsource(func)
+        pattern = re.compile(r"(^[\t ]+)")
+        code = pattern.sub("", src)
+
+        match = pattern.match(src)  # finds indentation
+        if match:
+            code = re.sub(f"\n{match.group(0)}", "\n", code)  # remove indentation
+
+        tree = ast.parse(code)
+        for node in ast.walk(tree):
+            if isinstance(node, ast.Return):
+                if not returns_none(node):
+                    _generator_callbacks_cache[callable] = True
+                    return True
+
+    _generator_callbacks_cache[callable] = False
+    return False if instance is None.
+# Creates a class instance using the 'from_settings' constructor.
+def build_from_settings(objcls, settings, /, *args, **kwargs):
+    if settings is None:
+        raise ValueError("Specify settings.")
+    if settings and hasattr(objcls, "from_settings"):
+        instance = objcls.from_settings(settings, *args, **kwargs)
+        method_name = "from_settings"
+    else:
+        instance = objcls(*args, **kwargs)
+        method_name = "__new__"
+    if instance is None:
+        raise TypeError(f"{objcls.__qualname__}.{method_name} returned None")
+    return instance
+
+@contextmanager
+def set_environ(**kwargs: str) -> Generator[None, Any, None]:mport partial
 from importlib import import_module
 from pkgutil import iter_modules
 from types import ModuleType

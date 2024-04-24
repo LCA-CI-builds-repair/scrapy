@@ -98,7 +98,29 @@ Bug fixes
     :meth:`~scrapy.mail.MailSender.send`. (:issue:`5096`, :issue:`5118`)
 
 -   Fixed an exception when accessing ``self.EXCEPTIONS_TO_RETRY`` from a
-    subclass of :class:`~scrapy.downloadermiddlewares.retry.RetryMiddleware`.
+    subclass of :class:`~scrapy.downloadermiddlewares... code-block:: python
+
+    for href in response.css('li.page a::attr(href)').extract():
+        url = response.urljoin(href)
+        yield scrapy.Request(url, self.parse, encoding=response.encoding)
+
+One can now write this::
+
+.. code-block:: python
+
+    for a in response.css('li.page a'):
+        yield response.follow(a, self.parse)
+
+Link extractors are also improved. They work similarly to what a regular
+modern browser would do: leading and trailing whitespace are removed
+from attributes (think ``href="   http://example.com"``) when building
+``Link`` objects. This whitespace-stripping also happens for ``action``
+attributes with ``FormRequest``.
+
+**Please also note that link extractors do not canonicalize URLs by default
+anymore.** This was puzzling users every now and then, and it's not what
+browsers do in fact, so we removed that extra transformation on extracted
+links.e`.
     (:issue:`6049`, :issue:`6050`)
 
 -   :meth:`scrapy.settings.BaseSettings.getdictorlist`, used to parse

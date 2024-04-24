@@ -2,8 +2,42 @@ import json
 
 from itemadapter import ItemAdapter, is_item
 
-from scrapy.contracts import Contract
-from scrapy.exceptions import ContractFail
+from scraclass ScrapesContract(Contract):
+    """Contract to check presence of fields in scraped items
+    @scrapes page_name page_body
+    """
+
+    name = "scrapes"
+
+    def __init__(self, *args):
+        super().__init__(*args)
+        try:
+            self.min_bound = int(self.args[1])
+        except IndexError:
+            self.min_bound = 1
+
+        try:
+            self.max_bound = int(self.args[2])
+        except IndexError:
+            self.max_bound = float("inf")
+
+    def post_process(self, output):
+        occurrences = 0
+        for x in output:
+            if self.obj_type_verifier(x):
+                occurrences += 1
+
+        assertion = self.min_bound <= occurrences <= self.max_bound
+
+        if not assertion:
+            if self.min_bound == self.max_bound:
+                expected = self.min_bound
+            else:
+                expected = f"{self.min_bound}..{self.max_bound}"
+
+            raise ContractFail(
+                f"Returned {occurrences} {self.obj_name}, expected {expected}"
+            )scrapy.exceptions import ContractFail
 from scrapy.http import Request
 
 

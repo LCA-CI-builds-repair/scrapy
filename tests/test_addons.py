@@ -2,7 +2,11 @@ import itertools
 from typing import Any, Dict
 from unittest.mock import patch
 
-from twisted.internet.defer import inlineCallbacks
+from twisted.internet.defer impor        settings_dict = {
+            "key1": "value1",
+            "key2": "value2",
+            # Add more key-value pairs as needed
+        } inlineCallbacks
 from twisted.trial import unittest
 
 from scrapy import Spider

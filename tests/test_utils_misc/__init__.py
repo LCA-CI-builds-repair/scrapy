@@ -4,8 +4,47 @@ import unittest
 from pathlib import Path
 from unittest import mock
 
-from scrapy.item import Field, Item
-from scrapy.utils.misc import (
+from scraimport mock
+
+def _test_with_crawler(mock, settings, crawler):
+    build_from_crawler(mock, crawler, *args, **kwargs)
+    if hasattr(mock, "from_crawler"):
+        mock.from_crawler.assert_called_once_with(crawler, *args, **kwargs)
+        if hasattr(mock, "from_settings"):
+            mock.from_settings.assert_not_called()
+        mock.assert_not_called()
+    elif hasattr(mock, "from_settings"):
+        mock.from_settings.assert_called_once_with(settings, *args, **kwargs)
+        mock.assert_not_called()
+    else:
+        mock.assert_called_once_with(*args, **kwargs)
+
+class TestUtilsMisc(unittest.TestCase):
+
+    def test_build_from_crawler(self):
+        crawler = mock.MagicMock(spec_set=["settings"])
+        settings = mock.MagicMock()
+        args = (True, 100.0)
+        kwargs = {"key": "val"}
+
+        spec_sets = (
+            ["__qualname__"],
+            ["__qualname__", "from_crawler"],
+        )
+        for specs in spec_sets:
+            m = mock.MagicMock(spec_set=specs)
+            _test_with_crawler(m, settings, crawler)
+            m.reset_mock()
+
+        m = mock.MagicMock(spec_set=["__qualname__", "from_crawler"])
+        m.from_crawler.return_value = None
+        with self.assertRaises(TypeError):
+            build_from_crawler(m, crawler, *args, **kwargs)
+
+    def test_build_from_settings(self):
+        settings = mock.MagicMock()
+        args = (True, 100.0)
+        kwargs = {"key": "val"}utils.misc import (
     arg_to_iter,
     build_from_crawler,
     build_from_settings,

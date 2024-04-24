@@ -1,11 +1,34 @@
 .. _topics-items:
 
 =====
-Items
-=====
+ItemsDictionaries
+------------
 
-.. module:: scrapy.item
-   :synopsis: Item and Field classes
+As an item type, :class:`dict` is convenient and familiar.
+
+Item objects
+------------
+
+:class:`Item` provides a :class:`dict`-like API plus additional features that make it the most feature-complete item type:
+
+.. class:: scrapy.item.Item([arg])
+.. class:: scrapy.Item([arg])
+
+    :class:`Item` objects replicate the standard :class:`dict` API, including its ``__init__`` method.
+
+    :class:`Item` allows defining field names, so that:
+
+    - :class:`KeyError` is raised when using undefined field names (i.e. prevents typos going unnoticed)
+    
+    - :ref:`Item exporters <topics-exporters>` can export all fields by default even if the first scraped object does not have values for all of them
+
+    :class:`Item` also allows defining field metadata, which can be used to :ref:`customize serialization <topics-exporters-field-serialization>`.
+
+    :mod:`trackref` tracks :class:`Item` objects to help find memory leaks (see :ref:`topics-leaks-trackrefs`).
+
+    :class:`Item` objects also provide the following additional API members:
+    
+    .. automethod:: copynopsis: Item and Field classes
 
 The main goal in scraping is to extract structured data from unstructured
 sources, typically, web pages. :ref:`Spiders <topics-spiders>` may return the
