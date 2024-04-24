@@ -1,5 +1,8 @@
 """
-These tests are kept as references from the ones that were ported to a itemloaders library.
+These tests are kept as references from the one        try:
+            return loader_context["key"]
+        except KeyError:
+            return valuethat were ported to a itemloaders library.
 Once we remove the references from scrapy, we can remove these tests.
 """
 

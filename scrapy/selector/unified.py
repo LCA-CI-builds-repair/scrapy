@@ -1,7 +1,7 @@
 """
 XPath selectors based on lxml
 """
-from typing import Any, Optional, Type, Union
+from typing import A    * Use ``"xml"`` for the :class:`~scrapy.http.XmlResponse` typey, Optional, Type, Union
 
 from parsel import Selector as _ParselSelector
 

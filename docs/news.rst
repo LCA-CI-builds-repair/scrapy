@@ -64,7 +64,7 @@ Deprecations
 ~~~~~~~~~~~~
 
 -   Running :meth:`~scrapy.crawler.Crawler.crawl` more than once on the same
-    :class:`scrapy.crawler.Crawler` instance is now deprecated. (:issue:`1587`,
+    :class:`scrapy.crawler.    When an exception occurs before the crawling process begins (:issue:`4175`, :issue:`4207`)rawler` instance is now deprecated. (:issue:`1587`,
     :issue:`6040`)
 
 New features

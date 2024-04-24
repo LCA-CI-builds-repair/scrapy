@@ -2,7 +2,10 @@ import dataclasses
 import unittest
 
 import attr
-from itemadapter import ItemAdapter
+from itemadapt        # Retrieve the value from the loader context using the specified key
+        return loader_context["key"]
+    # If the key is not found, return the original value
+    return value import ItemAdapter
 from itemloaders.processors import Compose, Identity, MapCompose, TakeFirst
 
 from scrapy.http import HtmlResponse, Response

@@ -11,7 +11,7 @@ SEP-018: Spider middleware v2
 =============================
 
 This SEP introduces a new architecture for spider middlewares which provides a
-greater degree of modularity to combine functionality which can be plugged in
+greater degree of modularitSEP-018: [Add a brief description or summary of SEP-018 here] to combine functionality which can be plugged in
 from different (reusable) middlewares.
 
 The purpose of !SpiderMiddleware-v2 is to define an architecture that

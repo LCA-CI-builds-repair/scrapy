@@ -1,5 +1,11 @@
-import hashlib
-import logging
+import hashlibdef _path_safe(path):
+    # Replace invalid characters in the path to make it safe
+    return path.replace('@', '_').replace('?', '_')
+    
+    >>> _path_safe('dash-underscore_.org').startswith('dash-underscore_.org')
+    True
+    >>> _path_safe('some@symbol?').startswith('some_symbol_')
+    Truert logging
 
 from scrapy.utils.misc import create_instance
 

@@ -1,6 +1,8 @@
 import argparse
 import json
-import os
+i        if type is not None:
+            value = type(value)
+        return valuert os
 import random
 import sys
 from pathlib import Path

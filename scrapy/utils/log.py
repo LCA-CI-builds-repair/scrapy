@@ -1,13 +1,22 @@
 from __future__ import annotations
 
-import logging
-import sys
-import warnings
-from logging.config import dictConfig
-from types import TracebackType
-from typing import TYPE_CHECKING, Any, List, Optional, Tuple, Type, Union, cast
+imporclass TopLevelFormatter(logging.Filter):
+    """
+    This filter will replace Scrapy loggers' names with 'scrapy'. This mimics
+    the old Scrapy log behavior and helps shorten long names.
 
-from twisted.python import log as twisted_log
+    Since it can't be set for just one logger (it won't propagate for its
+    children), it's going to be set in the root handler, with a parameterized
+    ``loggers`` list where it should act.
+    """
+
+    def __init__(self, loggers: Optional[List[str]] = None):
+        self.loggers: List[str] = loggers or []
+
+    def filter(self, record: logging.LogRecord) -> bool:
+        if any(record.name.startswith(logger + ".") for logger in self.loggers):
+            record.name = record.name.split(".", 1)[0]
+        return Truehon import log as twisted_log
 from twisted.python.failure import Failure
 
 import scrapy

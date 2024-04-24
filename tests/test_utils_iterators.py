@@ -1,7 +1,37 @@
 from pytest import mark
 from twisted.trial import unittest
 
-from scrapy.http import Response, TextResponse, XmlResponse
+from scrapy.h                     <löngskammstöfun>Alþb.</löngskammstöfun>
+                  </skammstafanir>
+                  <tímabil>
+                     <fyrstaþing>76</fyrstaþing>
+                     <síðastaþing>123</síðastaþing>
+                  </tímabil>
+               </þingflokkur>
+               <þingflokkur id="27">
+                  <heiti>Alþýðuflokkur</heiti>
+                  <skammstafanir>
+                     <stuttskammstöfun>A</stuttskammstöfun>
+                     <löngskammstöfun>Alþfl.</löngskammstöfun>
+                  </skammstafanir>
+                  <tímabil>
+                     <fyrstaþing>27</fyrstaþing>
+                     <síðastaþing>120</síðastaþing>
+                  </tímabil>
+               </þingflokkur>
+            </þingflokkar>"""
+
+        for r in (
+            # with bytes
+            XmlResponse(url="http://example.com", body=body.encode("utf-8")),
+            # Unicode body needs encoding information
+            XmlResponse(url="http://example.com", body=body, encoding="utf-8"),
+        ):
+            attrs = []
+            for x in self.xmliter(r, "þingflokkur"):
+                attrs.append(
+                    (
+                        x.attrib["id"],se, XmlResponse
 from scrapy.utils.iterators import _body_or_str, csviter, xmliter, xmliter_lxml
 from tests import get_testdata
 

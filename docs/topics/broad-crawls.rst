@@ -5,7 +5,7 @@ Broad Crawls
 ============
 
 Scrapy defaults are optimized for crawling specific sites. These sites are
-often handled by a single Scrapy spider, although this is not necessary or
+often handled by a single Scrapy spider, although this is n    Enable AJAX crawling by setting AJAXCRAWL_ENABLED to True necessary or
 required (for example, there are generic spiders that handle any given site
 thrown at them).
 
