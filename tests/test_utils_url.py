@@ -13,10 +13,40 @@ from scrapy.utils.url import (
     url_is_from_spider,
 )
 
-__doctests__ = ["scrapy.utils.url"]
+__doctests__ = ["scrapfor k, args in enumerate(
+    [
+        (
+            r"C:\absolute\path\to\a\file.html",
+            "file://",
+            "Windows filepath are not supported for scrapy shell",
+        ),
+    ],
+    start=1,
+):
+    t_method = create_skipped_scheme_t(args)
+    t_method.__name__ = f"test_uri_skipped_{k:03}"
+    setattr(GuessSchemeTest, t_method.__name__, t_method)
 
 
-class UrlUtilsTest(unittest.TestCase):
+class StripUrl(unittest.TestCase):
+    def test_noop(self):
+        self.assertEqual(
+            strip_url("http://www.example.com/index.html"),
+            "http://www.example.com/index.html",
+        )
+
+    def test_noop_query_string(self):
+        self.assertEqual(
+            strip_url("http://www.example.com/index.html?somekey=somevalue"),
+            "http://www.example.com/index.html?somekey=somevalue",
+        )
+
+    def test_fragments(self):
+        # Add test assertions for handling URL fragments
+        self.assertEqual(
+            strip_url("http://www.example.com/index.html#section1"),
+            "http://www.example.com/index.html",
+        )sTest(unittest.TestCase):
     def test_url_is_from_any_domain(self):
         url = "http://www.wheele-bin-art.co.uk/get/product/123"
         self.assertTrue(url_is_from_any_domain(url, ["wheele-bin-art.co.uk"]))

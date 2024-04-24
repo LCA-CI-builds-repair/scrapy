@@ -1,6 +1,34 @@
-import pickle
-import re
+iimport re
 import unittest
+
+from packaging.version import Version
+from pytest import mark
+from w3lib import __version__ as w3lib_version
+
+from scrapy.http import HtmlResponse, XmlResponse
+from scrapy.link import Link
+from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
+from tests import get_testdata
+
+
+# a hack to skip base class tests in pytest
+class Base:
+    class LinkExtractorTestCase(unittest.TestCase):
+        extractor_cls = None
+
+        def setUp(self):
+            body = get_testdata("link_extractor", "linkextractor.html")
+            self.response = HtmlResponse(url="http://example.com/index", body=body)
+
+        def test_urls_type(self):
+            """Test that the resulting urls are str objects"""
+            lx = self.extractor_cls()
+            self.assertTrue(
+                all(
+                    isinstance(link.url, str)
+                    for link in lx.extract_links(self.response)
+                )
+            )nittest
 
 from packaging.version import Version
 from pytest import mark

@@ -54,7 +54,35 @@ Deprecation removals
               that includes an older Scrapy version and get a "TypeError:
               Unexpected options: binary" error, you may need to add
               ``scrapinghub-entrypoint-scrapy >= 0.14.1`` to your project
-              requirements or switch to a stack that includes Scrapy 2.11.
+        :issue:`4568`)
+
+*   Improved code sharing between the :command:`crawl` and :command:`runspider`
+    commands (:issue:`4548`, :issue:`4552`)
+
+*   Replaced ``chain(*iterable)`` with ``chain.from_iterable(iterable)``
+    (:issue:`4635`)
+
+*   You may now run the :mod:`asyncio` tests with Tox on any Python version
+    (:issue:`4521`)
+
+*   Updated test requirements to reflect an incompatibility with pytest 5.4 and
+    5.4.1 (:issue:`4588`)
+
+*   Improved :class:`~scrapy.spiderloader.SpiderLoader` test coverage for
+    scenarios involving duplicate spider names (:issue:`4549`, :issue:`4560`)
+
+*   Configured Travis CI to also run the tests with Python 3.5.2
+    (:issue:`4518`, :issue:`4615`)
+
+*   Added a `Pylint <https://www.pylint.org/>`_ job to Travis CI
+    (:issue:`3727`)
+
+*   Added a `Mypy <http://mypy-lang.org/>`_ job to Travis CI (:issue:`4637`)
+
+*   Made use of set literals in tests (:issue:`4573`)
+
+*   Cleaned up the Travis CI configuration (:issue:`4517`, :issue:`4519`,
+    :issue:`4522`, :issue:`4537`)tch to a stack that includes Scrapy 2.11.
 
 -   Removed the ``CrawlerRunner.spiders`` attribute, deprecated in Scrapy
     1.0.0, use :attr:`CrawlerRunner.spider_loader

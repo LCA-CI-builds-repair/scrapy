@@ -1,6 +1,35 @@
-import argparse
-import json
+iimport json
 import os
+import random
+import sys
+from pathlib import Path
+from shutil import rmtree
+from subprocess import PIPE, Popen
+from tempfile import mkdtemp
+from typing import Dict
+from urllib.parse import urlencode
+
+from OpenSSL import SSL
+from twisted.internet import defer, reactor, ssl
+from twisted.internet.protocol import ServerFactory
+from twisted.internet.task import deferLater
+from twisted.names import dns, error
+from twisted.names.server import DNSServerFactory
+from twisted.web import resource, server
+from twisted.web.server import NOT_DONE_YET, GzipEncoderFactory, Site
+from twisted.web.static import File
+from twisted.web.util import redirectTo
+
+from scrapy.utils.python import to_bytes, to_unicode
+
+
+def getarg(request, name, default=None, type=None):
+    if name in request.args:
+        value = request.args[name][0]
+        if type is not None:
+            value = type(value)
+        return value
+    return defaultt os
 import random
 import sys
 from pathlib import Path

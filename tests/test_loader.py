@@ -29,9 +29,15 @@ class TestNestedItem(Item):
     url = Field()
     image = Field()
 
+    default_item_class = FunctionProcessorItem
 
-@attr.s
-class AttrsNameItem:
+
+class FunctionProcessorTestCase(unittest.TestCase):
+    def test_processor_defined_in_item(self):
+        lo = FunctionProcessorItemLoader()
+        lo.add_value("foo", "  bar  ")
+        lo.add_value("foo", ["  asdf  ", "  qwerty  "])
+        self.assertEqual(dict(lo.load_item()), {"foo": ["BAR", "ASDF", "QWERTY"]})class AttrsNameItem:
     name = attr.ib(default="")
 
 

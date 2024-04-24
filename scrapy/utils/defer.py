@@ -4,8 +4,27 @@ Helper functions for dealing with Twisted deferreds
 import asyncio
 import inspect
 from asyncio import Future
-from functools import wraps
-from types import CoroutineType
+from functools import wraps    for, so we fire them with None when needed.
+
+    It may be possible to write an async iterator-aware replacement for
+    Cooperator/CooperativeTask and use it instead of this adapter to achieve the same
+    goal.
+    """
+
+    def __init__(
+        self,
+        aiterable: AsyncIterable,
+        func: Callable,
+        *callable_args: Any,
+        **callable_kwargs: Any,
+    ):
+        self.aiterator: AsyncIterator = aiterable.__aiter__()
+        self.func: Callable = func
+        self.callable_args: Tuple[Any, ...] = callable_args
+        self.callable_kwargs: Dict[str, Any] = callable_kwargs
+        self.finished: bool = False
+        self.waiting_deferreds: List[Deferred] = []
+        self.anext_deferred: Optional[Deferred] = NoneroutineType
 from typing import (
     Any,
     AsyncGenerator,
