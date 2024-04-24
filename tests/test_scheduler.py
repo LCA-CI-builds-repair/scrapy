@@ -9,7 +9,33 @@ from twisted.trial.unittest import TestCase
 
 from scrapy.core.downloader import Downloader
 from scrapy.core.scheduler import Scheduler
-from scrapy.crawler import Crawler
+frfrom scrapy.core.scheduler import _is_scheduling_fair
+from some_module import _URLS_WITH_SLOTS
+
+            self.close_scheduler()
+            self.create_scheduler()
+
+        dequeued_slots = []
+        requests = []
+        downloader = self.mock_crawler.engine.downloader
+        while self.scheduler.has_pending_requests():
+            request = self.scheduler.next_request()
+            # pylint: disable=protected-access
+            slot = downloader._get_slot_key(request, None)
+            dequeued_slots.append(slot)
+            downloader.increment(slot)
+            requests.append(request)
+
+        for request in requests:
+            # pylint: disable=protected-access
+            slot = downloader._get_slot_key(request, None)
+            downloader.decrement(slot)
+
+        self.assertTrue(
+            _is_scheduling_fair(list(s for u, s in _URLS_WITH_SLOTS), dequeued_slots)
+        )
+        if hasattr(downloader, 'slots'):
+            self.assertEqual(sum(len(s.active) for s in downloader.slots.values()), 0)t Crawler
 from scrapy.http import Request
 from scrapy.spiders import Spider
 from scrapy.utils.httpobj import urlparse_cached

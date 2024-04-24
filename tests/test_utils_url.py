@@ -1,6 +1,67 @@
 import unittest
 
-from scrapy.linkextractors import IGNORED_EXTENSIONS
+from scrapy.from some_module imfrom some_module import url_is_from_spider
+from scrapy.sfrom some_module import url_is_from_spider
+from scrapy.spiders import Spider
+
+        spider = Spider(
+            name="example.com", allowed_domains=["example.com", "example.net"]
+        )
+        self.assertTrue(
+            url_is_from_spider("http://www.example.com/some/page.html", spider)
+        )
+
+        spider = Spider(
+            name="example.com", allowed_domains=["example.com", "example.net"]
+        )
+        self.assertTrue(
+            url_is_from_spider("http://www.example.com/some/page.html", spider)
+        )t Spider
+
+        spider = Spider(name="example.com")
+        self.assertTrue(
+            url_is_from_spider("http://www.example.com/some/page.html", spider)
+        )
+        self.assertTrue(
+            url_is_from_spider("http://sub.example.com/some/page.html", spider)
+        )
+        self.assertFalse(
+            url_is_from_spider("http://www.example.org/some/page.html", spider)
+        )
+        self.assertFalse(
+            url_is_from_spider("http://www.example.net/some/page.html", spider)
+        )
+
+    def test_url_is_from_spider_class_attributes(self):
+        class MySpider(Spider):
+            name = "example.com"
+
+        self.assertTrue(
+            url_is_from_spider("http://www.example.com/some/page.html", MySpider)
+        )
+        self.assertTrue(
+            url_is_from_spider("http://sub.example.com/some/page.html", MySpider)
+        )
+        self.assertFalse(
+            url_is_from_spider("http://www.example.org/some/page.html", MySpider)
+        )
+        self.assertFalse(
+            url_is_from_spider("http://www.example.net/some/page.html", MySpider)
+        )       self.assertTrue(url_is_from_any_domain(url, ["wheele-bin-art.co.uk"]))
+        self.assertTrue(url_is_from_any_domain(url, ["WHEELE-BIN-ART.CO.UK"]))
+
+        url = "http://192.169.0.15:8080/mypage.html"
+        self.assertTrue(url_is_from_any_domain(url, ["192.169.0.15:8080"]))
+        self.assertFalse(url_is_from_any_domain(url, ["192.169.0.15"]))
+
+        url = (
+            "javascript:%20document.orderform_2581_1190810811.mode.value=%27add%27;%20"
+            "javascript:%20document.orderform_2581_1190810811.submit%28%29"
+        )
+        self.assertFalse(url_is_from_any_domain(url, ["testdomain.com"]))
+        self.assertFalse(
+            url_is_from_any_domain(url + ".testdomain.com", ["testdomain.com"])
+        )import IGNORED_EXTENSIONS
 from scrapy.spiders import Spider
 from scrapy.utils.misc import arg_to_iter
 from scrapy.utils.url import (

@@ -1,6 +1,24 @@
-from __future__ import annotations
+from __future__ import annfrom typing import List, Tuple
 
-import os
+        if settings is not None:
+            env["SCRAPY_SETTINGS_MODULE"] = settings
+        assert self.command
+        cmd = self.prefix + [self.command] + list(args)
+        pp = TestProcessProtocol()
+        pp.deferred.addCallback(self._process_finished, cmd, check_code)
+        reactor.spawnProcess(pp, cmd[0], cmd, env=env, path=self.cwd)
+        return pp.deferred
+
+    def _process_finished(
+        self, pp: TestProcessProtocol, cmd: List[str], check_code: bool
+    ) -> Tuple[int, bytes, bytes]:
+        if pp.exitcode is not None and check_code:
+            msg = f"process {cmd} exit with code {pp.exitcode}"
+            msg += f"\n>>> stdout <<<\n{pp.out.decode()}"
+            msg += "\n"
+            msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
+            raise RuntimeError(msg)
+        return cast(int, pp.exitcode), pp.out, pp.err
 import sys
 from typing import Iterable, List, Optional, Tuple, cast
 
