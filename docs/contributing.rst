@@ -9,7 +9,16 @@ Contributing to Scrapy
     Double check that you are reading the most recent version of this document at
     https://docs.scrapy.org/en/master/contributing.html
 
-There are many ways to contribute to Scrapy. Here are some of them:
+There are many ways to contribut# Contributing Guidelines
+
+- Fork the repository
+- Clone the forked repository to your local machine
+- Create a new branch for your changes
+- Make your changes and commit them
+- Push your changes to your forked repository
+- Create a pull request to the main repository
+
+To raise issues or submit pull requests, please visit the project repository on GitHub. to Scrapy. Here are some of them:
 
 * Report bugs and request features in the `issue tracker`_, trying to follow
   the guidelines detailed in `Reporting bugs`_ below.

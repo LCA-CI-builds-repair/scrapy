@@ -1,6 +1,7 @@
 from __future__ import annotations
 
-import os
+imp            msg = f"Process {cmd} exited with code {pp.exitcode}\n"
+            msg += f"Standard Output:\n{pp.out.decode()}"t os
 import sys
 from typing import Iterable, List, Optional, Tuple, cast
 

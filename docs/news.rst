@@ -62,40 +62,102 @@ Deprecation removals
     1.0.0, use :attr:`CrawlerRunner.spider_loader
     <scrapy.crawler.CrawlerRunner.spider_loader>` instead. (:issue:`6010`)
 
-Deprecations
-~~~~~~~~~~~~
+Deprec    exception happens before the crawling starts (:issue:`4175`, :issue:`4207`)
 
--   Running :meth:`~scrapy.crawler.Crawler.crawl` more than once on the same
-    :class:`scrapy.crawler.Crawler` instance is now deprecated. (:issue:`1587`,
-    :issue:`6040`)
+*   :class:`LinkExtractor.extract_links
+    <scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor.extract_links>` no longer
+    re-encodes the query string or URLs from non-UTF-8 responses in UTF-8
+    (:issue:`998`, :issue:`1403`, :issue:`1949`, :issue:`4321`)
 
-New features
-~~~~~~~~~~~~
+*   The first spider middleware (see :setting:`SPIDER_MIDDLEWARES`) now also
+    processes exceptions raised from callbacks that are generators
+    (:issue:`4260`, :issue:`4272`)
 
--   Spiders can now modify settings in their
-    :meth:`~scrapy.Spider.from_crawler` method, e.g. based on :ref:`spider
-    arguments <spiderargs>`. (:issue:`1305`, :issue:`1580`, :issue:`2392`,
-    :issue:`3663`, :issue:`6038`)
+*   Redirects to URLs starting with 3 slashes (``///``) are now supported
+    (:issue:`4032`, :issue:`4042`)
 
--   Added the :class:`~scrapy.extensions.periodic_log.PeriodicLog` extension
-    which can be enabled to log stats and/or their differences periodically.
-    (:issue:`5926`)
+*   :class:`~scrapy.http.Request` no longer accepts strings as ``url`` simply
+    because they have a colon (:issue:`2552`, :issue:`4094`)
 
--   Optimized the memory usage in :meth:`TextResponse.json
-    <scrapy.http.TextResponse.json>` by removing unnecessary body decoding.
-    (:issue:`5968`, :issue:`6016`)
+*   The correct encoding is now used for attach names in
+    :class:`~scrapy.mail.MailSender` (:issue:`4229`, :issue:`4239`)
 
--   Links to ``.webp`` files are now ignored by :ref:`link extractors
-    <topics-link-extractors>`. (:issue:`6021`)
+*   :class:`~scrapy.dupefilters.RFPDupeFilter`, the default
+    :setting:`DUPEFILTER_CLASS`, no longer writes an extra ``\r`` character on
+    each line in Windows, which made the size of the ``requests.seen`` file
+    unnecessarily large on that platform (:issue:`4283`)
 
-Bug fixes
-~~~~~~~~~
+*   Z shell auto-completion now looks for ``.html`` files, not ``.http`` files,
+    and covers the ``-h`` command-line switch (:issue:`4122`, :issue:`4291`)
 
--   Fixed logging enabled add-ons. (:issue:`6036`)
+*   Adding items to a :class:`scrapy.utils.datatypes.LocalCache` object
+    without a ``limit`` defined no longer raises a :exc:`TypeError` exception
+    (:issue:`4123`)
 
--   Fixed :class:`~scrapy.mail.MailSender` producing invalid message bodies
-    when the ``charset`` argument is passed to
-    :meth:`~scrapy.mail.MailSender.send`. (:issue:`5096`, :issue:`5118`)
+*   Fixed a typo in the message of the :exc:`ValueError` exception raised when
+    :func:`scrapy.utils.misc.create_instance` gets both ``settings`` and
+    ``crawler`` set to ``None`` (:issue:`4128`)
+
+Documentation
+~~~~~~~~~~~~~
+
+*   API documentation now links to an online, syntax-highlighted view of the
+    corresponding source code (:issue:`4148`)
+
+*   Links to unexisting documentation pages now allow access to the sidebar
+    (:issue:`4152`, :issue:`4169`)
+
+*   Cross-references within our documentation now display a tooltip when
+    hovered (:issue:`4173`, :issue:`4183`)
+
+*   Improved the documentation about :meth:`LinkExtractor.extract_links
+    <scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor.extract_links>` and
+    simplified :ref:`topics-link-extractors` (:issue:`4045`)
+
+*   Clarified how :class:`ItemLoader.item <scrapy.loader.ItemLoader.item>`
+    works (:issue:`3574`, :issue:`4099`)
+
+*   Clarified that :func:`logging.basicConfig` should not be used when also
+    using :class:`~scrapy.crawler.CrawlerProcess` (:issue:`2149`,
+    :issue:`2352`, :issue:`3146`, :issue:`3960`)
+
+*   Clarified the requirements for :class:`~scrapy.http.Request` objects
+    :ref:`when using persistence <request-serialization>` (:issue:`4124`,
+    :issue:`4139`)
+
+*   Clarified how to install a :ref:`custom image pipeline
+    <media-pipeline-example>` (:issue:`4034`, :issue:`4252`)
+
+*   Fixed the signatures of the ``file_path`` method in :ref:`media pipeline
+    <topics-media-pipeline>` examples (:issue:`4290`)
+
+*   Covered a backward-incompatible change in Scrapy 1.7.0 affecting custom
+    :class:`scrapy.core.scheduler.Scheduler` subclasses (:issue:`4274`)
+
+*   Improved the ``README.rst`` and ``CODE_OF_CONDUCT.md`` files
+    (:issue:`4059`)
+
+*   Documentation examples are now checked as part of our test suite and we
+    have fixed some of the issues detected (:issue:`4142`, :issue:`4146`,
+    :issue:`4171`, :issue:`4184`, :issue:`4190`)
+
+*   Fixed logic issues, broken links and typos (:issue:`4247`, :issue:`4258`,
+    :issue:`4282`, :issue:`4288`, :issue:`4305`, :issue:`4308`, :issue:`4323`,
+    :issue:`4338`, :issue:`4359`, :issue:`4361`)
+
+*   Improved consistency when referring to the ``__init__`` method of an object
+    (:issue:`4086`, :issue:`4088`)
+
+*   Fixed an inconsistency between code and output in :ref:`intro-overview`
+    (:issue:`4213`)
+
+*   Extended :mod:`~sphinx.ext.intersphinx` usage (:issue:`4147`,
+    :issue:`4172`, :issue:`4185`, :issue:`4194`, :issue:`4197`)
+
+*   We now use a recent version of Python to build the documentation
+    (:issue:`4140`, :issue:`4249`)
+
+*   Cleaned up documentation (:issue:`4143`, :issue:`4275`)ue:`5096`, :issue:`5118`)
 
 -   Fixed an exception when accessing ``self.EXCEPTIONS_TO_RETRY`` from a
     subclass of :class:`~scrapy.downloadermiddlewares.retry.RetryMiddleware`.
