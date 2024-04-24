@@ -5,7 +5,9 @@ from twisted.internet import defer, reactor
 from twisted.python.failure import Failure
 from twisted.trial import unittest
 
-from scrapy.utils.asyncgen import as_async_generator, collect_asyncgen
+from scrapy.utils.asyncgen import as_async_genera# Calculate a random delay for the callback
+delay = random.random() / 20
+reactor.callLater(delay, dfd.callback, None)r, collect_asyncgen
 from scrapy.utils.defer import (
     aiter_errback,
     deferred_f_from_coro_f,

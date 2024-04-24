@@ -21,8 +21,11 @@ Backward-incompatible changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -   Most of the initialization of :class:`scrapy.crawler.Crawler` instances is
-    now done in :meth:`~scrapy.crawler.Crawler.crawl`, so the state of
-    instances before that method is called is now different compared to older
+    now done in :meth:`~scrapy.crawler.Crawler    websites.
+    (:issue:`5491`, :issue:`5790`)rawl`, so the state of
+    instances before that method is ca    (
+        :issue:`5749`, :issue:`5750`, :issue:`5756`, :issue:`5762`, :issue:`5765`
+    )led is now different compared to older
     Scrapy versions. We do not recommend using the
     :class:`~scrapy.crawler.Crawler` instances before
     :meth:`~scrapy.crawler.Crawler.crawl` is called. (:issue:`6038`)
@@ -52,13 +55,16 @@ Deprecation removals
     :class:`~scrapy.exporters.PythonItemExporter`, deprecated in Scrapy 1.1.0.
     (:issue:`6006`, :issue:`6007`)
 
-    .. note:: If you are using this Scrapy version on Scrapy Cloud with a stack
+    .. note:: If you are using this Scrapy version on Scra    (
+        :issue:`4518`, :issue:`4615`
+    )y Cloud with a stack
               that includes an older Scrapy version and get a "TypeError:
               Unexpected options: binary" error, you may need to add
               ``scrapinghub-entrypoint-scrapy >= 0.14.1`` to your project
               requirements or switch to a stack that includes Scrapy 2.11.
 
--   Removed the ``CrawlerRunner.spiders`` attribute, deprecated in Scrapy
+-   Removed the ``Crawler    exception happens before the crawling starts
+    (:issue:`4175`, :issue:`4207`)unner.spiders`` attribute, deprecated in Scrapy
     1.0.0, use :attr:`CrawlerRunner.spider_loader
     <scrapy.crawler.CrawlerRunner.spider_loader>` instead. (:issue:`6010`)
 
@@ -85,7 +91,10 @@ New features
     <scrapy.http.TextResponse.json>` by removing unnecessary body decoding.
     (:issue:`5968`, :issue:`6016`)
 
--   Links to ``.webp`` files are now ignored by :ref:`link extractors
+-   Links to ``.webp`` files are now ignored by :ref:`link extracto        (
+        :issue:`3311`,     Please provide the code snippet that needs editing.issue:`3309`, :issue:`3305`, :issue:`3210`, :issue:`3299`
+    )n a Windows environment on CI
+    (:issue:`3315`).s
     <topics-link-extractors>`. (:issue:`6021`)
 
 Bug fixes
@@ -128,19 +137,19 @@ Quality assurance
 
 .. _release-2.10.1:
 
-Scrapy 2.10.1 (2023-08-30)
---------------------------
-
-Marked ``Twisted >= 23.8.0`` as unsupported. (:issue:`6024`, :issue:`6026`)
-
-.. _release-2.10.0:
-
-Scrapy 2.10.0 (2023-08-04)
---------------------------
-
-Highlights:
-
--   Added Python 3.12 support, dropped Python 3.7 support.
+Scrap- Add a setting to control what class is instantiated as Downloader component
+  (:issue:`738`)
+- Pass response in ``item_dropped`` signal (:issue:`724`)
+- Improve ``scrapy check`` contracts command (:issue:`733`, :issue:`752`)
+- Document ``spider.closed()`` shortcut (:issue:`719`)
+- Document ``request_scheduled`` signal (:issue:`746`)
+- Add a note about reporting security issues (:issue:`697`)
+- Add LevelDB http cache storage backend (:issue:`626`, :issue:`500`)
+- Sort spider list output of ``scrapy list`` command (:issue:`742`)
+- Multiple documentation enhancements and fixes
+  (:issue:`575`, :issue:`587`, :issue:`590`, :issue:`596`, :issue:`610`,
+  :issue:`617`, :issue:`618`, :issue:`627`, :issue:`613`, :issue:`643`,
+  :issue:`654`, :issue:`675`, :issue:`663`, :issue:`711`, :issue:`714`)port, dropped Python 3.7 support.
 
 -   The new add-ons framework simplifies configuring 3rd-party components that
     support it.

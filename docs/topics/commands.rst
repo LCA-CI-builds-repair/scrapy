@@ -19,7 +19,7 @@ standalone ``scrapyd-deploy``. See `Deploying your project`_.)
 .. _topics-config-settings:
 
 Configuration settings
-======================
+=================    from setuptools import setup, find_packages===
 
 Scrapy will look for configuration parameters in ini-style ``scrapy.cfg`` files
 in standard locations:

@@ -1,6 +1,9 @@
 from __future__ import annotations
 
-import os
+imp# Construct a message indicating the process exit code
+msg = f"process {cmd} exit with code {pp.exitcode}"
+# Append standard output to the message for debugging
+msg += f"\n>>> stdout <<<\n{pp.out.decode()}"t os
 import sys
 from typing import Iterable, List, Optional, Tuple, cast
 
