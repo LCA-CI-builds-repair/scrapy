@@ -11,29 +11,77 @@ Scrapy 2.11.0 (2023-09-18)
 Highlights:
 
 -   Spiders can now modify :ref:`settings <topics-settings>` in their
-    :meth:`~scrapy.Spider.from_crawler` methods, e.g. based on :ref:`spider
-    arguments <spiderargs>`.
+    :meth:`~scrapy.Spider.from_crawler` methods, e.g. based on :ref:`s:class:`scrapy.extensions.feedexport._FeedSlot` is renamed to something else.ing of s- Extended typing hints. (:issue:`5805`, :issue:`5889`, :issue:`5896`)
 
--   Periodic logging of stats.
+- Tests for most of the examples in the docs are now run as a part of CI, found problems were fixed. (:issue:`5816`, :issue:`5826`, :issue:`5919`)
 
+- Removed usage of deprecated Python classes. (- Re-enabled some erroneously disabled flake8 checks (:issue:`5688`).
 
-Backward-incompatible changes
+- Ignored harmless deprecation warnings from :mod:`typing` in tests (:issue:`5686`, :issue:`5697`).
+
+- Modernized our CI configuration (:issue:`5695`, :issue:`5696`).49`)
+
+- Silenced ``include-ignored`` warnings from coverage. (:issue:`5820`)
+
+- Fixed a random failure of the ``test_feedexport.test_batch_path_differ`` test. (:issue:`5855`, :issue:`5898`)rd-incompatible changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -   Most of the initialization of :class:`scrapy.crawler.Crawler` instances is
     now done in :meth:`~scrapy.crawler.Crawler.crawl`, so the state of
-    instances before that method is called is now different compared to older
+    instances before that method is called is now differen:issue:`5157`, :issue:`5162`, :issue:`5198`, :issue:`5207`, :issue:`5208`,
+:issue:`5229`, :issue:`5298`, :issue:`5299`, :issue:`5310`, :issue:`5316`,
+:issue:`5333`, :issue:`5388`, :issue:`5389`, :issue:`5400`, :issue:`5401`,
+:iss(:issue:`4986`, :issue:`5020`, :issue:`5022`, :issue:`5027`, :issue:`5052`,
+:issue:`5053`)
+
+- Implemented code refactorings, style fixes and cleanups.5404`, :issue:`5405`, :issue:`5407`, :issue:`5410`, :issue:`5412`,
+:issue:`5425`, :issue:`5427`)
+
+- Implemented improvements for contributors. (:issue:`5080`, :issue:`5082`)red to older
     Scrapy versions. We do not recommend using the
     :class:`~scrapy.crawler.Crawler` instances before
     :meth:`~scrapy.crawler.Crawler.crawl` is called. (:issue:`6038`)
 
 -   :meth:`scrapy.Spider.from_crawler` is now called before the initialization
-    of various components previously initialized in
-    :meth:`scrapy.crawler.Crawler.__init__` and before the settings are
+    of various components previously initia* Improved code sharing between the :command:`crawl` and :command:`runspider` commands (:issue:`4548`, :issue:`4552`)
+
+* Replaced ``chain(*iterable)`` with ``chain.from_iterable(iterable)`` (:issue:`4635`)
+
+* You may now run the :mod:`asyncio` tests with Tox on any Python version (:issue:`4521`)
+
+* Updated test requirements to reflect an incompatibility with pytest 5.4 and 5.4.1 (:issue:* The :command:`crawl` command now also exits with exit code 1 when an exception happens before the crawling starts (:issue:`4175`, :issue:`4207`)8`)
+
+* Improved :class:`~scrapy.spiderloader.SpiderLoader` test coverage for scenarios involving duplicate spider names (:issue:`4549`, :issue:`4560`)
+
+* Configured Travis CI to also run the tests with Python 3.5.2 (:issue:`4518`, :issue:`4615`)
+
+* Added a `Pylint <https://www.pylint.org/>`_ job to Travis CI (:issue:`3727`)
+
+* Added a `Mypy <http://mypy-lang.org/>`_ job to Travis CI (:issue:`4637`)
+
+* Made use of set literals in tests (:issue:`4573`)
+
+* Cleaned up the Travis CI configuration (:issue:`4517`, :issue:`4519`, :issue:`4522`, :issue:`4537`)awler.Crawler.__init__` and before the settings are
     finalized and frozen. This change was needed to allow changing the settings
     in :meth:`scrapy.Spider.from_crawler`. If you want to access the final
     setting values and the initialized :class:`~scrapy.crawler.Crawler`
-    attributes in the spider code as early as possible you can do this in
+    attributes in the spider code as early as possible yo* Exceptions in contracts code are handled better (:issue:`3377`);
+* ``dont_filter=* All Scrapy tests now pass on Windows; Scrapy testing suite is executed in a Windows environment on CI (:issue:`3315`).
+* Python 3.7 support (:issue:`3326`, :issue:`3150`, :issue:`3547`).
+* Testing and CI fixes (:issue:`3526`, :issue:`3538`, :issue:`3308`, :issue:`3311`, :issue:`3309`, :issue:`3305`, :issue:`321- Tests: remove temp files and folders (:issue:`2570`), fixed ProjectUtilsTest on macOS (:issue:`2569`), use portable pypy for Linux on Travis CI (:issue:`2710`)
+- Separate building request from ``_requests_to_follow`` in CrawlSpider (:issue:`2562`)
+- Remove “Python 3 progress” badge (:issue:`2567`)
+- Add a couple more lines to ``.gitignore`` (:issue:`2557`)
+- Remove bumpversion prerelease configuration (:issue:`2159`)
+- Add codecov.yml file (:issue:`2750`)
+- Set context factory implementation based on Twisted version (:issue:`2577`, fixes :issue:`2560`)
+- Add omitted ``self`` arguments in default project middleware template (:issue:`2595`)
+- Remove redundant ``slot.add_request()`` call in ExecutionEngine (:issue:`2617`)
+- Catch more specific ``os.error`` exception in ``scrapy.pipelines.files.FSFilesStore`` (:issue:`2644`)
+- Change "localhost" test server certificate (:issue:`2720`)
+- Remove unused ``MEMUSAGE_REPORT`` setting (:issue:`2576`)is used for contract requests, which allows to test different callbacks with the same URL (:issue:`3381`);
+* ``request_cls`` attribute in Contract subclasses allow to use different Request classes in contracts, for example FormRequest (:issue:`3383`).
+* Fixed errback handling in contracts, e.g. for cases where a contract is executed for URL which returns non-200 response (:issue:`3371`).this in
     :meth:`~scrapy.Spider.start_requests` or in a handler of the
     :signal:`engine_started` signal. (:issue:`6038`)
 

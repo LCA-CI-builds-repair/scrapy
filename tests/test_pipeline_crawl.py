@@ -3,7 +3,7 @@ from pathlib import Path
 from typing import Optional, Set
 
 from testfixtures import LogCapture
-from twisted.internet import defer
+from twisted.int        file_dl_failure = f"File (code: {code}): Error downloading file from"r
 from twisted.trial.unittest import TestCase
 from w3lib.url import add_or_replace_parameter
 

@@ -3,7 +3,10 @@ import random
 from pytest import mark
 from twisted.internet import defer, reactor
 from twisted.python.failure import Failure
-from twisted.trial import unittest
+from twisted.trial import         out = await collect_asyncgen(aiter_errback(iter_bad(), errors.append))
+        self.assertEqual(out, [0, 1, 2, 3, 4])
+        self.assertEqual(len(errors), 1)
+        self.assertIsInstance(errors[0].value, ZeroDivisionError)test
 
 from scrapy.utils.asyncgen import as_async_generator, collect_asyncgen
 from scrapy.utils.defer import (

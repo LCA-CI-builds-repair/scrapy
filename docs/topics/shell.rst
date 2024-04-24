@@ -1,6 +1,9 @@
-.. _topics-shell:
+.. Config:::
 
-============
+[settings]
+shell = bpython===================
+
+This section will be updated with configuration instructions for the Scrapy shell.==========
 Scrapy shell
 ============
 
