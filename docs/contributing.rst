@@ -9,7 +9,31 @@ Contributing to Scrapy
     Double check that you are reading the most recent version of this document at
     https://docs.scrapy.org/en/master/contributing.html
 
-There are many ways to contribute to Scrapy. Here are some of them:
+There are many ways to coTo pass command-line options to :doc:`pytest <pytest:index>`, add them after
+``--`` in your call to :doc:`tox <tox:index>`. Using ``--`` overrides the
+default positional arguments defined in ``tox.ini``, so you must include those
+default positional arguments (``scrapy tests``) after ``--`` as well::
+
+    tox -- scrapy tests -x  # stop after first failure
+
+You can also use the `pytest-xdist`_ plugin. For example, to run all tests on
+the Python 3.10 :doc:`tox <tox:index>` environment using all your CPU cores::
+
+    tox -e py310 -- scrapy tests -n auto
+
+To see coverage report install :doc:`coverage <coverage:index>`
+(``pip install coverage``) and run:
+
+    ``coverage report``
+
+see output of ``coverage --help`` for more options like html or xml report.
+
+Writing tests
+-------------
+
+All functionality (including new features and bug fixes) must include a test
+case to check that it works as expected, so please include tests for your
+patches if you want them to get accepted sooner.re some of them:
 
 * Report bugs and request features in the `issue tracker`_, trying to follow
   the guidelines detailed in `Reporting bugs`_ below.

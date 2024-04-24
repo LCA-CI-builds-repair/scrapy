@@ -8,9 +8,23 @@ Release notes
 Scrapy 2.11.0 (2023-09-18)
 --------------------------
 
-Highlights:
+Highlight-   Other CI and pre-commit improvements. (:issue:`6002`, :issue:`6013`,
+    :issue:`6046`)
 
--   Spiders can now modify :ref:`settings <topics-settings>` in their
+.. _release-2.10.1:
+
+Scrapy 2.10.1 (2023-08-30)
+--------------------------
+
+Marked ``Twisted >= 23.8.0`` as unsupported. (:issue:`6024`, :issue:`6026`)
+
+.. _release-2.10.0:
+
+Scrapy 2.10.0 (2023-08-04)
+--------------------------
+
+Highlights:
+"""  # Added the missing closing triple-quotean now modify :ref:`settings <topics-settings>` in their
     :meth:`~scrapy.Spider.from_crawler` methods, e.g. based on :ref:`spider
     arguments <spiderargs>`.
 
@@ -45,8 +59,54 @@ Backward-incompatible changes
 -   :class:`~scrapy.exporters.PythonItemExporter` used the binary output by
     default but it no longer does. (:issue:`6006`, :issue:`6007`)
 
-Deprecation removals
-~~~~~~~~~~~~~~~~~~~~
+Deprecatio    :issue:`4568`)
+
+*   Improved code sharing between the :command:`crawl` and :command:`runspider`
+    commands (:issue:`4548`, :issue:`4552`)
+
+*   Replaced ``chain(*iterable)`` with ``chain.from_iterable(iterable)``
+    (:issue:`4635`)
+
+*   You may now run the :mod:`asyncio` tests with Tox on any Python version
+    (:issue:`4521`)
+
+*   Updated test requirements to reflect an incompatibil    ``from_settings`` and ``from_crawler`` class methods that other Scrapy
+    components already supported (:issue:`4126`)
+
+*   :class:`scrapy.utils.python.MutableChain.__iter__` now returns ``self``,
+    `allowing it to be used as a sequence <https://lgtm.com/rules/4850080/>`_
+    (:issue:`4153`)
+
+
+Bug fixes
+~~~~~~~~~
+
+*   The :command:`crawl` command now also exits with exit code 1 when an
+    exception happens before the crawling starts (:issue:`4175`, :issue:`4207`)
+
+*   :class:`LinkExtractor.extract_links
+    <scrapy.linkextractors.lxmlhtml.LxmlLinkExtractor.extract_links>` no longer
+    re-encodes the query string or URLs from non-UTF-8 responses in UTF-8
+    (:issue:`998`, :issue:`1403`, :issue:`1949`, :issue:`4321`)
+
+*   The first spider middleware (see :setting:`SPIDER_MIDDLEWARES`) now also
+    processes exceptions raised from callbacks that are generators
+"""  # Added the missing closing triple-quotend
+    5.4.1 (:issue:`4588`)
+
+*   Improved :class:`~scrapy.spiderloader.SpiderLoader` test coverage for
+    scenarios involving duplicate spider names (:issue:`4549`, :issue:`4560`)
+
+*   Configured Travis CI to also run the tests with Python 3.5.2
+    (:issue:`4518`, :issue:`4615`)
+
+*   Added a `Pylint <https://www.pylint.org/>`_ job to Travis CI
+    (:issue:`3727`)
+
+*   Added a `Mypy <http://mypy-lang.org/>`_ job to Travis CI (:issue:`4637`)
+
+*   Made use of set literals in tests (:issue:`4573`)
+"""  # Added the missing closing triple-quote~~~~~
 
 -   Removed the binary export mode of
     :class:`~scrapy.exporters.PythonItemExporter`, deprecated in Scrapy 1.1.0.
@@ -59,7 +119,21 @@ Deprecation removals
               requirements or switch to a stack that includes Scrapy 2.11.
 
 -   Removed the ``CrawlerRunner.spiders`` attribute, deprecated in Scrapy
-    1.0.0, use :attr:`CrawlerRunner.spider_loader
+    1.0.0, use :at- Reference Homebrew's homepage for installation instructions (:commit:`1925db1`)
+- Add oldest supported tox version to contributing docs (:commit:`5d10d6d`)
+- Note in install docs about pip being already included in python>=2.7.9 (:commit:`85c980e`)
+- Add non-python dependencies to Ubuntu install section in the docs (:commit:`fbd010d`)
+- Add macOS installation section to docs (:commit:`d8f4cba`)
+- DOC(ENH): specify path to rtd theme explicitly (:commit:`de73b1a`)
+- minor: scrapy.Spider docs grammar (:commit:`1ddcc7b`)
+- Make common practices sample code match the comments (:commit:`1b85bcf`)
+- nextcall repetitive calls (heartbeats). (:commit:`55f7104`)
+- Backport fix compatibility with Twisted 15.4.0 (:commit:`b262411`)
+- pin pytest to 2.7.3 (:commit:`a6535c2`)
+- Merge pull request #1512 from mgedmin/patch-1 (:commit:`8876111`)
+- Merge pull request #1513 from mgedmin/patch-2 (:commit:`5d4daf8`)
+- Typo (:commit:`f8d0682`)
+"""  # Added the missing closing triple-quotener.spider_loader
     <scrapy.crawler.CrawlerRunner.spider_loader>` instead. (:issue:`6010`)
 
 Deprecations

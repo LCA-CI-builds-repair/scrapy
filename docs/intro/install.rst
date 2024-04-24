@@ -2,7 +2,14 @@
 
 ==================
 Installation guide
-==================
+===* `lxml installation`_
+* :doc:`cryptography installation <cryptography:installation>`
+
+.. _lxml installation: https://lxml.de/installation.html
+
+
+.. _intro-using-virtualenv:
+"""  # Added the missing closing triple-quote========
 
 .. _faq-python-versions:
 

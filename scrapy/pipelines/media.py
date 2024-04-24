@@ -5,7 +5,19 @@ from collections import defaultdict
 from twisted.internet.defer import Deferred, DeferredList
 from twisted.python.failure import Failure
 
-from scrapy.http.request import NO_CALLBACK
+from scrapy.htt        info.do        """Handler for success downloads"""
+        return response
+
+    def media_failed(self, failure, request, info):
+        """Handler for failed downloads"""
+        return failure
+"""  # Added the missing closing triple-quoteed[fp] = result  # cache result
+        for wad in info.waiting.pop(fp):
+            defer_result(result).chainDeferred(wad)
+
+    # Overridable Interface
+    def media_to_download(self, request, info, *, item=None):
+"""  # Added the missing closing triple-quoteest import NO_CALLBACK
 from scrapy.settings import Settings
 from scrapy.utils.datatypes import SequenceExclude
 from scrapy.utils.defer import defer_result, mustbe_deferred

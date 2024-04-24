@@ -3,7 +3,23 @@ from pathlib import Path
 from typing import Optional, Set
 
 from testfixtures import LogCapture
-from twisted.internet import defer
+from twisted.int        self.assertEqual(
+            crawler.stats.get_value("downloader/request_method_count/GET"), 4
+        )
+        self.assertEqual(crawler.stats.get_value("downloader/response_count"), 4)
+        self.assertEqual(
+            crawler.stats.get_value("downloader/response_status_count/200"), 1
+        )
+        self.assertEqual(
+            crawler.stats.get_value(f"downloader/response_status_count/{code}"), 3
+        )
+
+        # check that logs do show the failure on the file downloads
+        file_dl_failure = f"File (code: {code}): Error downloading file from"
+        self.assertEqual(logs.count(file_dl_failure), 3)
+
+        # check that no files were written to the media store
+        self.assertEqual([x for x in self.tmpmediastore.iterdir()], [])r
 from twisted.trial.unittest import TestCase
 from w3lib.url import add_or_replace_parameter
 
