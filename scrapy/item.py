@@ -2,7 +2,7 @@
 Scrapy Item
 
 See documentation in docs/topics/item.rst
-"""
+""# Incomplete code snippet provided
 
 from abc import ABCMeta
 from collections.abc import MutableMapping

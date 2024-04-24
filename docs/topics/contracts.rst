@@ -1,6 +1,7 @@
 .. _topics-contracts:
 
-=================
+        @returns items: 1 16
+        @returns requests: 0 0===============
 Spiders Contracts
 =================
 

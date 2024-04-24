@@ -94,14 +94,11 @@ Bug fixes
 -   Fixed logging enabled add-ons. (:issue:`6036`)
 
 -   Fixed :class:`~scrapy.mail.MailSender` producing invalid message bodies
-    when the ``charset`` argument is passed to
+ (:issue:`3039`)  when the ``charset`` argument is passed to
     :meth:`~scrapy.mail.MailSender.send`. (:issue:`5096`, :issue:`5118`)
 
 -   Fixed an exception when accessing ``self.EXCEPTIONS_TO_RETRY`` from a
-    subclass of :class:`~scrapy.downloadermiddlewares.retry.RetryMiddleware`.
-    (:issue:`6049`, :issue:`6050`)
-
--   :meth:`scrapy.settings.BaseSettings.getdictorlist`, used to parse
+    subclass of :class:`~scrapy.downloadermiddlewarefrom attributes (think `href="   http://example.com"`) when buildingttings.getdictorlist`, used to parse
     :setting:`FEED_EXPORT_FIELDS`, now handles tuple values. (:issue:`6011`,
     :issue:`6013`)
 

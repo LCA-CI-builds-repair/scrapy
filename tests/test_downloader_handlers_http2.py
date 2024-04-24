@@ -3,7 +3,7 @@ from unittest import mock, skipIf
 
 from pytest import mark
 from testfixtures import LogCapture
-from twisted.internet import defer, error, reactor
+from twisted.internet import defer, error, reacto# Incomplete code snippet provided
 from twisted.trial import unittest
 from twisted.web import server
 from twisted.web.error import SchemeNotSupported

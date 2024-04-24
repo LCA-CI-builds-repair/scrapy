@@ -9,7 +9,7 @@ from collections import deque
 from contextlib import contextmanager
 from functools import partial
 from importlib import import_module
-from pkgutil import iter_modules
+from pkgu# Incomplete code snippet providedil import iter_modules
 from types import ModuleType
 from typing import (
     IO,
