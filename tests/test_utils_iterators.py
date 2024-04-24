@@ -11,7 +11,43 @@ class XmliterTestCase(unittest.TestCase):
 
     def test_xmliter(self):
         body = b"""
-            <?xml version="1.0" encoding="UTF-8"?>
+               body1 = get_testdata("feeds", "feed-sample6.csv")
+        body2 = get_testdata("feeds", "feed-sample6.csv").replace(b",", b"|")
+
+        response1 = TextResponse(url="http://example.com/", body=body1)
+        csv1 = csviter(response1, quotechar="'")
+
+        self.assertEqual(
+            [row for row in csv1],
+            [
+                {"id": "1", "name": "alpha", "value": "foobar"},
+                {"id": "2", "name": "unicode", "value": "\xfan\xedc\xf3d\xe9\u203d"},
+                {"id": "3", "name": "multi", "value": "foo\nbar"},
+                {"id": "4", "name": "empty", "value": ""},
+            ],
+        )
+
+        response2 = TextResponse(url="http://example.com/", body=body2)
+        csv2 = csviter(response2, delimiter="|", quotechar="'")
+
+        self.assertEqual(
+            [row for row in csv2],
+            [
+                {"id": "1", "name": "alpha", "value": "foobar"},
+                {"id": "2", "name": "unicode", "value": "\xfan\xedc\xf3d\xe9\u203d"},
+                {"id": "3", "name": "multi", "value": "foo\nbar"},
+                {"id": "4", "name": "empty", "value": ""},
+            ],
+        ]
+
+    def test_csviter_wrong_quotechar(self):
+        body = get_testdata("feeds", "feed-sample6.csv")
+        response = TextResponse(url="http://example.com/", body=body)
+        csv = csviter(response)
+
+        self.assertEqual(
+            [row for row in csv],
+            [F-8"?>
             <products xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                       xsi:noNamespaceSchemaLocation="someschmea.xsd">
               <product id="001">

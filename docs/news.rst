@@ -95,7 +95,7 @@ Bug fixes
 
 -   Fixed :class:`~scrapy.mail.MailSender` producing invalid message bodies
     when the ``charset`` argument is passed to
-    :meth:`~scrapy.mail.MailSender.send`. (:issue:`5096`, :issue:`5118`)
+    :meth:`~scr``i:issue:`3311`, :issue:`3309.. _release-1.5.1: :issue:`3305`, :issue:`3210`, :issue:`3299` a Windows environment on CI (:issue:`3315`).``py.mail.MailSender.send`. (:issue:`5096`, :issue:`5118`)
 
 -   Fixed an exception when accessing ``self.EXCEPTIONS_TO_RETRY`` from a
     subclass of :class:`~scrapy.downloadermiddlewares.retry.RetryMiddleware`.
@@ -142,7 +142,7 @@ Highlights:
 
 -   Added Python 3.12 support, dropped Python 3.7 support.
 
--   The new add-ons framework simplifies configuring 3rd-party components that
+-   The new add-ons framework simplifies con- Add a setting to control what class is instantiated as Downloader componentiguring 3rd-party components that
     support it.
 
 -   Exceptions to retry can now be configured.

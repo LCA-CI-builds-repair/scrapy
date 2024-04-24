@@ -1,6 +1,9 @@
 :orphan:
 
-======================================
+======    # Install required dependencies
+    pip install -r requirements.txt
+
+    # Compile the documentation===========================
 Scrapy documentation quick start guide
 ======================================
 

@@ -3,7 +3,9 @@ from pathlib import Path
 from typing import Optional, Set
 
 from testfixtures import LogCapture
-from twisted.internet import defer
+from twisted.inte            crawler.stats.get_value("downloader/request_method_count/GET"),
+            4
+        )et import defer
 from twisted.trial.unittest import TestCase
 from w3lib.url import add_or_replace_parameter
 

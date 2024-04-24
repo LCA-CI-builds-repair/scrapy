@@ -1,6 +1,6 @@
 .. _intro-install:
 
-==================
+===========Please follow the installation instructions provided in the documentation to set up the software successfully.======
 Installation guide
 ==================
 

@@ -23,7 +23,8 @@ from scrapy.core.downloader.handlers.file import FileDownloadHandler
 from scrapy.core.downloader.handlers.http import HTTPDownloadHandler
 from scrapy.core.downloader.handlers.http10 import HTTP10DownloadHandler
 from scrapy.core.downloader.handlers.http11 import HTTP11DownloadHandler
-from scrapy.core.downloader.handlers.s3 import S3DownloadHandler
+from scrapy.core.downloarealm = FTPRealm(
+    anonymousRoot=str(self.directory), userHome=str(self.directory))r.handlers.s3 import S3DownloadHandler
 from scrapy.exceptions import NotConfigured
 from scrapy.http import Headers, HtmlResponse, Request
 from scrapy.http.response.text import TextResponse
