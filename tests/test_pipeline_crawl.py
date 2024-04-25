@@ -124,16 +124,15 @@ class FileDownloadCrawlTestCase(TestCase):
 
         # check that there was 1 successful fetch and 3 other responses with non-200 code
         self.assertEqual(
-            crawler.stats.get_value("downloader/request_method_count/GET"), 4
+            crawler.stats.get_value("downloader/request_method_count/GET"), expected_value
         )
-        self.assertEqual(crawler.stats.get_value("downloader/response_count"), 4)
+        self.assertEqual(crawler.stats.get_value("downloader/response_count"), expected_value)
         self.assertEqual(
-            crawler.stats.get_value("downloader/response_status_count/200"), 1
+            crawler.stats.get_value("downloader/response_status_count/200"), expected_value
         )
         self.assertEqual(
-            crawler.stats.get_value(f"downloader/response_status_count/{code}"), 3
+            crawler.stats.get_value(f"downloader/response_status_count/{code}"), expected_value
         )
-
         # check that logs do show the failure on the file downloads
         file_dl_failure = f"File (code: {code}): Error downloading file from"
         self.assertEqual(logs.count(file_dl_failure), 3)

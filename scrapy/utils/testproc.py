@@ -43,8 +43,6 @@ class ProcessTest:
             msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
             raise RuntimeError(msg)
         return cast(int, pp.exitcode), pp.out, pp.err
-
-
 class TestProcessProtocol(ProcessProtocol):
     def __init__(self) -> None:
         self.deferred: Deferred = Deferred()
