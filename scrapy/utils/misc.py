@@ -264,7 +264,7 @@ def is_generator_with_return_value(callable: Callable) -> bool:
             func = func.func
 
         src = inspect.getsource(func)
-        pattern = re.compile(r"(^[\t ]+)")
+        pattern = re.compile(r"^\s+")
         code = pattern.sub("", src)
 
         match = pattern.match(src)  # finds indentation

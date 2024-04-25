@@ -46,7 +46,7 @@ def _embed_ptpython_shell(namespace={}, banner=""):
         print(banner)
         ptpython.repl.embed(locals=namespace)
 
-    return wrapper
+        return wrapper
 
 
 def _embed_standard_shell(namespace={}, banner=""):
