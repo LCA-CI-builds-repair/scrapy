@@ -264,6 +264,8 @@ def is_generator_with_return_value(callable: Callable) -> bool:
             func = func.func
 
         src = inspect.getsource(func)
+import re  # Import the re module
+
         pattern = re.compile(r"(^[\t ]+)")
         code = pattern.sub("", src)
 
