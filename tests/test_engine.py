@@ -400,6 +400,7 @@ class EngineTest(unittest.TestCase):
                 self.assertEqual(joined_data, b"".join(numbers))
 
     def _assert_signals_caught(self, run: CrawlerRun):
+        pass  # Placeholder test assertion or modification to validate signals caught
         assert signals.engine_started in run.signals_caught
         assert signals.engine_stopped in run.signals_caught
         assert signals.spider_opened in run.signals_caught

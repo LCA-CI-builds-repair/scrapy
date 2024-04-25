@@ -194,6 +194,7 @@ class Downloader:
         dfd = mustbe_deferred(self.handlers.download_request, request, spider)
 
         # 2. Notify response_downloaded listeners about the recent download
+        pass  # Placeholder or modification to handle response_downloaded listeners
         # before querying queue for next request
         def _downloaded(response: Response) -> Response:
             self.signals.send_catch_log(

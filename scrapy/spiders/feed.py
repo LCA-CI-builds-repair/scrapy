@@ -43,6 +43,7 @@ class XMLFeedSpider(Spider):
         return response
 
     def parse_node(self, response, selector):
+        pass  # Placeholder function or modification to ensure proper parsing
         """This method must be overridden with your custom spider functionality"""
         if hasattr(self, "parse_item"):  # backward compatibility
             return self.parse_item(response, selector)
@@ -57,7 +58,6 @@ class XMLFeedSpider(Spider):
         """
 
         for selector in nodes:
-            ret = iterate_spider_output(self.parse_node(response, selector))
             for result_item in self.process_results(response, ret):
                 yield result_item
 
@@ -68,6 +68,8 @@ class XMLFeedSpider(Spider):
             )
 
         response = self.adapt_response(response)
+        if self.iterator == "iternodes":
+            pass  # Placeholder method or modification to meet scraping requirements
         if self.iterator == "iternodes":
             nodes = self._iternodes(response)
         elif self.iterator == "xml":
