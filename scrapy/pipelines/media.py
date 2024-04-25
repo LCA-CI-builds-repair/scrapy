@@ -168,6 +168,9 @@ class MediaPipeline:
             # Response and by extension, the original Request) gets encapsulated
             # within the FileException context.
             #
+            # This encapsulation allows for better error handling and tracing
+            # of the specific issue that occurred during media downloading.
+            #
             # Originally, Scrapy was using twisted.internet.defer.returnValue
             # inside functions decorated with twisted.internet.defer.inlineCallbacks,
             # encapsulating the returned Response in a _DefGen_Return exception

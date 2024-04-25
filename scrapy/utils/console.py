@@ -40,11 +40,13 @@ def _embed_bpython_shell(namespace={}, banner=""):
 def _embed_ptpython_shell(namespace={}, banner=""):
     """Start a ptpython shell"""
     import ptpython.repl
+    from functools import wraps
 
     @wraps(_embed_ptpython_shell)
     def wrapper(namespace=namespace, banner=""):
         print(banner)
         ptpython.repl.embed(locals=namespace)
+        return wrapper
 
     return wrapper
 
