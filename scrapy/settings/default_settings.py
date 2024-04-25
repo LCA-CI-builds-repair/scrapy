@@ -1,4 +1,5 @@
 """
+"""
 This module contains the default values for all settings used by Scrapy.
 
 For more information about these settings you can read the settings
@@ -10,8 +11,9 @@ Scrapy developers, if you add a setting here remember to:
 * group similar settings without leaving blank lines
 * add its documentation to the available settings documentation
   (docs/topics/settings.rst)
-
 """
+
+# Add a comment block starting with '#' here
 
 import sys
 from importlib import import_module
