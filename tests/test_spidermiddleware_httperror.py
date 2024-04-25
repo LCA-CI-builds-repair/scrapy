@@ -46,17 +46,18 @@ class _HttpErrorSpider(MockServerSpider):
                 return self.parse(response)
 
         # it assumes there is a response attached to failure
-        self.failed.add(failure.value.response.url[-3:])
+    def process_spider_exception(self, failure, spider):
+        self.failed_urls.add(failure.value.response.url[-3:])
         return failure
 
 
-def _responses(request, status_codes):
-    responses = []
-    for code in status_codes:
-        response = Response(request.url, status=code)
-        response.request = request
-        responses.append(response)
-    return responses
+    def generate_responses(request, status_codes):
+        responses = []
+        for code in status_codes:
+            response = Response(request.url, status=code)
+            response.request = request
+            responses.append(response)
+        return responses
 
 
 class TestHttpErrorMiddleware(TestCase):

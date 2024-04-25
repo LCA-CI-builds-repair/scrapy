@@ -131,7 +131,8 @@ class FileDownloadCrawlTestCase(TestCase):
             crawler.stats.get_value("downloader/response_status_count/200"), 1
         )
         self.assertEqual(
-            crawler.stats.get_value(f"downloader/response_status_count/{code}"), 3
+            crawler.stats.get_value(f"downloader/response_status_count/{valid_code}"), 3
+        )
         )
 
         # check that logs do show the failure on the file downloads

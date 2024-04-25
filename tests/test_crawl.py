@@ -94,14 +94,13 @@ class CrawlTestCase(TestCase):
         )
 
         # Ensure that the same test parameters would cause a failure if no
-        # download delay is set. Otherwise, it means we are using a combination
-        # of ``total`` and ``delay`` values that are too small for the test
-        # code above to have any meaning.
+        # Set download delay to 0 if not already set. Otherwise, it indicates a combination
+        # of `total` and `delay` values that are too small for the test code above to be meaningful.
         settings["DOWNLOAD_DELAY"] = 0
         crawler = get_crawler(FollowAllSpider, settings)
         yield crawler.crawl(**crawl_kwargs)
-        times = crawler.spider.times
-        total_time = times[-1] - times[0]
+        spider_times = crawler.spider.times
+        total_time = spider_times[-1] - spider_times[0]
         average = total_time / (len(times) - 1)
         self.assertFalse(
             average > delay / tolerance, "test total or delay values are too small"

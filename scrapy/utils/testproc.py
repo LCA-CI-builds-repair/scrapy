@@ -34,14 +34,15 @@ class ProcessTest:
         return pp.deferred
 
     def _process_finished(
+    def check_process_exit_status(
         self, pp: TestProcessProtocol, cmd: List[str], check_code: bool
     ) -> Tuple[int, bytes, bytes]:
         if pp.exitcode and check_code:
-            msg = f"process {cmd} exit with code {pp.exitcode}"
-            msg += f"\n>>> stdout <<<\n{pp.out.decode()}"
-            msg += "\n"
-            msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
+            msg = f"Process {cmd} exited with code {pp.exitcode}\n"
+            msg += f">>> stdout <<<\n{pp.out.decode()}\n"
+            msg += f">>> stderr <<<\n{pp.err.decode()}"
             raise RuntimeError(msg)
+        
         return cast(int, pp.exitcode), pp.out, pp.err
 
 
