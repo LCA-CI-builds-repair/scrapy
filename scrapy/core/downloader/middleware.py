@@ -95,7 +95,7 @@ class DownloaderMiddlewareManager(MiddlewareManager):
                     )
                 if response:
                     return response
-            return failure
+                return failure
 
         deferred = mustbe_deferred(process_request, request)
         deferred.addErrback(process_exception)
