@@ -367,7 +367,7 @@ for k, args in enumerate(
 for k, args in enumerate(
     [
         (
-            r"C:\absolute\path\to\a\file.html",
+            "/absolute/path/to/a/file.html",
             "file://",
             "Windows filepath are not supported for scrapy shell",
         ),
@@ -377,8 +377,6 @@ for k, args in enumerate(
     t_method = create_skipped_scheme_t(args)
     t_method.__name__ = f"test_uri_skipped_{k:03}"
     setattr(GuessSchemeTest, t_method.__name__, t_method)
-
-
 class StripUrl(unittest.TestCase):
     def test_noop(self):
         self.assertEqual(

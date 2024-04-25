@@ -101,30 +101,28 @@ https://example.org
             self.assertIn('The "NoneType.i1" method is a generator', str(w[0].message))
 
     def test_generators_return_none(self):
-        def f2():
-            yield 1
-            return None
+def f2():
+    yield 1
 
-        def g2():
-            yield 1
-            return
+def g2():
+    yield 1
 
-        def h2():
-            yield 1
+def h2():
+    yield 1
 
-        def i2():
-            yield 1
-            yield from generator_that_returns_stuff()
+def i2():
+    yield 1
+    yield from generator_that_returns_stuff()
 
-        def j2():
-            yield 1
+def j2():
+    yield 1
 
-            def helper():
-                return 0
+    def helper():
+        return 0
 
-            yield helper()
+    yield helper()
 
-        def k2():
+def k2():
             """
             docstring
             """
