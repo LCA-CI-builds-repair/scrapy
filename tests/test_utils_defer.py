@@ -172,7 +172,7 @@ class AsyncDefTestsuiteTest(unittest.TestCase):
 
 
 class AsyncCooperatorTest(unittest.TestCase):
-    """This tests _AsyncCooperatorAdapter by testing parallel_async which is its only usage.
+    """This tests _AsyncCooperatorAdapter by testing parallel_async which is its only usage."""
 
     parallel_async is called with the results of a callback (so an iterable of items, requests and None,
     with arbitrary delays between values), and it uses Scraper._process_spidermw_output as the callable

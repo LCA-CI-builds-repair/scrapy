@@ -94,6 +94,7 @@ class DownloaderMiddlewareManager(MiddlewareManager):
                         f"Request, got {type(response)}"
                     )
                 if response:
+                    # Add additional conditions or handling logic here if needed
                     return response
             return failure
 

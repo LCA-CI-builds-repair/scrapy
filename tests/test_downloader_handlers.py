@@ -608,11 +608,9 @@ class Https11TestCase(Http11TestCase):
 class Https11WrongHostnameTestCase(Http11TestCase):
     scheme = "https"
 
-    # above tests use a server certificate for "localhost",
-    # client connection to "localhost" too.
-    # here we test that even if the server certificate is for another domain,
-    # "www.example.com" in this case,
-    # the tests still pass
+    # Use server certificates for "localhost" while testing client connection to "localhost".
+    # Test scenario where server certificate is for a different domain ("www.example.com"),
+    # ensuring the tests still pass.
     keyfile = "keys/example-com.key.pem"
     certfile = "keys/example-com.cert.pem"
 
@@ -713,8 +711,10 @@ class Http11MockServerTestCase(unittest.TestCase):
             seed=Request(
                 url=self.mockserver.url("/partial"), meta={"download_maxsize": 1000}
             )
-        )
-        failure = crawler.spider.meta["failure"]
+                url=self.mockserver.url("/partial"), meta={"download_maxsize": 1000}
+            )
+
+    @defer.inlineCallbacks
         self.assertIsInstance(failure.value, defer.CancelledError)
 
     @defer.inlineCallbacks
@@ -724,10 +724,7 @@ class Http11MockServerTestCase(unittest.TestCase):
         failure = crawler.spider.meta.get("failure")
         self.assertTrue(failure is None)
         reason = crawler.spider.meta["close_reason"]
-        self.assertTrue(reason, "finished")
-
-
-class UriResource(resource.Resource):
+        self.assertEqual(reason, "finished")
     """Return the full uri that was requested"""
 
     def getChild(self, path, request):

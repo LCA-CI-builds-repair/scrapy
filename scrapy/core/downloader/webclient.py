@@ -107,11 +107,6 @@ class ScrapyHTTPPageGetter(HTTPClient):
 class ScrapyHTTPClientFactory(ClientFactory):
     protocol = ScrapyHTTPPageGetter
 
-    waiting = 1
-    noisy = False
-    followRedirect = False
-    afterFoundGet = False
-
     def _build_response(self, body, request):
         request.meta["download_latency"] = self.headers_time - self.start_time
         status = int(self.status)

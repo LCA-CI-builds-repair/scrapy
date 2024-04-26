@@ -1,9 +1,8 @@
 from unittest import mock
-
-from twisted.internet import error, reactor
-from twisted.internet.defer import Deferred, DeferredList, maybeDeferred
-from twisted.python import failure
-from twisted.trial import unittest
+# from twisted.internet import error, reactor
+# from twisted.internet.defer import Deferred, DeferredList, maybeDeferred
+# from twisted.python import failure
+# from twisted.trial import unittest
 
 from scrapy.downloadermiddlewares.robotstxt import RobotsTxtMiddleware
 from scrapy.downloadermiddlewares.robotstxt import logger as mw_module_logger

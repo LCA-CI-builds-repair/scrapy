@@ -322,11 +322,13 @@ class SingleRequestSpider(MetaSpider):
             return self.callback_func(response)
         if "next" in response.meta:
             return response.meta["next"]
+        # Add appropriate handling logic here if needed
 
     def on_error(self, failure):
         self.meta["failure"] = failure
         if callable(self.errback_func):
             return self.errback_func(failure)
+        # Add error handling or logging logic here if required
 
 
 class DuplicateStartRequestsSpider(MockServerSpider):
@@ -489,17 +491,17 @@ class HeadersReceivedCallbackSpider(MetaSpider):
         return spider
 
     def start_requests(self):
-        yield Request(self.mockserver.url("/status"), errback=self.errback)
-
     def parse(self, response):
         self.meta["response"] = response
+        # Add error handling or logging logic if needed
 
     def errback(self, failure):
         self.meta["failure"] = failure
+        # Add error handling or logging logic if required
 
     def headers_received(self, headers, body_length, request, spider):
         self.meta["headers_received"] = headers
-        raise StopDownload(fail=False)
+        raise StopDownload(fail=False, response=request)
 
 
 class HeadersReceivedErrbackSpider(HeadersReceivedCallbackSpider):

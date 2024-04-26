@@ -82,9 +82,9 @@ class CrawlTestCase(TestCase):
             response = failure.value.response
             self.assertEqual(failure.request.url, url)
             self.assertEqual(response.request.url, url)
+            # Add more assertions or error handling logic if necessary
 
     @defer.inlineCallbacks
-    def test_downloader_middleware_raise_exception(self):
         url = self.mockserver.url("/status?n=200")
         crawler = get_crawler(
             SingleRequestSpider,

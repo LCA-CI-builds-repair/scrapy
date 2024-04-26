@@ -71,10 +71,11 @@ def _get_commands_dict(settings, inproject):
 
 
 def _pop_command_name(argv):
+    new_argv = [v for v in argv if not v.startswith('-')]
     for i, v in enumerate(argv):
         if v.startswith('-'):
             continue
-        return argv.pop(i)
+        return new_argv.pop(i)
 
 
 def _print_header(settings, inproject):

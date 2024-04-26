@@ -62,8 +62,7 @@ class DefaultsTest(ManagerTestCase):
         self.assertTrue(isinstance(ret, Response), "Non-response returned")
 
     def test_3xx_and_invalid_gzipped_body_must_redirect(self):
-        """Regression test for a failure when redirecting a compressed
-        request.
+        """Regression test for a failure when redirecting a compressed request."""
 
         This happens when httpcompression middleware is executed before redirect
         middleware and attempts to decompress a non-compressed body.

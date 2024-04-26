@@ -607,7 +607,7 @@ class _ResponseReader(protocol.Protocol):
                 )
                 self.transport.stopProducing()
                 self.transport.loseConnection()
-                failure = result if result.value.fail else None
+                failure = result.value if result.value.fail else None
                 self._finish_response(flags=["download_stopped"], failure=failure)
 
         if self._maxsize and self._bytes_received > self._maxsize:

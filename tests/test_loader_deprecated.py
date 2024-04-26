@@ -29,7 +29,7 @@ class TestItem(NameItem):
     summary = Field()
 
 
-# test item loaders
+# Test item loaders
 class NameItemLoader(ItemLoader):
     default_item_class = TestItem
 

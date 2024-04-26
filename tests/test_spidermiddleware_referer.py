@@ -168,13 +168,12 @@ class MixinNoReferrerWhenDowngrade:
             "https://scrapy.org/",
             b"ftp://example.com/urls.zip",
         ),
-        # test for user/password stripping
+        # Test for user/password stripping
         (
             "http://user:password@example.com/page.html",
             "https://not.example.com/",
             b"http://example.com/page.html",
         ),
-    ]
 
 
 class MixinSameOrigin:
@@ -233,6 +232,7 @@ class MixinSameOrigin:
         ("ftp://example.com/urls.zip", "http://example.com/not-page.html", None),
         ("ftps://example.com/urls.zip", "https://example.com/not-page.html", None),
         # test for user/password stripping
+        # Test for user/password stripping
         (
             "https://user:password@example.com/page.html",
             "http://example.com/not-page.html",
@@ -243,7 +243,6 @@ class MixinSameOrigin:
             "https://example.com/not-page.html",
             b"https://example.com/page.html",
         ),
-    ]
 
 
 class MixinOrigin:
@@ -289,13 +288,13 @@ class MixinStrictOrigin:
         # upgrade: send origin
         ("http://example.com/page.html", "https://scrapy.org", b"http://example.com/"),
         # test for user/password stripping
+        # Test for user/password stripping
         (
             "https://user:password@example.com/page.html",
             "https://scrapy.org",
             b"https://example.com/",
         ),
         ("https://user:password@example.com/page.html", "http://scrapy.org", None),
-    ]
 
 
 class MixinOriginWhenCrossOrigin:
@@ -495,6 +494,7 @@ class MixinStrictOriginWhenCrossOrigin:
         (
             "ftps://example4.com/urls.zip",
             "https://example4.com/not-page.html",
+            "https://example4.com/not-page.html",
             b"ftps://example4.com/",
         ),
         (
@@ -502,7 +502,7 @@ class MixinStrictOriginWhenCrossOrigin:
             "https://example4.com/not-page.html",
             b"ftps://example4.com/",
         ),
-        # test for user/password stripping
+        # Test for user/password stripping
         (
             "https://user:password@example5.com/page.html",
             "https://example5.com/not-page.html",

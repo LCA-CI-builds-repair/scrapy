@@ -106,8 +106,8 @@ class H2ClientProtocol(Protocol, TimeoutMixin):
         self._pending_request_stream_pool: deque = deque()
 
         # Save an instance of errors raised which lead to losing the connection
-        # We pass these instances to the streams ResponseFailed() failure
-        self._conn_lost_errors: List[BaseException] = []
+        # Store instances of BaseException to be passed to the streams ResponseFailed() failure
+        self.conn_lost_errors: List[BaseException] = []
 
         # Some meta data of this connection
         # initialized when connection is successfully made

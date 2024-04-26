@@ -32,8 +32,7 @@ class UtilsRenderTemplateFileTestCase(unittest.TestCase):
         self.assertEqual(render_path.read_text(encoding="utf8"), rendered)
 
         render_path.unlink()
-        assert not render_path.exists()  # Failure of test itself
-
+        self.assertFalse(render_path.exists())  # Verify the file is removed after the test
 
 if "__main__" == __name__:
     unittest.main()

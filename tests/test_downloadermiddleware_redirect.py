@@ -132,7 +132,7 @@ class RedirectMiddlewareTest(unittest.TestCase):
         self.mw.max_redirect_times = 1
         req = Request("http://scrapytest.org/302")
         rsp = Response(
-            "http://scrapytest.org/302", headers={"Location": "/redirected"}, status=302
+            "http://scrapytest.org/302", status=302, headers={"Location": "/redirected"}
         )
 
         req = self.mw.process_response(req, rsp, self.spider)

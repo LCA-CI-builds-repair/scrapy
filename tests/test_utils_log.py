@@ -21,7 +21,7 @@ class FailureToExcInfoTest(unittest.TestCase):
             0 / 0
         except ZeroDivisionError:
             exc_info = sys.exc_info()
-            failure = Failure()
+            failure = Failure(exc_info)
 
         self.assertTupleEqual(exc_info, failure_to_exc_info(failure))
 

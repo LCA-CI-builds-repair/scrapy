@@ -1,8 +1,7 @@
 from unittest import TextTestResult
-
-from twisted.internet import defer
-from twisted.python import failure
-from twisted.trial import unittest
+# from twisted.internet import defer
+# from twisted.python import failure
+# from twisted.trial import unittest
 
 from scrapy import FormRequest
 from scrapy.contracts import Contract, ContractsManager

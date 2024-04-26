@@ -286,7 +286,7 @@ class MediaPipelineTestCase(BaseMediaPipelineTestCase):
         self.assertEqual(m[-1], "item_completed")  # last hook called
         # twice, one per request
         self.assertEqual(m.count("media_to_download"), 2)
-        # one to handle success and other for failure
+        # One to handle success and the other for failure
         self.assertEqual(m.count("media_downloaded"), 1)
         self.assertEqual(m.count("media_failed"), 1)
 

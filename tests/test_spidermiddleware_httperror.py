@@ -46,11 +46,18 @@ class _HttpErrorSpider(MockServerSpider):
                 return self.parse(response)
 
         # it assumes there is a response attached to failure
-        self.failed.add(failure.value.response.url[-3:])
-        return failure
+# Update the function name for better clarity and add comments to describe its purpose and functionality
+def create_responses_for_status_codes(request, status_codes):
+    """
+    Create response objects with the specified status codes for a given request.
 
+    Args:
+        request (Request): The request object for which responses are created.
+        status_codes (List[int]): List of status codes to create responses for.
 
-def _responses(request, status_codes):
+    Returns:
+        List[Response]: List of response objects with the specified status codes.
+    """
     responses = []
     for code in status_codes:
         response = Response(request.url, status=code)

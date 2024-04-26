@@ -153,10 +153,8 @@ class MediaPipeline:
 
     def _cache_result_and_execute_waiters(self, result, fp, info):
         if isinstance(result, Failure):
-            # minimize cached information for failure
+            # Clean up failure information
             result.cleanFailure()
-            result.frames = []
-            result.stack = None
 
             # This code fixes a memory leak by avoiding to keep references to
             # the Request and Response objects on the Media Pipeline cache.
