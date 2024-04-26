@@ -339,8 +339,8 @@ class RequestFingerprintDeprecationTest(unittest.TestCase):
         with pytest.warns(ScrapyDeprecationWarning) as warnings:
             request_fingerprint(Request("http://www.example.com"), keep_fragments=True)
         messages = [str(warning.message) for warning in warnings]
-        self.assertTrue(
-            any("Call to deprecated function" in message for message in messages)
+        self.assertIn(
+            "Call to deprecated function", messages
         )
         self.assertTrue(any("non-default" in message for message in messages))
 

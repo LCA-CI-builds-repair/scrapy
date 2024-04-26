@@ -384,7 +384,6 @@ class ContractsManagerTest(unittest.TestCase):
         self.should_fail()
         message = "ContractFail: Missing fields: name, url"
         assert message in self.results.failures[-1][-1]
-
     def test_custom_contracts(self):
         self.conman.from_spider(CustomContractSuccessSpider(), self.results)
         self.should_succeed()

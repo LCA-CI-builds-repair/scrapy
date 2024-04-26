@@ -37,7 +37,7 @@ class ProcessTest:
         self, pp: TestProcessProtocol, cmd: List[str], check_code: bool
     ) -> Tuple[int, bytes, bytes]:
         if pp.exitcode and check_code:
-            msg = f"process {cmd} exit with code {pp.exitcode}"
+            msg = f"Process {cmd} exited with code {pp.exitcode}"
             msg += f"\n>>> stdout <<<\n{pp.out.decode()}"
             msg += "\n"
             msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
