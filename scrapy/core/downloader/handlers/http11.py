@@ -151,7 +151,6 @@ class TunnelingTCP4ClientEndpoint(TCP4ClientEndpoint):
         # make sure that enough (all) bytes are consumed
         # and that we've got all HTTP headers (ending with a blank line)
         # from the proxy so that we don't send those bytes to the TLS layer
-        #
         # see https://github.com/scrapy/scrapy/issues/2491
         if b"\r\n\r\n" not in self._connectBuffer:
             return

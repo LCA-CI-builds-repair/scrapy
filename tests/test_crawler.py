@@ -284,7 +284,6 @@ class CrawlerRunnerHasSpider(unittest.TestCase):
                 )
                 yield runner.crawl(NoRequestsSpider)
 
-
 class ScriptRunnerMixin:
     script_dir: Path
     cwd = os.getcwd()

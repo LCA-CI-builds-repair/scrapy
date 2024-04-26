@@ -14,8 +14,6 @@ from pathlib import Path
 os.environ["http_proxy"] = ""
 os.environ["https_proxy"] = ""
 os.environ["ftp_proxy"] = ""
-
-# Absolutize paths to coverage config and output file because tests that
 # spawn subprocesses also changes current working directory.
 _sourceroot = Path(__file__).resolve().parent.parent
 if "COV_CORE_CONFIG" in os.environ:

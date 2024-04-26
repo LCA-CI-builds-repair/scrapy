@@ -210,7 +210,7 @@ Disallow: /forum/active/
 <lastmod>2013-07-15</lastmod>
 </sitemap>
 
-<sitemap>
+</sitemapindex>
 <loc>http://www.example.com/sitemap2.xml</loc>
 <lastmod>2013-07-15</lastmod>
 </sitemap>

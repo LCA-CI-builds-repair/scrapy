@@ -162,6 +162,7 @@ class TestSpider(Spider):
         return {"url": response.url}
 
     def scrapes_multiple_missing_fields(self, response):
+        # Function implementation needed here
         """returns item with no name
         @url http://scrapy.org
         @returns items 1 1

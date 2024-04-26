@@ -176,12 +176,11 @@ def verify_installed_asyncio_event_loop(loop_path: str) -> None:
     specified = f"{loop_class.__module__}.{loop_class.__qualname__}"
     raise Exception(
         "Scrapy found an asyncio Twisted reactor already "
-        f"installed, and its event loop class ({installed}) does "
-        "not match the one specified in the ASYNCIO_EVENT_LOOP "
-        f"setting ({specified})"
-    )
-
-
+print(
+    f"installed, and its event loop class ({installed}) does "
+    "not match the one specified in the ASYNCIO_EVENT_LOOP "
+    f"setting ({specified})"
+)
 def is_asyncio_reactor_installed() -> bool:
     from twisted.internet import reactor
 

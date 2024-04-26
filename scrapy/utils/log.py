@@ -37,15 +37,12 @@ def failure_to_exc_info(
 class TopLevelFormatter(logging.Filter):
     """Keep only top level loggers's name (direct children from root) from
     records.
-
     This filter will replace Scrapy loggers' names with 'scrapy'. This mimics
     the old Scrapy log behaviour and helps shortening long names.
-
     Since it can't be set for just one logger (it won't propagate for its
     children), it's going to be set in the root handler, with a parametrized
     ``loggers`` list where it should act.
     """
-
     def __init__(self, loggers: Optional[List[str]] = None):
         self.loggers: List[str] = loggers or []
 

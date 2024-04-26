@@ -267,14 +267,14 @@ def is_generator_with_return_value(callable: Callable) -> bool:
             func = func.func
 
         src = inspect.getsource(func)
-        pattern = re.compile(r"(^[\t ]+)")
-        code = pattern.sub("", src)
+pattern = re.compile(r"(^[\t ]+)")
+code = pattern.sub("", src)
 
-        match = pattern.match(src)  # finds indentation
-        if match:
-            code = re.sub(f"\n{match.group(0)}", "\n", code)  # remove indentation
+match = pattern.match(src)  # finds indentation
+if match:
+    code = re.sub(f"\n{match.group(0)}", "\n", code)  # remove indentation
 
-        tree = ast.parse(code)
+tree = ast.parse(code)
         for node in walk_callable(tree):
             if isinstance(node, ast.Return) and not returns_none(node):
                 _generator_callbacks_cache[callable] = True
@@ -307,5 +307,6 @@ def warn_on_generator_with_return_value(spider: "Spider", callable: Callable) ->
             f'potential issues in your implementation of "{callable_name}". Please, report this in the '
             "Scrapy issue tracker (https://github.com/scrapy/scrapy/issues), "
             f'including the code of "{callable_name}"',
+        )
             stacklevel=2,
         )

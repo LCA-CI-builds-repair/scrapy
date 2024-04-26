@@ -112,20 +112,17 @@ class ProjectTest(unittest.TestCase):
             timer.cancel()
 
         return p, to_unicode(stdout), to_unicode(stderr)
-
-    def find_in_file(
-        self, filename: Union[str, os.PathLike], regex
-    ) -> Optional[re.Match]:
-        """Find first pattern occurrence in file"""
-        pattern = re.compile(regex)
-        with Path(filename).open("r", encoding="utf-8") as f:
-            for line in f:
-                match = pattern.search(line)
-                if match is not None:
-                    return match
-        return None
-
-
+def find_in_file(
+    self, filename: Union[str, os.PathLike], regex
+) -> Optional[re.Match]:
+    """Find first pattern occurrence in file"""
+    pattern = re.compile(regex)
+    with Path(filename).open("r", encoding="utf-8") as f:
+        for line in f:
+            match = pattern.search(line)
+            if match is not None:
+                return match
+    return None
 class StartprojectTest(ProjectTest):
     def test_startproject(self):
         p, out, err = self.proc("startproject", self.project_name)
