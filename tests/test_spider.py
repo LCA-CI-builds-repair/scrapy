@@ -22,8 +22,8 @@ from scrapy.spiders import (
     SitemapSpider,
     Spider,
     XMLFeedSpider,
+    InitSpider
 )
-from scrapy.spiders.init import InitSpider
 from scrapy.utils.test import get_crawler
 from tests import get_testdata
 

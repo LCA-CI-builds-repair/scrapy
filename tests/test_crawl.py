@@ -19,12 +19,6 @@ from scrapy.http import Request
 from scrapy.http.response import Response
 from scrapy.utils.python import to_unicode
 from scrapy.utils.test import get_crawler
-from tests import NON_EXISTING_RESOLVABLE
-from tests.mockserver import MockServer
-from tests.spiders import (
-    AsyncDefAsyncioGenComplexSpider,
-    AsyncDefAsyncioGenExcSpider,
-    AsyncDefAsyncioGenLoopSpider,
     AsyncDefAsyncioGenSpider,
     AsyncDefAsyncioReqsReturnSpider,
     AsyncDefAsyncioReturnSingleElementSpider,

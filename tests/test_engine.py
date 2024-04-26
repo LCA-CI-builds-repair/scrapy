@@ -35,8 +35,6 @@ from scrapy.linkextractors import LinkExtractor
 from scrapy.spiders import Spider
 from scrapy.utils.signal import disconnect_all
 from scrapy.utils.test import get_crawler
-from tests import get_testdata, tests_datadir
-
 
 class TestItem(Item):
     name = Field()
