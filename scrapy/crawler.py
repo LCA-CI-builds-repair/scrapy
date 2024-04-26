@@ -342,7 +342,7 @@ class CrawlerRunner:
         return DeferredList([c.stop() for c in list(self.crawlers)])
 
     @inlineCallbacks
-    def join(self) -> Generator[Deferred, Any, None]:
+    def join(self) -> Generator[Deferred, None, None]:
         """
         join()
 
@@ -351,8 +351,6 @@ class CrawlerRunner:
         """
         while self._active:
             yield DeferredList(self._active)
-
-
 class CrawlerProcess(CrawlerRunner):
     """
     A class to run multiple scrapy crawlers in a process simultaneously.

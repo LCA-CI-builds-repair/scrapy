@@ -117,13 +117,14 @@ def create_deprecated_class(
         frm = inspect.stack()[1]
         parent_module = inspect.getmodule(frm[0])
         if parent_module is not None:
-            deprecated_cls.__module__ = parent_module.__name__
-    except Exception as e:
-        # Sometimes inspect.stack() fails (e.g. when the first import of
-        # deprecated class is in jinja2 template). __module__ attribute is not
-        # important enough to raise an exception as users may be unable
-        # to fix inspect.stack() errors.
-        warnings.warn(f"Error detecting parent module: {e!r}")
+            try:
+                deprecated_cls.__module__ = parent_module.__name__
+            except Exception as e:
+                # Sometimes inspect.stack() fails (e.g. when the first import of
+                # deprecated class is in jinja2 template). __module__ attribute is not
+                # important enough to raise an exception as users may be unable
+                # to fix inspect.stack() errors.
+                warnings.warn(f"Error detecting parent module: {e!r}")
 
     return deprecated_cls
 
@@ -166,7 +167,6 @@ def method_is_overridden(subclass: type, base_class: type, method_name: str) -> 
     is overridden in a ``subclass``.
 
     >>> class Base:
-    ...     def foo(self):
     ...         pass
     >>> class Sub1(Base):
     ...     pass
@@ -183,6 +183,8 @@ def method_is_overridden(subclass: type, base_class: type, method_name: str) -> 
     >>> method_is_overridden(Sub2, Base, 'foo')
     True
     >>> method_is_overridden(Sub3, Base, 'foo')
+    True
+    >>> method_is_overridden(Sub4, Base, 'foo')
     True
     >>> method_is_overridden(Sub4, Base, 'foo')
     True

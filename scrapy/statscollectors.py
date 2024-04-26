@@ -89,10 +89,10 @@ class DummyStatsCollector(StatsCollector):
     def inc_value(
         self, key: str, count: int = 1, start: int = 0, spider: Optional[Spider] = None
     ) -> None:
-        pass
+        """Increment the value associated with the given key by the specified count."""
 
     def max_value(self, key: str, value: Any, spider: Optional[Spider] = None) -> None:
-        pass
+        """Update the value associated with the key to the maximum of the current value and the provided value."""
 
     def min_value(self, key: str, value: Any, spider: Optional[Spider] = None) -> None:
-        pass
+        """Update the value associated with the key to the minimum of the current value and the provided value."""

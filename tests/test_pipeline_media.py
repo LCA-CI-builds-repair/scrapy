@@ -147,6 +147,7 @@ class BaseMediaPipelineTestCase(unittest.TestCase):
             try:
                 # Simulate the media_downloaded callback raising a FileException
                 # This usually happens when the status code is not 200 OK
+            try:
                 raise FileException("download-error")
             except Exception as exc:
                 file_exc = exc

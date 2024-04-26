@@ -34,6 +34,7 @@ class ProcessTest:
         return pp.deferred
 
     def _process_finished(
+    def testproc_check_output(
         self, pp: TestProcessProtocol, cmd: List[str], check_code: bool
     ) -> Tuple[int, bytes, bytes]:
         if pp.exitcode and check_code:

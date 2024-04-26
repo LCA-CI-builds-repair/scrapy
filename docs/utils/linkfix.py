@@ -1,16 +1,16 @@
 #!/usr/bin/python
+class Linkfix:
 
-"""
+    """
+    Linkfix - a companion to sphinx's linkcheck builder.
 
-Linkfix - a companion to sphinx's linkcheck builder.
+    Uses the linkcheck's output file to fix links in docs.
 
-Uses the linkcheck's output file to fix links in docs.
+    Originally created for this issue:
+    https://github.com/scrapy/scrapy/issues/606
 
-Originally created for this issue:
-https://github.com/scrapy/scrapy/issues/606
-
-Author: dufferzafar
-"""
+    Author: dufferzafar
+    """
 
 import re
 import sys

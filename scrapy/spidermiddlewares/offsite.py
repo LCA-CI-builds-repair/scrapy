@@ -103,9 +103,9 @@ class OffsiteMiddleware:
         self.domains_seen: Set[str] = set()
 
 
-class URLWarning(Warning):
-    pass
+    class URLWarning(Warning):
+        pass
 
 
-class PortWarning(Warning):
-    pass
+    class PortWarning(Warning):
+        pass
