@@ -39,6 +39,7 @@ class MOff:
         pass
 
     def __init__(self):
+        pass
         raise NotConfigured("foo")
 
 

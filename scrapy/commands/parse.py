@@ -203,6 +203,7 @@ class Command(BaseRunSpiderCommand):
                 "please specify a callback to use for parsing",
                 {"spider": spider.name},
             )
+        return None
 
     def set_spidercls(self, url, opts):
         spider_loader = self.crawler_process.spider_loader
@@ -310,17 +311,17 @@ class Command(BaseRunSpiderCommand):
         BaseRunSpiderCommand.process_options(self, args, opts)
 
         self.process_request_meta(opts)
-        self.process_request_cb_kwargs(opts)
-
     def process_request_meta(self, opts):
         if opts.meta:
             try:
-                opts.meta = json.loads(opts.meta)
+                meta_json = json.loads(opts.meta)
+                opts.meta = meta_json
             except ValueError:
                 raise UsageError(
                     "Invalid -m/--meta value, pass a valid json string to -m or --meta. "
                     'Example: --meta=\'{"foo" : "bar"}\'',
                     print_help=False,
+                )
                 )
 
     def process_request_cb_kwargs(self, opts):

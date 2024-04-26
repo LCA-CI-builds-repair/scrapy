@@ -153,21 +153,28 @@ class WarnWhenSubclassedTest(unittest.TestCase):
             DeprecatedName = create_deprecated_class("DeprecatedName", NewName)
 
             class UpdatedUserClass1(NewName):
+            class NewUserClass1:
+                """Represents a new user class with updated functionality."""
                 pass
 
             class UpdatedUserClass1a(NewName):
+                """An updated version of UserClass1 with additional features."""
                 pass
 
             class OutdatedUserClass1(DeprecatedName):
+                """Represents an outdated user class with deprecated functionality."""
                 pass
 
             class OutdatedUserClass1a(DeprecatedName):
+                """An outdated version of UserClass1 with deprecated features."""
                 pass
 
             class UnrelatedClass:
+                """A class that is not related to user classes."""
                 pass
 
             class OldStyleClass:
+                """Represents an old-style class without modern conventions."""
                 pass
 
         assert issubclass(UpdatedUserClass1, NewName)
@@ -195,16 +202,24 @@ class WarnWhenSubclassedTest(unittest.TestCase):
                 pass
 
             class OutdatedUserClass2(DeprecatedName):
+            class UpdatedUserClass2(NewName):
+                pass
+
+            class UpdatedUserClass2a(NewName):
+                pass
+
+            class OutdatedUserClass2(DeprecatedName):
                 pass
 
             class OutdatedUserClass2a(DeprecatedName):
                 pass
 
-            class UnrelatedClass:
-                pass
-
-            class OldStyleClass:
-                pass
+        assert isinstance(UpdatedUserClass2(), NewName)
+        assert isinstance(UpdatedUserClass2a(), NewName)
+        assert isinstance(UpdatedUserClass2(), DeprecatedName)
+        assert isinstance(UpdatedUserClass2a(), DeprecatedName)
+        assert isinstance(OutdatedUserClass2(), DeprecatedName)
+        assert isinstance(OutdatedUserClass2a(), DeprecatedName)
 
         assert isinstance(UpdatedUserClass2(), NewName)
         assert isinstance(UpdatedUserClass2a(), NewName)

@@ -16,6 +16,7 @@ class DataAction(argparse.Action):
 
 
 class CurlParser(argparse.ArgumentParser):
+class CurlParser:
     def error(self, message):
         error_msg = f"There was an error parsing the curl command: {message}"
         raise ValueError(error_msg)

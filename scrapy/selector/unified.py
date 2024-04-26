@@ -66,6 +66,36 @@ class Selector(_ParselSelector, object_ref):
     __slots__ = ["response"]
     selectorlist_cls = SelectorList
 
+    def __init__(self, response=None, text=None, type=None):
+        """
+        Initialize the Selector with the given response or text and type.
+
+        Parameters:
+        - response (scrapy.http.Response): The response object to extract data from.
+        - text (str): The text content to parse.
+        - type (str): The type of the selector (e.g., "html", "xml").
+
+        Returns:
+        - None
+        """
+        self.response = response
+        # Add more initialization logic as needed
+
+    def xpath(self, query):
+        """
+        Perform an XPath query on the Selector.
+
+        Parameters:
+        - query (str): The XPath query to execute.
+
+        Returns:
+        - List: The list of matching elements.
+        """
+        # Add XPath query logic here
+        pass
+
+    # Add more methods as needed
+
     def __init__(
         self,
         response: Optional[TextResponse] = None,
@@ -81,17 +111,56 @@ class Selector(_ParselSelector, object_ref):
             )
 
         st = _st(response, type)
+class Selector:
+    """
+    A class for selecting elements from the response or text content.
 
-        if text is not None:
-            response = _response_from_text(text, st)
+    Attributes:
+    - response: The response object to extract data from.
+    - text: The text content to parse.
+    - type: The type of the selector (e.g., "html", "xml").
+    """
 
-        if response is not None:
-            text = response.text
-            kwargs.setdefault("base_url", response.url)
+    def __init__(self, response=None, text=None, type=None):
+        """
+        Initialize the Selector with the given response or text and type.
 
+        Parameters:
+        - response (scrapy.http.Response): The response object to extract data from.
+        - text (str): The text content to parse.
+        - type (str): The type of the selector (e.g., "html", "xml").
+
+        Returns:
+        - None
+        """
         self.response = response
+        self.text = text
+        self.type = type
 
-        if root is not _NOT_SET:
-            kwargs["root"] = root
+    def xpath(self, query):
+        """
+        Perform an XPath query on the Selector.
 
-        super().__init__(text=text, type=st, **kwargs)
+        Parameters:
+        - query (str): The XPath query to execute.
+
+        Returns:
+        - List: The list of matching elements.
+        """
+        # Add XPath query logic here
+        pass
+
+    def css(self, query):
+        """
+        Perform a CSS query on the Selector.
+
+        Parameters:
+        - query (str): The CSS query to execute.
+
+        Returns:
+        - List: The list of matching elements.
+        """
+        # Add CSS query logic here
+        pass
+
+    # Add more methods as needed

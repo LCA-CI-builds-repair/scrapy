@@ -32,7 +32,6 @@ def getarg(request, name, default=None, type=None):
         return value
     return default
 
-
 def get_mockserver_env() -> Dict[str, str]:
     """Return a OS environment dict suitable to run mockserver processes."""
 

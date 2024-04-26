@@ -119,6 +119,7 @@ DOWNLOADER_MIDDLEWARES_BASE = {
 }
 
 DOWNLOADER_STATS = True
+import sys
 
 DUPEFILTER_CLASS = "scrapy.dupefilters.RFPDupeFilter"
 

@@ -53,6 +53,12 @@ def _embed_standard_shell(namespace={}, banner=""):
     """Start a standard python shell"""
     import code
 
+    @wraps(_embed_standard_shell)
+    def wrapper(namespace=namespace, banner=""):
+        code.interact(local=namespace)
+
+    return wrapper
+
     try:  # readline module is only available on unix systems
         import readline
     except ImportError:

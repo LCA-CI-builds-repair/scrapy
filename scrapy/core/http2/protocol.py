@@ -288,9 +288,11 @@ class H2ClientProtocol(Protocol, TimeoutMixin):
             # internally by hyper-h2. Saved error will be passed to all the streams
             # closed with the connection.
             self._lose_connection_with_error([e])
+        except Exception as e:
+            # Handle the exception 'e' here
+            pass
         finally:
             self._write_to_transport()
-
     def timeoutConnection(self) -> None:
         """Called when the connection times out.
         We lose the connection with TimeoutError"""

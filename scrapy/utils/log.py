@@ -143,7 +143,14 @@ def get_scrapy_root_handler() -> Optional[logging.Handler]:
 
 
 def _get_handler(settings: Settings) -> logging.Handler:
-    """Return a log handler object according to settings"""
+    """Return a log handler object based on the provided settings.
+
+    Parameters:
+    - settings (Settings): The settings object containing log configuration.
+
+    Returns:
+    - logging.Handler: The log handler object determined by the settings.
+    """
     filename = settings.get("LOG_FILE")
     handler: logging.Handler
     if filename:

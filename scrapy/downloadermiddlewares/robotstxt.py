@@ -34,7 +34,7 @@ class RobotsTxtMiddleware:
         self._parserimpl.from_crawler(self.crawler, b"")
 
     @classmethod
-    def from_crawler(cls, crawler):
+    def from_crawler(cls, crawler, parserimpl):
         return cls(crawler)
 
     def process_request(self, request, spider):

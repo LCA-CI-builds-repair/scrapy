@@ -196,8 +196,8 @@ class Request(object_ref):
         command.
 
         Unrecognized options are ignored by default. To raise an error when
-        finding unknown options call this method by passing
-        ``ignore_unknown_options=False``.
+        When finding unknown options, call this method by passing
+        ``ignore_unknown_options=False`` to handle the unknown options appropriately.
 
         .. caution:: Using :meth:`from_curl` from :class:`~scrapy.http.Request`
                      subclasses, such as :class:`~scrapy.http.JSONRequest`, or
