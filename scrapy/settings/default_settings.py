@@ -273,6 +273,7 @@ RETRY_EXCEPTIONS = [
     "twisted.internet.error.ConnectionRefusedError",
     "twisted.internet.error.ConnectionDone",
     "twisted.internet.error.ConnectError",
+]
     "twisted.internet.error.ConnectionLost",
     "twisted.internet.error.TCPTimedOutError",
     "twisted.web.client.ResponseFailed",

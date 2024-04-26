@@ -194,11 +194,15 @@ class MediaPipeline:
         pass
 
     def get_media_requests(self, item, info):
-        """Returns the media requests to download"""
-        pass
-
     def media_downloaded(self, response, request, info, *, item=None):
-        """Handler for success downloads"""
+        """
+        Handler for success downloads
+        
+        This function should contain the logic to handle successful downloads of media.
+        Implement actions to process the response, request, and item information accordingly.
+        """
+        # Add your code implementation here
+        pass
         return response
 
     def media_failed(self, failure, request, info):

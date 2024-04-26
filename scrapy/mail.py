@@ -160,7 +160,7 @@ class MailSender:
                 "mailcc": cc,
                 "mailsubject": subject,
                 "mailattachs": nattachs,
-                "mailerr": errstr,
+                # "mailerr": errstr,
             },
         )
         return failure

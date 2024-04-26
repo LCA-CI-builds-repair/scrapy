@@ -2,7 +2,7 @@ import logging
 from unittest import TestCase
 
 import pytest
-from testfixtures import LogCapture
+# from testfixtures import LogCapture
 
 from scrapy.downloadermiddlewares.cookies import CookiesMiddleware
 from scrapy.downloadermiddlewares.defaultheaders import DefaultHeadersMiddleware

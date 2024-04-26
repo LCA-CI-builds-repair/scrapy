@@ -93,8 +93,8 @@ class DownloaderMiddlewareManager(MiddlewareManager):
                         f"Middleware {method.__qualname__} must return None, Response or "
                         f"Request, got {type(response)}"
                     )
-                if response:
-                    return response
+                # if response:
+                #     return response
             return failure
 
         deferred = mustbe_deferred(process_request, request)

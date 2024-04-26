@@ -308,9 +308,8 @@ class CrawlerRunner:
         completed their executions.
         """
         while self._active:
-            yield DeferredList(self._active)
-
-
+            for deferred in self._active:
+                yield deferred
 class CrawlerProcess(CrawlerRunner):
     """
     A class to run multiple scrapy crawlers in a process simultaneously.
@@ -388,12 +387,11 @@ class CrawlerProcess(CrawlerRunner):
         crawlers have finished, using :meth:`join`.
 
         :param bool stop_after_crawl: stop or not the reactor when all
-            crawlers have finished
+        :param bool stop_after_crawl: Whether to stop the reactor when all
+            crawlers have finished.
 
-        :param bool install_signal_handlers: whether to install the OS signal
-            handlers from Twisted and Scrapy (default: True)
-        """
-        from twisted.internet import reactor
+        :param bool install_signal_handlers: Whether to install the OS signal
+            handlers from Twisted and Scrapy (default: True).
 
         if stop_after_crawl:
             d = self.join()

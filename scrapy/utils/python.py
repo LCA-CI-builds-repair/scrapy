@@ -76,11 +76,11 @@ def is_listlike(x: Any) -> bool:
     >>> is_listlike((b"foo",))
     True
     >>> is_listlike({})
-    True
+    False
     >>> is_listlike(set())
-    True
+    False
     >>> is_listlike((x for x in range(3)))
-    True
+    False
     >>> is_listlike(range(5))
     True
     """

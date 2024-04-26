@@ -1,21 +1,10 @@
 import logging
 import os
-import platform
-import signal
-import subprocess
 import sys
-import warnings
-from pathlib import Path
 from typing import List
 
 import pytest
-from packaging.version import parse as parse_version
-from pexpect.popen_spawn import PopenSpawn
-from pytest import mark, raises
 from twisted.internet import defer
-from twisted.trial import unittest
-from w3lib import __version__ as w3lib_version
-from zope.interface.exceptions import MultipleInvalid
 
 import scrapy
 from scrapy.crawler import Crawler, CrawlerProcess, CrawlerRunner

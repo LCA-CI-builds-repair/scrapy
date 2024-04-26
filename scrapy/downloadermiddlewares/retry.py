@@ -2,9 +2,9 @@
 An extension to retry failed requests that are potentially caused by temporary
 problems such as a connection timeout or HTTP 500 error.
 
-You can change the behaviour of this middleware by modifying the scraping settings:
-RETRY_TIMES - how many times to retry a failed page
-RETRY_HTTP_CODES - which HTTP response codes to retry
+You can change the behavior of this middleware by modifying the scraping settings:
+- RETRY_TIMES: How many times to retry a failed page
+- RETRY_HTTP_CODES: Which HTTP response codes to retry
 
 Failed pages are collected on the scraping process and rescheduled at the end,
 once the spider has finished crawling all regular (non failed) pages.

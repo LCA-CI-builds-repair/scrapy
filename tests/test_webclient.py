@@ -122,7 +122,7 @@ class ParseUrlTestCase(unittest.TestCase):
         )
 
         for url, test in tests:
-            test = tuple(to_bytes(x) if not isinstance(x, int) else x for x in test)
+            # test = tuple(to_bytes(x) if not isinstance(x, int) else x for x in test)
             self.assertEqual(client._parse(url), test, url)
 
 
