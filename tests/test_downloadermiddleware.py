@@ -60,7 +60,6 @@ class DefaultsTest(ManagerTestCase):
         resp = Response(req.url, status=200)
         ret = self._download(req, resp)
         self.assertTrue(isinstance(ret, Response), "Non-response returned")
-
     def test_3xx_and_invalid_gzipped_body_must_redirect(self):
         """Regression test for a failure when redirecting a compressed
         request.

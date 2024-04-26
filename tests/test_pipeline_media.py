@@ -153,6 +153,7 @@ class BaseMediaPipelineTestCase(unittest.TestCase):
                 # Simulate Twisted capturing the FileException
                 # It encapsulates the exception inside a Twisted Failure
                 failure = Failure(file_exc)
+                # Handle the failure or propagate it further as needed
 
         # The Failure should encapsulate a FileException ...
         self.assertEqual(failure.value, file_exc)

@@ -46,7 +46,7 @@ class _HttpErrorSpider(MockServerSpider):
                 return self.parse(response)
 
         # it assumes there is a response attached to failure
-        self.failed.add(failure.value.response.url[-3:])
+        self.failed.add(failure.value.response.url)
         return failure
 
 

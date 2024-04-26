@@ -342,20 +342,14 @@ class CrawlerRunner:
         return DeferredList([c.stop() for c in list(self.crawlers)])
 
     @inlineCallbacks
-    def join(self) -> Generator[Deferred, Any, None]:
+    def join(self) -> Deferred:
         """
         join()
 
         Returns a deferred that is fired when all managed :attr:`crawlers` have
         completed their executions.
         """
-        while self._active:
-            yield DeferredList(self._active)
-
-
-class CrawlerProcess(CrawlerRunner):
-    """
-    A class to run multiple scrapy crawlers in a process simultaneously.
+        return DeferredList(self._active)
 
     This class extends :class:`~scrapy.crawler.CrawlerRunner` by adding support
     for starting a :mod:`~twisted.internet.reactor` and handling shutdown

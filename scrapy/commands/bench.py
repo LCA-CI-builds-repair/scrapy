@@ -46,7 +46,6 @@ class _BenchSpider(scrapy.Spider):
     show = 20
     baseurl = "http://localhost:8998"
     link_extractor = LinkExtractor()
-
     def start_requests(self):
         qargs = {"total": self.total, "show": self.show}
         url = f"{self.baseurl}?{urlencode(qargs, doseq=True)}"

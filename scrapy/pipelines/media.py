@@ -165,6 +165,8 @@ class MediaPipeline:
             # exception, for example a FileException('download-error') when
             # the Response status code is not 200 OK, is that the original
             # StopIteration exception (which in turn contains the failed
+            # request and the Response object) is caught, logged, and the
+            # download process continues with the next request in the queue.
             # Response and by extension, the original Request) gets encapsulated
             # within the FileException context.
             #
@@ -194,16 +196,10 @@ class MediaPipeline:
         pass
 
     def get_media_requests(self, item, info):
-        """Returns the media requests to download"""
-        pass
-
-    def media_downloaded(self, response, request, info, *, item=None):
-        """Handler for success downloads"""
-        return response
-
-    def media_failed(self, failure, request, info):
-        """Handler for failed downloads"""
-        return failure
+    def item_completed(self, results, item, info):
+        """Handler for completed items"""
+        # Implement logic for handling completed items here
+        return item
 
     def item_completed(self, results, item, info):
         """Called per item when all media requests has been processed"""
