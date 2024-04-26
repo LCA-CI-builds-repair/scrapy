@@ -54,9 +54,20 @@ class CallLaterOnce:
             self._call.cancel()
 
     def __call__(self) -> Any:
-        self._call = None
-        return self._func(*self._a, **self._kw)
+import asyncio
 
+def _get_asyncio_event_loop_policy():
+    return asyncio.get_event_loop_policy()
+
+class Reactor:
+    def __init__(self, func, *a, **kw):
+        self._func = func
+        self._a = a
+        self._kw = kw
+        self._call = None
+
+    def start(self):
+        self._call = self._func(*self._a, **self._kw)
 
 def set_asyncio_event_loop_policy() -> None:
     """The policy functions from asyncio often behave unexpectedly,
@@ -65,7 +76,7 @@ def set_asyncio_event_loop_policy() -> None:
     """
     _get_asyncio_event_loop_policy()
 
-
+set_asyncio_event_loop_policy()
 def get_asyncio_event_loop_policy() -> AbstractEventLoopPolicy:
     warn(
         "Call to deprecated function "

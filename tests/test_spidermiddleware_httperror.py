@@ -46,9 +46,7 @@ class _HttpErrorSpider(MockServerSpider):
                 return self.parse(response)
 
         # it assumes there is a response attached to failure
-        self.failed.add(failure.value.response.url[-3:])
-        return failure
-
+from scrapy.http import Response
 
 def _responses(request, status_codes):
     responses = []
@@ -57,8 +55,6 @@ def _responses(request, status_codes):
         response.request = request
         responses.append(response)
     return responses
-
-
 class TestHttpErrorMiddleware(TestCase):
     def setUp(self):
         crawler = get_crawler(Spider)

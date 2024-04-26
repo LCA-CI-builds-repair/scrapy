@@ -388,6 +388,8 @@ class CrawlerProcess(CrawlerRunner):
         crawlers have finished, using :meth:`join`.
 
         :param bool stop_after_crawl: stop or not the reactor when all
+from scrapy.crawler import CrawlerProcess
+
             crawlers have finished
 
         :param bool install_signal_handlers: whether to install the OS signal

@@ -20,21 +20,18 @@ from scrapy.utils.signal import disconnect_all
 from scrapy.utils.test import get_crawler
 
 try:
+from typing import Optional
+
     from PIL import Image  # noqa: imported just to check for the import error
 except ImportError:
-    skip_pillow: Optional[
-        str
-    ] = "Missing Python Imaging Library, install https://pypi.python.org/pypi/Pillow"
+    skip_pillow: Optional[str] = "Missing Python Imaging Library, install https://pypi.python.org/pypi/Pillow"
 else:
     skip_pillow = None
-
 
 def _mocked_download_func(request, info):
     assert request.callback is NO_CALLBACK
     response = request.meta.get("response")
     return response() if callable(response) else response
-
-
 class BaseMediaPipelineTestCase(unittest.TestCase):
     pipeline_class = MediaPipeline
     settings = None

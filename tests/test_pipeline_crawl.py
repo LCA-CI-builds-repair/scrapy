@@ -130,10 +130,12 @@ class FileDownloadCrawlTestCase(TestCase):
         self.assertEqual(
             crawler.stats.get_value("downloader/response_status_count/200"), 1
         )
+        
+        code = 404  # Define the code variable before using it
+        
         self.assertEqual(
             crawler.stats.get_value(f"downloader/response_status_count/{code}"), 3
         )
-
         # check that logs do show the failure on the file downloads
         file_dl_failure = f"File (code: {code}): Error downloading file from"
         self.assertEqual(logs.count(file_dl_failure), 3)
@@ -195,8 +197,6 @@ class FileDownloadCrawlTestCase(TestCase):
 
 
 skip_pillow: Optional[str]
-try:
-    from PIL import Image  # noqa: imported just to check for the import error
 except ImportError:
     skip_pillow = (
         "Missing Python Imaging Library, install https://pypi.python.org/pypi/Pillow"
@@ -204,11 +204,12 @@ except ImportError:
 else:
     skip_pillow = None
 
-
 class ImageDownloadCrawlTestCase(FileDownloadCrawlTestCase):
     skip = skip_pillow
 
     pipeline_class = "scrapy.pipelines.images.ImagesPipeline"
+    store_setting_key = "IMAGES_STORE"
+    media_key = "images"
     store_setting_key = "IMAGES_STORE"
     media_key = "images"
     media_urls_key = "image_urls"
