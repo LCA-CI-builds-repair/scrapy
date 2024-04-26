@@ -573,7 +573,7 @@ class TextResponseTest(BaseResponseTest):
         r = self.response_class(
             "http://example.com",
             encoding="utf-8",
-            body=b"\xf0<span>value</span>",
+            body=b"\xf0\x9f\x92\xa1<span>value</span>",
         )
         assert "<span>value</span>" in r.text, repr(r.text)
 

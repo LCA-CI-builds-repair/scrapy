@@ -227,5 +227,6 @@ class ScrapyHTTPClientFactory(ClientFactory):
             self.waiting = 0
             # If the connection attempt failed, there is nothing more to
             # disconnect, so just fire that Deferred now.
+            self.result.errback(failure)
             self._disconnectedDeferred.callback(None)
             self.deferred.errback(reason)

@@ -76,11 +76,11 @@ class TestPeriodicLog(unittest.TestCase):
 
         # "PERIODIC_LOG_STATS": "True" -> set to {"enabled": True}
         # due to JSONDecodeError(ValueError) exception from settings.getdict
-        assert extension({"PERIODIC_LOG_STATS": "True", "LOGSTATS_INTERVAL": 60})
+        assert extension({"PERIODIC_LOG_STATS": True, "LOGSTATS_INTERVAL": 60})
 
-        # The ame for PERIODIC_LOG_DELTA:
+        # The name for PERIODIC_LOG_DELTA:
         assert extension({"PERIODIC_LOG_DELTA": True, "LOGSTATS_INTERVAL": 60})
-        assert extension({"PERIODIC_LOG_DELTA": "True", "LOGSTATS_INTERVAL": 60})
+        assert extension({"PERIODIC_LOG_DELTA": True, "LOGSTATS_INTERVAL": 60})
 
     def test_log_delta(self):
         def emulate(settings=None):

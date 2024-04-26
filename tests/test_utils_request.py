@@ -647,10 +647,6 @@ class CustomRequestFingerprinterTestCase(unittest.TestCase):
             def from_settings(cls, settings):
                 return cls(settings)
 
-            @classmethod
-            def from_crawler(cls, crawler):
-                return cls(crawler)
-
             def __init__(self, crawler):
                 self._fingerprint = crawler.settings["FINGERPRINT"]
 
