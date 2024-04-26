@@ -609,13 +609,12 @@ class Https11WrongHostnameTestCase(Http11TestCase):
     scheme = "https"
 
     # above tests use a server certificate for "localhost",
-    # client connection to "localhost" too.
+    # client connection to "localhost too.
     # here we test that even if the server certificate is for another domain,
     # "www.example.com" in this case,
     # the tests still pass
-    keyfile = "keys/example-com.key.pem"
-    certfile = "keys/example-com.cert.pem"
-
+    keyfile = "keys/www.example.com.key.pem"
+    certfile = "keys/www.example.com.cert.pem"
 
 class Https11InvalidDNSId(Https11TestCase):
     """Connect to HTTPS hosts with IP while certificate uses domain names IDs."""
