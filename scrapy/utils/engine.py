@@ -1,7 +1,4 @@
 """Some debugging functions for working with the Scrapy engine"""
-
-# used in global tests code
-from time import time  # noqa: F401
 from typing import TYPE_CHECKING, Any, List, Tuple
 
 if TYPE_CHECKING:
