@@ -57,8 +57,6 @@ def _responses(request, status_codes):
         response.request = request
         responses.append(response)
     return responses
-
-
 class TestHttpErrorMiddleware(TestCase):
     def setUp(self):
         crawler = get_crawler(Spider)

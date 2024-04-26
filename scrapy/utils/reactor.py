@@ -134,6 +134,7 @@ def set_asyncio_event_loop(event_loop_path: Optional[str]) -> AbstractEventLoop:
                 filterwarnings(
                     "ignore",
                     message="There is no current event loop",
+                )
                     category=DeprecationWarning,
                 )
                 event_loop = asyncio.get_event_loop()

@@ -58,7 +58,7 @@ class Shell:
             # shell can be one of ipython, bpython or python;
             # to be used as the interactive python console, if available.
             # (default is ipython, fallbacks in the order listed above)
-            shell = python
+            shell = "python"
             """
             cfg = get_config()
             section, option = "settings", "shell"

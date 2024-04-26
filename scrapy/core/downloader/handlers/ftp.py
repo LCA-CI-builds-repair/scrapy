@@ -17,7 +17,6 @@ The status of the built html response will be, by default
 - 404 in case specified file was not found in the server (ftp code 550)
 
 or raise corresponding ftp exception otherwise
-
 The matching from server ftp command return codes to html response codes is defined in the
 CODE_MAPPING attribute of the handler class. The key 'default' is used for any code
 that is not explicitly present among the map keys. You may need to overwrite this

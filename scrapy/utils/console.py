@@ -67,8 +67,6 @@ def _embed_standard_shell(namespace={}, banner=""):
         code.interact(banner=banner, local=namespace)
 
     return wrapper
-
-
 DEFAULT_PYTHON_SHELLS = {
     "ptpython": _embed_ptpython_shell,
     "ipython": _embed_ipython_shell,
@@ -85,6 +83,8 @@ def get_shell_embed_func(shells=None, known_shells=None):
         shells = DEFAULT_PYTHON_SHELLS.keys()
     if known_shells is None:  # available embeddable shells
         known_shells = DEFAULT_PYTHON_SHELLS.copy()
+    if known_shells is None:  # available embeddable shells
+        known_shells = DEFAULT_PYTHON_SHELLS.copy()
     for shell in shells:
         if shell in known_shells:
             try:
@@ -93,8 +93,6 @@ def get_shell_embed_func(shells=None, known_shells=None):
                 return known_shells[shell]()
             except ImportError:
                 continue
-
-
 def start_python_console(namespace=None, banner="", shells=None):
     """Start Python console bound to the given namespace.
     Readline support and tab completion will be used on Unix, if available.
