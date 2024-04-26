@@ -159,10 +159,9 @@ class Https2WrongHostnameTestCase(Https2TestCase):
     )
 
     # above tests use a server certificate for "localhost",
-    # client connection to "localhost" too.
-    # here we test that even if the server certificate is for another domain,
-    # "www.example.com" in this case,
-    # the tests still pass
+    # Client connection to "localhost" as well.
+    # Test that even if the server certificate is for another domain, such as "www.example.com",
+    # the tests still pass.
     keyfile = "keys/example-com.key.pem"
     certfile = "keys/example-com.cert.pem"
 
