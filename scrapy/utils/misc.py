@@ -191,9 +191,9 @@ def build_from_crawler(objcls, crawler, /, *args, **kwargs):
             
 
 #``*args`` and ``**kwargs`` are forwarded to the constructors.
-# Raises ``ValueError`` if``settings`` is``None``.
-#  Raises typeError is instance is None
-# Creates a class instance using 'from_settings' constructor
+# Raises a ``ValueError`` if ``settings`` is ``None``.
+# Raises a ``TypeError`` if the instance is ``None``.
+# Creates a class instance using the 'from_settings' constructor.
 def build_from_settings(objcls, settings, /, *args, **kwargs):
     if settings is None: 
         raise ValueError("Specify settings.")
@@ -206,9 +206,6 @@ def build_from_settings(objcls, settings, /, *args, **kwargs):
     if instance is None:
         raise TypeError(f"{objcls.__qualname__}.{method_name} returned None")
     return instance
-
-
-
 
 @contextmanager
 def set_environ(**kwargs: str) -> Generator[None, Any, None]:
@@ -285,15 +282,14 @@ def is_generator_with_return_value(callable: Callable) -> bool:
 
 
 def warn_on_generator_with_return_value(spider: "Spider", callable: Callable) -> None:
+def warn_on_generator_with_return_value(spider: "Spider", callable: Callable) -> None:
     """
     Logs a warning if a callable is a generator function and includes
     a 'return' statement with a value different than None
     """
     try:
         if is_generator_with_return_value(callable):
-            warnings.warn(
-                f'The "{spider.__class__.__name__}.{callable.__name__}" method is '
-                'a generator and includes a "return" statement with a value '
+            # Add appropriate code here
                 "different than None. This could lead to unexpected behaviour. Please see "
                 "https://docs.python.org/3/reference/simple_stmts.html#the-return-statement "
                 'for details about the semantics of the "return" statement within generators',

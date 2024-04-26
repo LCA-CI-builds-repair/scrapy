@@ -111,6 +111,7 @@ class AddonManagerTest(unittest.TestCase):
 
      def test_build_from_crawler(self):
         settings_dict = {
+            # Add missing key-value pairs or continuation of the dictionary here
             "ADDONS": {"tests.test_addons.CreateInstanceAddon": 0},
             "MYADDON": {"MYADDON_KEY": "val"},
         }

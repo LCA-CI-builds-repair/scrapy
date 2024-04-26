@@ -88,6 +88,7 @@ class SitemapTest(unittest.TestCase):
     <lastmod />
   </url>
 </urlset>
+</urlset>
 """
         )
         self.assertEqual(
@@ -198,7 +199,6 @@ Disallow: /forum/active/
         )
 
     def test_sitemap_blanklines(self):
-        """Assert we can deal with starting blank lines before <xml> tag"""
         s = Sitemap(
             b"""
 <?xml version="1.0" encoding="UTF-8"?>
@@ -209,6 +209,7 @@ Disallow: /forum/active/
 <loc>http://www.example.com/sitemap1.xml</loc>
 <lastmod>2013-07-15</lastmod>
 </sitemap>
+</sitemapindex>
 
 <sitemap>
 <loc>http://www.example.com/sitemap2.xml</loc>
