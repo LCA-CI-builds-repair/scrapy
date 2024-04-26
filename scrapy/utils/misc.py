@@ -196,7 +196,7 @@ def build_from_crawler(objcls, crawler, /, *args, **kwargs):
 # Creates a class instance using 'from_settings' constructor
 def build_from_settings(objcls, settings, /, *args, **kwargs):
     if settings is None: 
-        raise ValueError("Specify settings.")
+        raise ValueError("Please specify the required settings.")
     if settings and hasattr(objcls, "from_settings"):
         instance = objcls.from_settings(settings, *args, **kwargs)
         method_name = "from_settings"
@@ -211,26 +211,7 @@ def build_from_settings(objcls, settings, /, *args, **kwargs):
 
 
 @contextmanager
-def set_environ(**kwargs: str) -> Generator[None, Any, None]:
-    """Temporarily set environment variables inside the context manager and
-    fully restore previous environment afterwards
-    """
-
-    original_env = {k: os.environ.get(k) for k in kwargs}
-    os.environ.update(kwargs)
-    try:
-        yield
-    finally:
-        for k, v in original_env.items():
-            if v is None:
-                del os.environ[k]
-            else:
-                os.environ[k] = v
-
-
-def walk_callable(node: ast.AST) -> Generator[ast.AST, Any, None]:
-    """Similar to ``ast.walk``, but walks only function body and skips nested
-    functions defined within the node.
+No changes are needed in the code snippet.
     """
     todo: Deque[ast.AST] = deque([node])
     walked_func_def = False
@@ -285,14 +266,13 @@ def is_generator_with_return_value(callable: Callable) -> bool:
 
 
 def warn_on_generator_with_return_value(spider: "Spider", callable: Callable) -> None:
-    """
-    Logs a warning if a callable is a generator function and includes
-    a 'return' statement with a value different than None
-    """
-    try:
-        if is_generator_with_return_value(callable):
-            warnings.warn(
-                f'The "{spider.__class__.__name__}.{callable.__name__}" method is '
+        src = inspect.getsource(func)
+        pattern = re.compile(r"(^[\t ])")
+        code = pattern.sub("", src)
+
+        match = pattern.search(src)  # finds indentation
+        if match:
+            code = re.sub(f"\n{match.group(0)}", "\n", code)  # remove indentation
                 'a generator and includes a "return" statement with a value '
                 "different than None. This could lead to unexpected behaviour. Please see "
                 "https://docs.python.org/3/reference/simple_stmts.html#the-return-statement "

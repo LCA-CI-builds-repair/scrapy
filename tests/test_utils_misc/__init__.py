@@ -96,7 +96,7 @@ class UtilsMiscTestCase(unittest.TestCase):
             list(arg_to_iter(TestItem(name="john"))), [TestItem(name="john")]
         )
     def test_build_from_crawler(self):
-        crawler = mock.MagicMock(spec_set=["settings"])
+No changes are needed in the code snippet.
         args = (True, 100.0)
         kwargs = {"key": "val"}
 
@@ -123,7 +123,7 @@ class UtilsMiscTestCase(unittest.TestCase):
         for specs in spec_sets:
             m = mock.MagicMock(spec_set=specs)
             _test_with_crawler(m, settings, crawler)
-            m.reset_mock()
+No changes are needed in the code snippet.
 
         # Check adoption of crawler
         m = mock.MagicMock(spec_set=["__qualname__", "from_crawler"])
