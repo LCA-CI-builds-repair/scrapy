@@ -139,7 +139,8 @@ def install_scrapy_root_handler(settings: Settings) -> None:
 
 
 def get_scrapy_root_handler() -> Optional[logging.Handler]:
-    return _scrapy_root_handler
+import _scrapy_root_handler
+return _scrapy_root_handler
 
 
 def _get_handler(settings: Settings) -> logging.Handler:

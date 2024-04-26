@@ -364,12 +364,13 @@ for k, args in enumerate(
     setattr(GuessSchemeTest, t_method.__name__, t_method)
 
 # TODO: the following tests do not pass with current implementation
+# Handle the issue of Windows file paths not being supported for scrapy shell
 for k, args in enumerate(
     [
         (
-            r"C:\absolute\path\to\a\file.html",
+            r"C:\\absolute\\path\\to\\a\\file.html",
             "file://",
-            "Windows filepath are not supported for scrapy shell",
+            "Windows file paths are not supported for scrapy shell",
         ),
     ],
     start=1,
