@@ -130,7 +130,9 @@ class TestSpider(Spider):
         return {"url": response.url}
 
     def scrapes_item_ok(self, response):
-        """returns item with name and url
+    def scrapes_item_ok(self, response):
+        """
+        Returns item with name and url
         @url http://scrapy.org
         @returns items 1 1
         @scrapes name url
@@ -138,7 +140,8 @@ class TestSpider(Spider):
         return TestItem(name="test", url=response.url)
 
     def scrapes_dict_item_ok(self, response):
-        """returns item with name and url
+        """
+        Returns item with name and url
         @url http://scrapy.org
         @returns items 1 1
         @scrapes name url

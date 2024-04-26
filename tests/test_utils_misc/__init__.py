@@ -98,7 +98,7 @@ class UtilsMiscTestCase(unittest.TestCase):
     def test_build_from_crawler(self):
         crawler = mock.MagicMock(spec_set=["settings"])
         args = (True, 100.0)
-        kwargs = {"key": "val"}
+        kwargs = {"key": "val}
 
         def _test_with_crawler(mock, settings, crawler):
             build_from_crawler(mock, crawler, *args, **kwargs)
@@ -134,6 +134,8 @@ class UtilsMiscTestCase(unittest.TestCase):
     def test_build_from_settings(self):
         settings = mock.MagicMock()
         args = (True, 100.0)
+        
+        # Add necessary setup and test cases for build_from_settings
         kwargs = {"key": "val"}
 
         def _test_with_settings(mock, settings):

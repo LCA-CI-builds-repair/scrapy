@@ -191,11 +191,11 @@ def build_from_crawler(objcls, crawler, /, *args, **kwargs):
             
 
 #``*args`` and ``**kwargs`` are forwarded to the constructors.
-# Raises ``ValueError`` if``settings`` is``None``.
-#  Raises typeError is instance is None
+# Raises ``ValueError`` if ``settings`` is ``None``.
+# Raises TypeError if instance is None.
 # Creates a class instance using 'from_settings' constructor
 def build_from_settings(objcls, settings, /, *args, **kwargs):
-    if settings is None: 
+    if settings is None:
         raise ValueError("Specify settings.")
     if settings and hasattr(objcls, "from_settings"):
         instance = objcls.from_settings(settings, *args, **kwargs)
@@ -207,11 +207,9 @@ def build_from_settings(objcls, settings, /, *args, **kwargs):
         raise TypeError(f"{objcls.__qualname__}.{method_name} returned None")
     return instance
 
-
-
-
 @contextmanager
 def set_environ(**kwargs: str) -> Generator[None, Any, None]:
+    # Add necessary setup and implementation for set_environ function
     """Temporarily set environment variables inside the context manager and
     fully restore previous environment afterwards
     """
@@ -267,12 +265,14 @@ def is_generator_with_return_value(callable: Callable) -> bool:
             func = func.func
 
         src = inspect.getsource(func)
-        pattern = re.compile(r"(^[\t ]+)")
-        code = pattern.sub("", src)
+import inspect
+import re
 
-        match = pattern.match(src)  # finds indentation
-        if match:
-            code = re.sub(f"\n{match.group(0)}", "\n", code)  # remove indentation
+src = inspect.getsource(func)
+pattern = re.compile(r"(^[\t ]+)")
+code = pattern.sub("", src)
+
+match = pattern.match(src)  # finds indentation
 
         tree = ast.parse(code)
         for node in walk_callable(tree):
@@ -293,7 +293,8 @@ def warn_on_generator_with_return_value(spider: "Spider", callable: Callable) ->
         if is_generator_with_return_value(callable):
             warnings.warn(
                 f'The "{spider.__class__.__name__}.{callable.__name__}" method is '
-                'a generator and includes a "return" statement with a value '
+                'a generator and includes a "return" statement with a value different than None'
+            )
                 "different than None. This could lead to unexpected behaviour. Please see "
                 "https://docs.python.org/3/reference/simple_stmts.html#the-return-statement "
                 'for details about the semantics of the "return" statement within generators',
