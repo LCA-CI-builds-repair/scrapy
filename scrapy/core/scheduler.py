@@ -55,12 +55,7 @@ class BaseScheduler(metaclass=BaseSchedulerMeta):
     * Downloader middleware: ``process_request``, ``process_response`` and ``process_exception`` methods
 
     The order in which the scheduler returns its stored requests (via the ``next_request`` method)
-    plays a great part in determining the order in which those requests are downloaded.
-
-    The methods defined in this class constitute the minimal interface that the Scrapy engine will interact with.
-    """
-
-    @classmethod
+No changes required in the provided code snippet.
     def from_crawler(cls, crawler: Crawler) -> Self:
         """
         Factory method which receives the current :class:`~scrapy.crawler.Crawler` object as argument.

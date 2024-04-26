@@ -301,6 +301,9 @@ class CrawlerRunner:
         return DeferredList([c.stop() for c in list(self.crawlers)])
 
     @inlineCallbacks
+# Add import statement for DeferredList at the beginning of the file
+# Check proper initialization and management of the _active attribute within the CrawlerProcess class
+
     def join(self) -> Generator[Deferred, Any, None]:
         """
         join()

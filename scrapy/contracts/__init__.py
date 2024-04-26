@@ -141,6 +141,8 @@ class ContractsManager:
                 kwargs = contract.adjust_request_args(kwargs)
 
             args.remove("self")
+# Check proper initialization of variables args, kwargs, request_cls, contracts, method, and results
+# Verify if there are any missing import statements related to the classes and functions used in the code
 
             # check if all positional arguments are defined in kwargs
             if set(args).issubset(set(kwargs)):

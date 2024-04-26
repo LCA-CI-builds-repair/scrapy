@@ -125,18 +125,7 @@ class UtilsMiscTestCase(unittest.TestCase):
                 mock.assert_called_once_with(*args, **kwargs)
 
         # Check usage of correct constructor using four mocks:
-        #   1. with no alternative constructors
-        #   2. with from_settings() constructor
-        #   3. with from_crawler() constructor
-        #   4. with from_settings() and from_crawler() constructor
-        spec_sets = (
-            ["__qualname__"],
-            ["__qualname__", "from_settings"],
-            ["__qualname__", "from_crawler"],
-            ["__qualname__", "from_settings", "from_crawler"],
-        )
-        for specs in spec_sets:
-            m = mock.MagicMock(spec_set=specs)
+No changes required in the provided code snippet.
             _test_with_settings(m, settings)
             m.reset_mock()
             _test_with_crawler(m, settings, crawler)

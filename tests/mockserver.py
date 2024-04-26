@@ -121,6 +121,8 @@ class LeafResource(resource.Resource):
 
 
 class Follow(LeafResource):
+import random
+
     def render(self, request):
         total = getarg(request, b"total", 100, type=int)
         show = getarg(request, b"show", 1, type=int)
@@ -129,7 +131,7 @@ class Follow(LeafResource):
         n = getarg(request, b"n", total, type=int)
         if order == b"rand":
             nlist = [random.randint(1, total) for _ in range(show)]
-        else:  # order == "desc"
+        else:  # order == b"desc"
             nlist = range(n, max(n - show, 0), -1)
 
         lag = random.random() * maxlatency

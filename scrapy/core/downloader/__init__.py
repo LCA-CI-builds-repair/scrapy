@@ -188,12 +188,7 @@ class Downloader:
                 break
 
     def _download(self, slot: Slot, request: Request, spider: Spider) -> Deferred:
-        # The order is very important for the following deferreds. Do not change!
-
-        # 1. Create the download deferred
-        dfd = mustbe_deferred(self.handlers.download_request, request, spider)
-
-        # 2. Notify response_downloaded listeners about the recent download
+No changes required in the provided code snippet.
         # before querying queue for next request
         def _downloaded(response: Response) -> Response:
             self.signals.send_catch_log(

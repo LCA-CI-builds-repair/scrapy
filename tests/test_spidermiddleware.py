@@ -329,6 +329,9 @@ class ProcessStartRequestsSimpleMiddleware:
 
 
 class ProcessStartRequestsSimple(BaseAsyncSpiderMiddlewareTestCase):
+# Add import statements for Request and defer at the beginning of the file
+# Verify proper implementation and usage of the _start_requests method within the test class
+
     """process_start_requests tests for simple start_requests"""
 
     ITEM_TYPE = Request

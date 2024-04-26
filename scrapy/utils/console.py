@@ -85,6 +85,9 @@ def get_shell_embed_func(shells=None, known_shells=None):
         shells = DEFAULT_PYTHON_SHELLS.keys()
     if known_shells is None:  # available embeddable shells
         known_shells = DEFAULT_PYTHON_SHELLS.copy()
+# Ensure proper initialization of the known_shells dictionary with shell functions
+# Check for any missing shell functions in the known_shells dictionary
+
     for shell in shells:
         if shell in known_shells:
             try:
@@ -93,8 +96,6 @@ def get_shell_embed_func(shells=None, known_shells=None):
                 return known_shells[shell]()
             except ImportError:
                 continue
-
-
 def start_python_console(namespace=None, banner="", shells=None):
     """Start Python console bound to the given namespace.
     Readline support and tab completion will be used on Unix, if available.
