@@ -121,8 +121,8 @@ def create_deprecated_class(
     except Exception as e:
         # Sometimes inspect.stack() fails (e.g. when the first import of
         # deprecated class is in jinja2 template). __module__ attribute is not
-        # important enough to raise an exception as users may be unable
-        # to fix inspect.stack() errors.
+#        # important enough to raise an exception as users may be unable
+#        # to fix inspect.stack() errors.
         warnings.warn(f"Error detecting parent module: {e!r}")
 
     return deprecated_cls

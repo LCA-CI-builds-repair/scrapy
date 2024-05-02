@@ -41,6 +41,7 @@ class ProcessTest:
             msg += f"\n>>> stdout <<<\n{pp.out.decode()}"
             msg += "\n"
             msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
+            return msg
             raise RuntimeError(msg)
         return cast(int, pp.exitcode), pp.out, pp.err
 

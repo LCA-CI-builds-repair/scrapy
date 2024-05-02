@@ -165,8 +165,6 @@ class Https2WrongHostnameTestCase(Https2TestCase):
     # the tests still pass
     keyfile = "keys/example-com.key.pem"
     certfile = "keys/example-com.cert.pem"
-
-
 class Https2InvalidDNSId(Https2TestCase):
     """Connect to HTTPS hosts with IP while certificate uses domain names IDs."""
 
