@@ -162,10 +162,8 @@ class MailSender:
                 "mailattachs": nattachs,
                 "mailerr": errstr,
             },
-        )
+        ),
         return failure
-
-    def _sendmail(self, to_addrs, msg):
         from twisted.internet import reactor
 
         msg = BytesIO(msg)

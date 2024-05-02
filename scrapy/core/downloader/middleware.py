@@ -93,7 +93,7 @@ class DownloaderMiddlewareManager(MiddlewareManager):
                         f"Middleware {method.__qualname__} must return None, Response or "
                         f"Request, got {type(response)}"
                     )
-                if response:
+                if response is not None:
                     return response
             return failure
 

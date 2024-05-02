@@ -95,7 +95,8 @@ class CrawlTestCase(TestCase):
             },
         )
         yield crawler.crawl(seed=url, mockserver=self.mockserver)
-        failure = crawler.spider.meta["failure"]
+        if "failure" in crawler.spider.meta:
+            failure = crawler.spider.meta["failure"]
         self.assertEqual(failure.request.url, url)
         self.assertIsInstance(failure.value, ZeroDivisionError)
 

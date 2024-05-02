@@ -716,7 +716,7 @@ class Http11MockServerTestCase(unittest.TestCase):
         )
         failure = crawler.spider.meta["failure"]
         self.assertIsInstance(failure.value, defer.CancelledError)
-
+    
     @defer.inlineCallbacks
     def test_download(self):
         crawler = get_crawler(SingleRequestSpider, self.settings_dict)

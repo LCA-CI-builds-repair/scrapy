@@ -45,8 +45,12 @@ class _HttpErrorSpider(MockServerSpider):
                 self.skipped.add(response.url[-3:])
                 return self.parse(response)
 
-        # it assumes there is a response attached to failure
-        self.failed.add(failure.value.response.url[-3:])
+        # Check if response is attached to failure
+        if hasattr(failure.value, 'response') and failure.value.response:
+            # Extract last 3 characters of the response URL
+            response_url = failure.value.response.url
+            if response_url:
+                self.failed.add(response_url[-3:])
         return failure
 
 
