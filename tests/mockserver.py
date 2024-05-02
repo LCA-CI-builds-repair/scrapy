@@ -24,12 +24,17 @@ from twisted.web.util import redirectTo
 from scrapy.utils.python import to_bytes, to_unicode
 
 
-def getarg(request, name, default=None, type=None):
-    if name in request.args:
-        value = request.args[name][0]
-        if type is not None:
-            value = type(value)
-        return value
+from typing import Any
+from werkzeug.datastructures import ImmutableMultiDict
+
+def getarg(request: Any, name: str, default: Any = None, type: Any = None) -> Any:
+    if isinstance(request.args, ImmutableMultiDict) and name in request.args:
+        values = request.args.getlist(name)
+        if values:
+            value = values[0]
+            if type is not None:
+                value = type(value)
+            return value
     return default
 
 

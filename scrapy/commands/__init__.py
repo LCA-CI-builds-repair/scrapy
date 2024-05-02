@@ -67,9 +67,9 @@ class ScrapyCommand:
         group.add_argument(
             "-L",
             "--loglevel",
-            metavar="LEVEL",
+            metavar="LOG_LEVEL",
             default=None,
-            help=f"log level (default: {self.settings['LOG_LEVEL']})",
+            help=f"log level (default: {self.settings['LOG_LEVEL']})"
         )
         group.add_argument(
             "--nolog", action="store_true", help="disable logging completely"

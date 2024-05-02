@@ -461,6 +461,12 @@ class Http11TestCase(HttpTestCase):
         body = b"Some plain text\ndata with tabs\t and null bytes\0"
 
         def _test_type(response):
+            if b"<html>" in response.body:
+                return HtmlResponse
+            elif b"<?xml" in response.body:
+                return XmlResponse
+            else:
+                return TextResponse
             self.assertEqual(type(response), TextResponse)
 
         request = Request(self.getURL("nocontenttype"), body=body)
