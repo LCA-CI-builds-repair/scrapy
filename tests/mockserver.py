@@ -23,7 +23,6 @@ from twisted.web.util import redirectTo
 
 from scrapy.utils.python import to_bytes, to_unicode
 
-
 def getarg(request, name, default=None, type=None):
     if name in request.args:
         value = request.args[name][0]

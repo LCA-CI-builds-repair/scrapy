@@ -1,6 +1,5 @@
 import scrapy
 
-
 class ExceptionSpider(scrapy.Spider):
     name = "exception"
 

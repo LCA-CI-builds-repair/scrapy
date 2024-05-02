@@ -1,6 +1,5 @@
 import scrapy
 
-
 class NormalSpider(scrapy.Spider):
     name = "normal"
 
