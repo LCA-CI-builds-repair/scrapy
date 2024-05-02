@@ -22,6 +22,8 @@ class AsyncioTest(TestCase):
 
     def test_install_asyncio_reactor(self):
         from twisted.internet import reactor as original_reactor
+        import warnings
+        from scrapy.utils.asyncio import install_reactor
 
         with warnings.catch_warnings(record=True) as w:
             install_reactor("twisted.internet.asyncioreactor.AsyncioSelectorReactor")

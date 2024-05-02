@@ -52,7 +52,6 @@ class TelnetConsole(protocol.ServerFactory):
         self.host = crawler.settings["TELNETCONSOLE_HOST"]
         self.username = crawler.settings["TELNETCONSOLE_USERNAME"]
         self.password = crawler.settings["TELNETCONSOLE_PASSWORD"]
-
         if not self.password:
             self.password = binascii.hexlify(os.urandom(8)).decode("utf8")
             logger.info("Telnet Password: %s", self.password)

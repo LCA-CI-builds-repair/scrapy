@@ -188,6 +188,7 @@ def log_reactor_info() -> None:
             reactor._asyncioEventloop.__module__,
             reactor._asyncioEventloop.__class__.__name__,
         )
+        logger.debug("Using asyncio event loop: %s.%s", reactor._asyncioEventloop.__module__, reactor._asyncioEventloop.__class__.__name__)
 
 
 class StreamLogger:

@@ -115,6 +115,9 @@ def create_deprecated_class(
 
     try:
         frm = inspect.stack()[1]
+import inspect
+import warnings
+
         parent_module = inspect.getmodule(frm[0])
         if parent_module is not None:
             deprecated_cls.__module__ = parent_module.__name__

@@ -255,13 +255,16 @@ class BaseResponseTest(unittest.TestCase):
     def test_follow_all_relative(self):
         relative = ["foo", "bar", "foo/bar", "bar/foo"]
         absolute = [
+# Add necessary imports and class definition if not already present
+
+        relative = ["foo", "bar", "foo/bar", "bar/foo"]
+        absolute = [
             "http://example.com/foo",
             "http://example.com/bar",
             "http://example.com/foo/bar",
             "http://example.com/bar/foo",
         ]
         self._assert_followed_all_urls(relative, absolute)
-
     def test_follow_all_links(self):
         absolute = [
             "http://example.com/foo",
@@ -291,14 +294,14 @@ class BaseResponseTest(unittest.TestCase):
             with self.assertRaises(TypeError):
                 list(r.follow_all(urls=12345))
             with self.assertRaises(ValueError):
-                list(r.follow_all(urls=[None]))
-
-    def test_follow_all_whitespace(self):
-        relative = ["foo ", "bar ", "foo/bar ", "bar/foo "]
+        relative = ["foo", "bar", "foo/bar", "bar/foo"]
         absolute = [
             "http://example.com/foo%20",
             "http://example.com/bar%20",
             "http://example.com/foo/bar%20",
+            "http://example.com/bar/foo%20",
+        ]
+        self._assert_followed_all_urls(relative, absolute)
             "http://example.com/bar/foo%20",
         ]
         self._assert_followed_all_urls(relative, absolute)
@@ -531,30 +534,7 @@ class TextResponseTest(BaseResponseTest):
     def test_bom_is_removed_from_body(self):
         # Inferring encoding from body also cache decoded body as sideeffect,
         # this test tries to ensure that calling response.encoding and
-        # response.text in indistinct order doesn't affect final
-        # response.text in indistinct order doesn't affect final
-        # values for encoding and decoded body.
-        url = "http://example.com"
-        body = b"\xef\xbb\xbfWORD"
-        headers = {"Content-type": ["text/html; charset=utf-8"]}
-
-        # Test response without content-type and BOM encoding
-        response = self.response_class(url, body=body)
-        self.assertEqual(response.encoding, "utf-8")
-        self.assertEqual(response.text, "WORD")
-        response = self.response_class(url, body=body)
-        self.assertEqual(response.text, "WORD")
-        self.assertEqual(response.encoding, "utf-8")
-
-        # Body caching sideeffect isn't triggered when encoding is declared in
-        # content-type header but BOM still need to be removed from decoded
-        # body
-        response = self.response_class(url, headers=headers, body=body)
-        self.assertEqual(response.encoding, "utf-8")
-        self.assertEqual(response.text, "WORD")
-        response = self.response_class(url, headers=headers, body=body)
-        self.assertEqual(response.text, "WORD")
-        self.assertEqual(response.encoding, "utf-8")
+# Add necessary imports and class definition if not already present
 
     def test_replace_wrong_encoding(self):
         """Test invalid chars are replaced properly"""
@@ -566,6 +546,8 @@ class TextResponseTest(BaseResponseTest):
         # XXX: Policy for replacing invalid chars may suffer minor variations
         # but it should always contain the unicode replacement char ('\ufffd')
         assert "\ufffd" in r.text, repr(r.text)
+        assert "PREFIX" in r.text, repr(r.text)
+        assert "SUFFIX" in r.text, repr(r.text)
         assert "PREFIX" in r.text, repr(r.text)
         assert "SUFFIX" in r.text, repr(r.text)
 

@@ -72,6 +72,7 @@ class HTTP11DownloadHandler:
         return agent.download_request(request)
 
     def close(self):
+        # Add code to properly close resources or perform cleanup actions
         from twisted.internet import reactor
 
         d = self._pool.closeCachedConnections()
