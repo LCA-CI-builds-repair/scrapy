@@ -297,7 +297,7 @@ def warn_on_generator_with_return_value(spider: "Spider", callable: Callable) ->
                 "different than None. This could lead to unexpected behaviour. Please see "
                 "https://docs.python.org/3/reference/simple_stmts.html#the-return-statement "
                 'for details about the semantics of the "return" statement within generators',
-                stacklevel=2,
+                stacklevel=2
             )
     except IndentationError:
         callable_name = spider.__class__.__name__ + "." + callable.__name__

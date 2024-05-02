@@ -462,10 +462,10 @@ class CrawlerProcessSubprocess(ScriptRunnerMixin, unittest.TestCase):
             "Using reactor: twisted.internet.selectreactor.SelectReactor", log
         )
         self.assertIn(
-            "(twisted.internet.selectreactor.SelectReactor) does not match the requested one",
+            "(twisted.internet.selectreactor.SelectReactor) does not match the requested one)",
             log,
         )
-
+    
     @mark.requires_uvloop
     def test_custom_loop_asyncio(self):
         log = self.run_script("asyncio_custom_loop.py")
