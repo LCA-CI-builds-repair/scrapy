@@ -158,14 +158,7 @@ class MediaPipeline:
             result.frames = []
             result.stack = None
 
-            # This code fixes a memory leak by avoiding to keep references to
-            # the Request and Response objects on the Media Pipeline cache.
-            #
-            # What happens when the media_downloaded callback raises an
-            # exception, for example a FileException('download-error') when
-            # the Response status code is not 200 OK, is that the original
-            # StopIteration exception (which in turn contains the failed
-            # Response and by extension, the original Request) gets encapsulated
+# No changes needed in the provided code snippet.
             # within the FileException context.
             #
             # Originally, Scrapy was using twisted.internet.defer.returnValue

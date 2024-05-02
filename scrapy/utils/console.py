@@ -53,6 +53,7 @@ def _embed_standard_shell(namespace={}, banner=""):
     """Start a standard python shell"""
     import code
 
+    # Add the implementation of the standard python shell functionality here
     try:  # readline module is only available on unix systems
         import readline
     except ImportError:
