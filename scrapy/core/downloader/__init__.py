@@ -192,7 +192,6 @@ class Downloader:
 
         # 1. Create the download deferred
         dfd = mustbe_deferred(self.handlers.download_request, request, spider)
-
         # 2. Notify response_downloaded listeners about the recent download
         # before querying queue for next request
         def _downloaded(response: Response) -> Response:

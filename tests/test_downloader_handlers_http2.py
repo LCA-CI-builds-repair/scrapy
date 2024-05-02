@@ -169,7 +169,6 @@ class Https2WrongHostnameTestCase(Https2TestCase):
 
 class Https2InvalidDNSId(Https2TestCase):
     """Connect to HTTPS hosts with IP while certificate uses domain names IDs."""
-
     def setUp(self):
         super().setUp()
         self.host = "127.0.0.1"
