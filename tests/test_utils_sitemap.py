@@ -209,7 +209,6 @@ Disallow: /forum/active/
 <loc>http://www.example.com/sitemap1.xml</loc>
 <lastmod>2013-07-15</lastmod>
 </sitemap>
-
 <sitemap>
 <loc>http://www.example.com/sitemap2.xml</loc>
 <lastmod>2013-07-15</lastmod>

@@ -298,7 +298,6 @@ class BrokenStartRequestsSpider(FollowAllSpider):
         assert (
             self.seedsseen
         ), "All start requests consumed before any download happened"
-
     def parse(self, response):
         self.seedsseen.append(response.meta.get("seed"))
         for req in super().parse(response):

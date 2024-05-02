@@ -41,7 +41,6 @@ def main():
         if match:
             newfilename = match.group(1)
             errortype = match.group(2)
-
             # Broken links can't be fixed and
             # I am not sure what do with the local ones.
             if errortype.lower() in ["broken", "local"]:
