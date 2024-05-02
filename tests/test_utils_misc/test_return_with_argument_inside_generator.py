@@ -64,9 +64,7 @@ class UtilsMiscPy3TestCase(unittest.TestCase):
             """
             docstring
             """
-            url = """
-https://example.org
-        """
+            url = "https://example.org"
             yield url
             return 1
 

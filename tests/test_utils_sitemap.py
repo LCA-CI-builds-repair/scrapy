@@ -78,14 +78,14 @@ class SitemapTest(unittest.TestCase):
             b"""<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.google.com/schemas/sitemap/0.84">
   <url>
-    <loc> http://www.example.com/</loc>
+    <loc>http://www.example.com/</loc>
     <lastmod>2009-08-16</lastmod>
     <changefreq>daily</changefreq>
     <priority>1</priority>
   </url>
   <url>
-    <loc> http://www.example.com/2</loc>
-    <lastmod />
+    <loc>http://www.example.com/2</loc>
+    <lastmod></lastmod>
   </url>
 </urlset>
 """
@@ -200,10 +200,8 @@ Disallow: /forum/active/
     def test_sitemap_blanklines(self):
         """Assert we can deal with starting blank lines before <xml> tag"""
         s = Sitemap(
-            b"""
-<?xml version="1.0" encoding="UTF-8"?>
+            b"""<?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
 <!-- cache: cached = yes name = sitemap_jspCache key = sitemap -->
 <sitemap>
 <loc>http://www.example.com/sitemap1.xml</loc>

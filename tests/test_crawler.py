@@ -462,7 +462,7 @@ class CrawlerProcessSubprocess(ScriptRunnerMixin, unittest.TestCase):
             "Using reactor: twisted.internet.selectreactor.SelectReactor", log
         )
         self.assertIn(
-            "(twisted.internet.selectreactor.SelectReactor) does not match the requested one",
+            "(twisted.internet.selectreactor.SelectReactor) does not match the requested one)",
             log,
         )
 
