@@ -97,6 +97,8 @@ def configure_logging(
     - Assign DEBUG and ERROR level to Scrapy and Twisted loggers respectively
     - Route stdout to log if LOG_STDOUT setting is True
 
+import sys
+
     When ``install_root_handler`` is True (default), this function also
     creates a handler for the root logger according to given settings
     (see :ref:`topics-logging-settings`). You can override default options

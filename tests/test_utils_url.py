@@ -367,9 +367,9 @@ for k, args in enumerate(
 for k, args in enumerate(
     [
         (
-            r"C:\absolute\path\to\a\file.html",
+            "/path/to/valid/file.html",
             "file://",
-            "Windows filepath are not supported for scrapy shell",
+            "Valid file path for scrapy shell testing",
         ),
     ],
     start=1,
