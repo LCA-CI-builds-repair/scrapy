@@ -45,12 +45,12 @@ class _HttpErrorSpider(MockServerSpider):
                 self.skipped.add(response.url[-3:])
                 return self.parse(response)
 
-        # it assumes there is a response attached to failure
+        # it assumes there is a response attached to the failure
         self.failed.add(failure.value.response.url[-3:])
         return failure
 
 
-def _responses(request, status_codes):
+def _create_responses(request, status_codes):
     responses = []
     for code in status_codes:
         response = Response(request.url, status=code)

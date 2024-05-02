@@ -110,13 +110,11 @@ class DefaultsTest(ManagerTestCase):
         )
         self.assertRaises(OSError, self._download, request=req, response=resp)
 
-
 class ResponseFromProcessRequestTest(ManagerTestCase):
     """Tests middleware returning a response from process_request."""
 
     def test_download_func_not_called(self):
         resp = Response("http://example.com/index.html")
-
         class ResponseMiddleware:
             def process_request(self, request, spider):
                 return resp
@@ -234,13 +232,13 @@ class MiddlewareUsingCoro(ManagerTestCase):
                 await defer.succeed(42)
                 return resp
 
+                return resp
+
         self.mwman._add_middleware(CoroMiddleware())
         req = Request("http://example.com/index.html")
         download_func = mock.MagicMock()
         dfd = self.mwman.download(download_func, req, self.spider)
         results = []
-        dfd.addBoth(results.append)
-        self._wait(dfd)
 
         self.assertIs(results[0], resp)
         self.assertFalse(download_func.called)

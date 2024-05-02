@@ -146,10 +146,9 @@ class BaseMediaPipelineTestCase(unittest.TestCase):
             def_gen_return_exc = exc
             try:
                 # Simulate the media_downloaded callback raising a FileException
-                # This usually happens when the status code is not 200 OK
+                # This exception is raised when the status code is not 200 OK
                 raise FileException("download-error")
             except Exception as exc:
-                file_exc = exc
                 # Simulate Twisted capturing the FileException
                 # It encapsulates the exception inside a Twisted Failure
                 failure = Failure(file_exc)
