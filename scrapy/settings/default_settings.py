@@ -10,13 +10,11 @@ Scrapy developers, if you add a setting here remember to:
 * group similar settings without leaving blank lines
 * add its documentation to the available settings documentation
   (docs/topics/settings.rst)
-
 """
 
 import sys
 from importlib import import_module
 from pathlib import Path
-
 ADDONS = {}
 
 AJAXCRAWL_ENABLED = False
