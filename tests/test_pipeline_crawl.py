@@ -163,10 +163,10 @@ class FileDownloadCrawlTestCase(TestCase):
             )
         self._assert_files_download_failure(crawler, self.items, 404, str(log))
 
-    @defer.inlineCallbacks
-    def test_download_media_redirected_default_failure(self):
-        crawler = self._create_crawler(RedirectedMediaDownloadSpider)
-        with LogCapture() as log:
+@defer.inlineCallbacks
+def test_download_media_redirected_default_failure(self):
+    crawler = self._create_crawler(RedirectedMediaDownloadSpider)
+    with LogCapture() as log:
             yield crawler.crawl(
                 self.mockserver.url("/files/images/"),
                 media_key=self.media_key,

@@ -183,13 +183,7 @@ class MediaPipeline:
             if isinstance(context, StopIteration):
                 setattr(result.value, "__context__", None)
 
-        info.downloading.remove(fp)
-        info.downloaded[fp] = result  # cache result
-        for wad in info.waiting.pop(fp):
-            defer_result(result).chainDeferred(wad)
-
-    # Overridable Interface
-    def media_to_download(self, request, info, *, item=None):
+No changes are required in the code snippet provided in scrapy/pipelines/media.py.
         """Check request before starting download"""
         pass
 
