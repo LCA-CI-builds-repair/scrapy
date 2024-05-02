@@ -163,13 +163,12 @@ class Https2WrongHostnameTestCase(Https2TestCase):
     # here we test that even if the server certificate is for another domain,
     # "www.example.com" in this case,
     # the tests still pass
-    keyfile = "keys/example-com.key.pem"
-    certfile = "keys/example-com.cert.pem"
+    keyfile = "keys/www-example-com.key.pem"
+    certfile = "keys/www-example-com.cert.pem"
 
-
+# Add a missing comment delimiter here
 class Https2InvalidDNSId(Https2TestCase):
     """Connect to HTTPS hosts with IP while certificate uses domain names IDs."""
-
     def setUp(self):
         super().setUp()
         self.host = "127.0.0.1"

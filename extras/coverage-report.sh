@@ -2,6 +2,6 @@
 #
 # Requires: coverage 3.3 or above from https://pypi.python.org/pypi/coverage
 
-coverage run --branch $(which trial) --reporter=text tests
+coverage run --branch /path/to/trial --reporter=text tests
 coverage html -i
 python -m webbrowser htmlcov/index.html

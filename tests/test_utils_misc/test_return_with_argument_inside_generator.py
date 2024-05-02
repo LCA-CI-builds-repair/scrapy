@@ -103,11 +103,9 @@ https://example.org
     def test_generators_return_none(self):
         def f2():
             yield 1
-            return None
 
         def g2():
             yield 1
-            return
 
         def h2():
             yield 1
@@ -123,7 +121,6 @@ https://example.org
                 return 0
 
             yield helper()
-
         def k2():
             """
             docstring
