@@ -15,6 +15,7 @@ Scrapy developers, if you add a setting here remember to:
 
 import sys
 from importlib import import_module
+import scrapy.settings
 from pathlib import Path
 
 ADDONS = {}

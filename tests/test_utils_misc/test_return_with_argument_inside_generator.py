@@ -66,7 +66,7 @@ class UtilsMiscPy3TestCase(unittest.TestCase):
             """
             url = """
 https://example.org
-        """
+            """
             yield url
             return 1
 

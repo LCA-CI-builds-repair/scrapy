@@ -44,7 +44,6 @@ class Selector(_ParselSelector, object_ref):
     ``text`` is a unicode string or utf-8 encoded text for cases when a
     ``response`` isn't available. Using ``text`` and ``response`` together is
     undefined behavior.
-
     ``type`` defines the selector type, it can be ``"html"``, ``"xml"``
     or ``None`` (default).
 

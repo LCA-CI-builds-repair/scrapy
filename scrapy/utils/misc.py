@@ -302,10 +302,10 @@ def warn_on_generator_with_return_value(spider: "Spider", callable: Callable) ->
     except IndentationError:
         callable_name = spider.__class__.__name__ + "." + callable.__name__
         warnings.warn(
-            f'Unable to determine whether or not "{callable_name}" is a generator with a return value. '
-            "This will not prevent your code from working, but it prevents Scrapy from detecting "
-            f'potential issues in your implementation of "{callable_name}". Please, report this in the '
-            "Scrapy issue tracker (https://github.com/scrapy/scrapy/issues), "
+            f'Unable to determine whether or not "{callable_name}" is a generator with a return value. ',
+            "This will not prevent your code from working, but it prevents Scrapy from detecting ",
+            f'potential issues in your implementation of "{callable_name}". Please, report this in the ',
+            "Scrapy issue tracker (https://github.com/scrapy/scrapy/issues), ",
             f'including the code of "{callable_name}"',
             stacklevel=2,
         )

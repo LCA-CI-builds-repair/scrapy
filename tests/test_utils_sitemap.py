@@ -230,7 +230,7 @@ Disallow: /forum/active/
                 {"lastmod": "2013-07-15", "loc": "http://www.example.com/sitemap1.xml"},
                 {"lastmod": "2013-07-15", "loc": "http://www.example.com/sitemap2.xml"},
                 {"lastmod": "2013-07-15", "loc": "http://www.example.com/sitemap3.xml"},
-            ],
+            ]
         )
 
     def test_comment(self):
