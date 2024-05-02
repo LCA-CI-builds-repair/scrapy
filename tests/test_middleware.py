@@ -23,13 +23,9 @@ class M2:
     def close_spider(self, spider):
         pass
 
-    pass
-
-
 class M3:
     def process(self, response, request, spider):
         pass
-
 
 class MOff:
     def open_spider(self, spider):
@@ -38,6 +34,7 @@ class MOff:
     def close_spider(self, spider):
         pass
 
+    # Initialize the MOff class
     def __init__(self):
         raise NotConfigured("foo")
 

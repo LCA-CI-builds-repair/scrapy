@@ -36,7 +36,9 @@ class ProcessTest:
     def _process_finished(
         self, pp: TestProcessProtocol, cmd: List[str], check_code: bool
     ) -> Tuple[int, bytes, bytes]:
+        # Check if the process has exited with a code and check_code flag is set
         if pp.exitcode and check_code:
+            # Construct message with process exit code and output details
             msg = f"process {cmd} exit with code {pp.exitcode}"
             msg += f"\n>>> stdout <<<\n{pp.out.decode()}"
             msg += "\n"

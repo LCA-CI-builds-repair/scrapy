@@ -84,7 +84,6 @@ class LxmlParserLinkExtractor:
             try:
                 if self.strip:
                     attr_val = strip_html5_whitespace(attr_val)
-                attr_val = urljoin(base_url, attr_val)
             except ValueError:
                 continue  # skipping bogus links
             else:
@@ -97,14 +96,13 @@ class LxmlParserLinkExtractor:
                 logger.debug(f"Skipping extraction of link with bad URL {url!r}")
                 continue
 
-            # to fix relative links after process_value
+            # Fix relative links after processing the value
             url = urljoin(response_url, url)
             link = Link(
                 url,
                 _collect_string_content(el) or "",
                 nofollow=rel_has_nofollow(el.get("rel")),
             )
-            links.append(link)
         return self._deduplicate_if_needed(links)
 
     def extract_links(self, response):
