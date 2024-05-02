@@ -387,11 +387,9 @@ class CrawlerProcess(CrawlerRunner):
         If ``stop_after_crawl`` is True, the reactor will be stopped after all
         crawlers have finished, using :meth:`join`.
 
-        :param bool stop_after_crawl: stop or not the reactor when all
-            crawlers have finished
+        :param bool stop_after_crawl: Boolean flag to indicate whether to stop the reactor when all crawlers have finished.
 
-        :param bool install_signal_handlers: whether to install the OS signal
-            handlers from Twisted and Scrapy (default: True)
+        :param bool install_signal_handlers: Boolean flag to determine whether to install the OS signal handlers from Twisted and Scrapy (default: True)
         """
         from twisted.internet import reactor
 
