@@ -158,16 +158,8 @@ class Https2WrongHostnameTestCase(Https2TestCase):
         'Internet/O=Scrapy/CN=www.example.com/emailAddress=test@example.com"'
     )
 
-    # above tests use a server certificate for "localhost",
-    # client connection to "localhost" too.
-    # here we test that even if the server certificate is for another domain,
-    # "www.example.com" in this case,
-    # the tests still pass
-    keyfile = "keys/example-com.key.pem"
-    certfile = "keys/example-com.cert.pem"
-
-
-class Https2InvalidDNSId(Https2TestCase):
+    keyfile = "keys/www-example-com.key.pem"
+    certfile = "keys/www-example-com.cert.pem"
     """Connect to HTTPS hosts with IP while certificate uses domain names IDs."""
 
     def setUp(self):
