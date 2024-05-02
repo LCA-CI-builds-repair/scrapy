@@ -34,7 +34,7 @@ class ProcessTest:
         return pp.deferred
 
     def _process_finished(
-        self, pp: TestProcessProtocol, cmd: List[str], check_code: bool
+        self, pp: 'TestProcessProtocol', cmd: List[str], check_code: bool
     ) -> Tuple[int, bytes, bytes]:
         if pp.exitcode and check_code:
             msg = f"process {cmd} exit with code {pp.exitcode}"
@@ -43,7 +43,6 @@ class ProcessTest:
             msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
             raise RuntimeError(msg)
         return cast(int, pp.exitcode), pp.out, pp.err
-
 
 class TestProcessProtocol(ProcessProtocol):
     def __init__(self) -> None:

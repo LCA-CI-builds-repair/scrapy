@@ -1,12 +1,9 @@
 """Some debugging functions for working with the Scrapy engine"""
 
-# used in global tests code
-from time import time  # noqa: F401
-from typing import TYPE_CHECKING, Any, List, Tuple
+from typing import TYPE_CHECKING
 
 if TYPE_CHECKING:
     from scrapy.core.engine import ExecutionEngine
-
 
 def get_engine_status(engine: "ExecutionEngine") -> List[Tuple[str, Any]]:
     """Return a report of the current engine status"""

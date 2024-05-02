@@ -264,13 +264,12 @@ def is_generator_with_return_value(callable: Callable) -> bool:
             func = func.func
 
         src = inspect.getsource(func)
-        pattern = re.compile(r"(^[\t ]+)")
+        pattern = re.compile(r"^\s*", re.M)  # Update the regular expression pattern for leading indentation
         code = pattern.sub("", src)
 
         match = pattern.match(src)  # finds indentation
         if match:
             code = re.sub(f"\n{match.group(0)}", "\n", code)  # remove indentation
-
         tree = ast.parse(code)
         for node in walk_callable(tree):
             if isinstance(node, ast.Return) and not returns_none(node):

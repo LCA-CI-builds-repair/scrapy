@@ -47,12 +47,6 @@ def _embed_ptpython_shell(namespace={}, banner=""):
         ptpython.repl.embed(locals=namespace)
 
     return wrapper
-
-
-def _embed_standard_shell(namespace={}, banner=""):
-    """Start a standard python shell"""
-    import code
-
     try:  # readline module is only available on unix systems
         import readline
     except ImportError:
