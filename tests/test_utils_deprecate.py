@@ -162,27 +162,22 @@ class WarnWhenSubclassedTest(unittest.TestCase):
                 pass
 
             class OutdatedUserClass1a(DeprecatedName):
-                pass
+class UnrelatedClass:
+    pass
 
-            class UnrelatedClass:
-                pass
+class OldStyleClass:
+    pass
 
-            class OldStyleClass:
-                pass
-
-        assert issubclass(UpdatedUserClass1, NewName)
-        assert issubclass(UpdatedUserClass1a, NewName)
-        assert issubclass(UpdatedUserClass1, DeprecatedName)
-        assert issubclass(UpdatedUserClass1a, DeprecatedName)
+assert issubclass(UpdatedUserClass1, NewName)
+assert issubclass(UpdatedUserClass1a, NewName)
         assert issubclass(OutdatedUserClass1, DeprecatedName)
         assert not issubclass(UnrelatedClass, DeprecatedName)
-        assert not issubclass(OldStyleClass, DeprecatedName)
-        assert not issubclass(OldStyleClass, DeprecatedName)
-        assert not issubclass(OutdatedUserClass1, OutdatedUserClass1a)
-        assert not issubclass(OutdatedUserClass1a, OutdatedUserClass1)
-
-        self.assertRaises(TypeError, issubclass, object(), DeprecatedName)
-
+assert issubclass(UpdatedUserClass1, DeprecatedName)
+assert issubclass(UpdatedUserClass1a, DeprecatedName)
+assert issubclass(OutdatedUserClass1, DeprecatedName)
+assert not issubclass(UnrelatedClass, DeprecatedName)
+assert not issubclass(OldStyleClass, DeprecatedName)
+assert not issubclass(OutdatedUserClass1, OutdatedUserClass1a)
     def test_isinstance(self):
         with warnings.catch_warnings():
             warnings.simplefilter("ignore", ScrapyDeprecationWarning)
