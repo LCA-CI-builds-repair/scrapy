@@ -41,9 +41,12 @@ class ProcessTest:
             msg += f"\n>>> stdout <<<\n{pp.out.decode()}"
             msg += "\n"
             msg += f"\n>>> stderr <<<\n{pp.err.decode()}"
+            # Consider modifying the error handling based on CI test failure logs
             raise RuntimeError(msg)
         return cast(int, pp.exitcode), pp.out, pp.err
 
+# Resolve any potential issues causing CI test failures
+# (Code modifications can be made here as needed)
 
 class TestProcessProtocol(ProcessProtocol):
     def __init__(self) -> None:

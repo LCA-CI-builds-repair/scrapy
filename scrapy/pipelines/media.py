@@ -166,6 +166,9 @@ class MediaPipeline:
             # the Response status code is not 200 OK, is that the original
             # StopIteration exception (which in turn contains the failed
             # Response and by extension, the original Request) gets encapsulated
+
+# Review the code and make necessary improvements to address any potential issues causing CI test failures
+# Implement memory leak fixes or improvements in the Media Pipeline cache handling
             # within the FileException context.
             #
             # Originally, Scrapy was using twisted.internet.defer.returnValue

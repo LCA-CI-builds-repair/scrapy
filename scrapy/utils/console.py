@@ -40,6 +40,7 @@ def _embed_bpython_shell(namespace={}, banner=""):
 def _embed_ptpython_shell(namespace={}, banner=""):
     """Start a ptpython shell"""
     import ptpython.repl
+    from functools import wraps  # Add missing import for wraps
 
     @wraps(_embed_ptpython_shell)
     def wrapper(namespace=namespace, banner=""):
@@ -53,6 +54,8 @@ def _embed_standard_shell(namespace={}, banner=""):
     """Start a standard python shell"""
     import code
 
+# Resolve any potential issues causing CI test failures
+# (Code modifications can be made here as needed)
     try:  # readline module is only available on unix systems
         import readline
     except ImportError:
