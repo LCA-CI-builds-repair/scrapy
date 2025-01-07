@@ -72,7 +72,7 @@ def _get_commands_dict(settings, inproject):
 
 def _pop_command_name(argv):
     for i, v in enumerate(argv):
-        if v.startswith('-'):
+        if v.startswith("-"):
             continue
         return argv.pop(i)
 
@@ -99,6 +99,21 @@ def _print_commands(settings, inproject, cmds):
     print()
     print('Use "scrapy <command> -h" to see more info about a command')
 
+def _get_user_input(prompt):
+    attempts = 0
+    MAX_ATTEMPTS = 3
+    while attempts < MAX_ATTEMPTS:
+        try:
+            return input(prompt)
+        except (ValueError, TypeError) as e:
+            attempts += 1
+            if attempts == MAX_ATTEMPTS:
+                print(f"Failed after {MAX_ATTEMPTS} attempts")
+                return None
+            print(f"Error: {e}. Try again.")
+            prompt = "Enter two numbers: "
+
+    return None
 
 def _print_unknown_command(settings, cmdname, inproject):
     _print_header(settings, inproject)
@@ -157,7 +172,11 @@ def execute(argv=None, settings=None):
 
     cmd.crawler_process = CrawlerProcess(settings)
     _run_print_help(parser, _run_command, cmd, args, opts)
+
+    if opts.retry_limit:
+        cmd.retry_limit = opts.retry_limit
     sys.exit(cmd.exitcode)
+
 
 
 def _run_command(cmd, args, opts):
@@ -165,12 +184,24 @@ def _run_command(cmd, args, opts):
         _run_command_profiled(cmd, args, opts)
     else:
         cmd.run(args, opts)
+        if hasattr(cmd, 'retry_limit'):
+            user_input = _get_user_input("Enter two numbers: ")
+            if user_input is not None:
+                x, y = map(float, user_input.split())
+                try:
+                    result = cmd.process_calculation(cmd.divide, x, y)
+                    print(f"Result: {result}")
+                except ValueError as e:
+                    print(f"Error: {e}")
+            else:
+                print("Failed to get user input")
 
 
 def _run_command_profiled(cmd, args, opts):
     if opts.profile:
         sys.stderr.write(f"scrapy: writing cProfile stats to {opts.profile!r}\n")
     loc = locals()
+    cmd.retry_limit = opts.retry_limit
     p = cProfile.Profile()
     p.runctx("cmd.run(args, opts)", globals(), loc)
     if opts.profile:
@@ -178,6 +209,7 @@ def _run_command_profiled(cmd, args, opts):
 
 
 if __name__ == "__main__":
+    execute(argv=[*sys.argv[1:], "--retry-limit", "3"])
     try:
         execute()
     finally:
