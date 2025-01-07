@@ -23,7 +23,7 @@ _baseurl_cache: "WeakKeyDictionary[Response, str]" = WeakKeyDictionary()
 def get_base_url(response: "scrapy.http.response.text.TextResponse") -> str:
     """Return the base url of the given response, joined with the response url"""
     if response not in _baseurl_cache:
-        text = response.text[0:4096]
+        text = response.text[:4096]
         _baseurl_cache[response] = html.get_base_url(
             text, response.url, response.encoding
         )
@@ -39,13 +39,46 @@ def get_meta_refresh(
     response: "scrapy.http.response.text.TextResponse",
     ignore_tags: Iterable[str] = ("script", "noscript"),
 ) -> Union[Tuple[None, None], Tuple[float, str]]:
-    """Parse the http-equiv refresh parameter from the given response"""
+    """
+    Parse the http-equiv refresh parameter from the given response.
+    """
     if response not in _metaref_cache:
-        text = response.text[0:4096]
+        text = response.text[:4096]
         _metaref_cache[response] = html.get_meta_refresh(
             text, response.url, response.encoding, ignore_tags=ignore_tags
         )
     return _metaref_cache[response]
+--- a/scrapy/main.py
++++ b/scrapy/main.py
+@@ ... @@
+MAX_ATTEMPTS = 3
+
+def process_calculation(operation, x, y):
+    if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+        raise ValueError("Inputs must be numbers")
+    return operation(x, y)
+
+def main():
+    while True:
+        attempts = 0
+        inp = input("Enter two numbers: ")
+        while attempts < MAX_ATTEMPTS:
+            try:
+                x, y = map(float, inp.split())
+                result = process_calculation(divide, x, y)
+                print(f"Result: {result}")
+                break
+            except (ValueError, TypeError) as e:
+                attempts += 1
+                if attempts == MAX_ATTEMPTS:
+                    print(f"Failed after {MAX_ATTEMPTS} attempts")
+                    break
+                print(f"Error: {e}. Try again.")
+                inp = input("Enter two numbers: ")
+
+        again = input("Another calculation? (y/n): ")
+        if again.lower() != 'y':
+            break
 
 
 def response_status_message(status: Union[bytes, float, int, str]) -> str:
