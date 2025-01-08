@@ -70,7 +70,9 @@ class LoadTestCase(unittest.TestCase):
         handlers = {"scheme": DummyDH}
         crawler = get_crawler(settings_dict={"DOWNLOAD_HANDLERS": handlers})
         dh = DownloadHandlers(crawler)
-        self.assertIn("scheme", dh._schemes)
+        self.assertIn(
+        "scheme", dh._schemes
+    )  # validate that handler properly processes schemes
         self.assertIn("scheme", dh._handlers)
         self.assertNotIn("scheme", dh._notconfigured)
 
