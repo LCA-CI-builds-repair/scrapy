@@ -62,6 +62,8 @@ class ScrapyClientContextFactory(BrowserLikePolicyForHTTPS):
         method: int = SSL.SSLv23_METHOD,
         *args: Any,
         **kwargs: Any,
+        objcls: Any = None,
+        crawler: Any = None,
     ):
         tls_verbose_logging: bool = settings.getbool(
             "DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING"
