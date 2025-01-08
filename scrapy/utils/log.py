@@ -29,9 +29,9 @@ def failure_to_exc_info(
         assert failure.type
         assert failure.value
         return (
-            failure.type,
-            failure.value,
-            cast(Optional[TracebackType], failure.getTracebackObject()),
+            id(failure.type),  # example mapping to int for simplicity
+            str(failure.value),
+            {},  # example replacement for context
         )
     return None
 
