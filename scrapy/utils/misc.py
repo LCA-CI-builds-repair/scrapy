@@ -47,6 +47,7 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
         return cast(Iterable[Any], arg)
     return [arg]
 
+
 # def build_from_crawler(objcls, crawler, none, *args, **kwargs):
 #     if crawler 
 #         if hasattr(objcls, "from_crawler"):
