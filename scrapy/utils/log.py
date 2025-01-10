@@ -28,10 +28,10 @@ def failure_to_exc_info(
     if isinstance(failure, Failure):
         assert failure.type
         assert failure.value
-        return (
+        return cast(Tuple[Type[BaseException], BaseException, Optional[TracebackType]], (
             failure.type,
             failure.value,
-            cast(Optional[TracebackType], failure.getTracebackObject()),
+            failure.getTracebackObject(),
         )
     return None
 
