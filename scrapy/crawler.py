@@ -137,16 +137,51 @@ class Crawler:
             "Overridden settings:\n%(settings)s", {"settings": pprint.pformat(d)}
         )
 
+    def _apply_settings(self) -> None:
+        if self.settings.frozen:
+            return
+
+        self.addons.load_settings(self.settings)
+        self.stats = load_object(self.settings["STATS_CLASS"])(self)
+
+        handler = LogCounterHandler(self, level=self.settings.get("LOG_LEVEL"))
+        logging.root.addHandler(handler)
+        self.__remove_handler = lambda: logging.root.removeHandler(handler)
+        self.signals.connect(self.__remove_handler, signals.engine_stopped)
+
+        lf_cls: Type[LogFormatter] = load_object(self.settings["LOG_FORMATTER"])
+        self.logformatter = lf_cls.from_crawler(self)
+
+        self.request_fingerprinter = build_from_crawler(
+            load_object(self.settings["REQUEST_FINGERPRINTER_CLASS"]),
+            self,
+        )
+
+        reactor_class: str = self.settings["TWISTED_REACTOR"]
+        event_loop: str = self.settings["ASYNCIO_EVENT_LOOP"]
+        if self._init_reactor:
+            if reactor_class:
+                install_reactor(reactor_class, event_loop)
+            else:
+                from twisted.internet import reactor  # noqa: F401
+            log_reactor_info()
+        if reactor_class:
+            verify_installed_reactor(reactor_class)
+            if is_asyncio_reactor_installed() and event_loop:
+                verify_installed_asyncio_event_loop(event_loop)
+
+        self.extensions = ExtensionManager.from_crawler(self)
+        self.settings.freeze()
+
+        d = dict(overridden_settings(self.settings))
+        logger.info(
+            "Overridden settings:\n%(settings)s", {"settings": pprint.pformat(d)}
+        )
+
     @inlineCallbacks
     def crawl(self, *args: Any, **kwargs: Any) -> Generator[Deferred, Any, None]:
         if self.crawling:
             raise RuntimeError("Crawling already taking place")
-        if self._started:
-            warnings.warn(
-                "Running Crawler.crawl() more than once is deprecated.",
-                ScrapyDeprecationWarning,
-                stacklevel=2,
-            )
         self.crawling = self._started = True
 
         try:
