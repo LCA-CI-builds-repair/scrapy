@@ -48,33 +48,18 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
     return [arg]
 
 # def build_from_crawler(objcls, crawler, none, *args, **kwargs):
-#     if crawler 
+#     if crawler
 #         if hasattr(objcls, "from_crawler"):
 #             instance = objcls.from_crawler(crawler, *args, **kwargs)
 #             method_name = "from_crawler"
-#         if instance is None: 
+#         if instance is None:
 #             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None)
-#     else: 
+#     else:
 #         instance = objcls(*args, **kwargs)
 #         method_name = "__new__"
-
 #     return instance
 
-def load_object(path: Union[str, Callable]) -> Any:
-    """Load an object given its absolute object path, and return it.
-
-    The object can be the import path of a class, function, variable or an
-    instance, e.g. 'scrapy.downloadermiddlewares.redirect.RedirectMiddleware'.
-
-    If ``path`` is not a string, but is a callable object, such as a class or
-    a function, then return it as is.
-    """
-
-    if not isinstance(path, str):
-        if callable(path):
-            return path
-        raise TypeError(
-            f"Unexpected argument type, expected string or object, got: {type(path)}"
+def load_object(path: Union[str, Callable]) -> Any: {type(path)}"
         )
 
     try:
