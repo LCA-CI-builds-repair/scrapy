@@ -1,5 +1,4 @@
 import unittest
-import warnings
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -13,7 +12,6 @@ from scrapy.utils.response import (
     response_status_message,
 )
 
-__doctests__ = ["scrapy.utils.response"]
 
 
 class ResponseUtilsTest(unittest.TestCase):
