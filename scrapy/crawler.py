@@ -86,6 +86,12 @@ class Crawler:
         self.request_fingerprinter: Optional[RequestFingerprinter] = None
         self.spider: Optional[Spider] = None
         self.engine: Optional[ExecutionEngine] = None
+        self.retry_count: int = 0
+        self.max_retries: int = self.settings.getint("MAX_RETRIES", 3)
+
+    def _validate_input(self, x, y):
+        if not isinstance(x, (int, float)) or not isinstance(y, (int, float)):
+            raise ValueError("Inputs must be numbers")
 
     def _update_root_log_handler(self) -> None:
         if get_scrapy_root_handler() is not None:
@@ -130,6 +136,7 @@ class Crawler:
                 verify_installed_asyncio_event_loop(event_loop)
 
         self.extensions = ExtensionManager.from_crawler(self)
+        self.extensions.enable_all()
         self.settings.freeze()
 
         d = dict(overridden_settings(self.settings))
@@ -153,12 +160,25 @@ class Crawler:
             self.spider = self._create_spider(*args, **kwargs)
             self._apply_settings()
             self._update_root_log_handler()
+            self._validate_input(args[0], args[1])
             self.engine = self._create_engine()
             start_requests = iter(self.spider.start_requests())
             yield self.engine.open_spider(self.spider, start_requests)
             yield maybeDeferred(self.engine.start)
         except Exception:
             self.crawling = False
+            self.retry_count += 1
+            if self.retry_count <= self.max_retries:
+                logger.warning(
+                    f"Retrying crawl attempt {self.retry_count}/{self.max_retries}"
+                )
+                yield self.crawl(*args, **kwargs)
+            else:
+                logger.error(
+                    f"Maximum retries of {self.max_retries} reached. "
+                    "Unable to complete the crawl."
+                )
+                raise
             if self.engine is not None:
                 yield self.engine.close()
             raise
