@@ -31,7 +31,8 @@ def failure_to_exc_info(
         return (
             failure.type,
             failure.value,
-            cast(Optional[TracebackType], failure.getTracebackObject()),
+            cast(Optional[TracebackType],
+                 failure.getTracebackObject()),
         )
     return None
 
