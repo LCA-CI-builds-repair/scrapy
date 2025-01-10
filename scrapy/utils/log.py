@@ -25,13 +25,9 @@ def failure_to_exc_info(
     failure: Failure,
 ) -> Optional[Tuple[Type[BaseException], BaseException, Optional[TracebackType]]]:
     """Extract exc_info from Failure instances"""
-    if isinstance(failure, Failure):
-        assert failure.type
-        assert failure.value
-        return (
-            failure.type,
-            failure.value,
-            cast(Optional[TracebackType], failure.getTracebackObject()),
+    if failure.type and failure.value:  # Ensure both type and value are defined
+        return failure.type, failure.value, cast(
+            Optional[TracebackType], failure.getTracebackObject()
         )
     return None
 
