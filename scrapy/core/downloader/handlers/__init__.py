@@ -62,7 +62,7 @@ class DownloadHandlers:
         except NotConfigured as ex:
             self._notconfigured[scheme] = str(ex)
             return None
-        except Exception as ex:
+        except (Exception, MultipleInvalid) as ex:
             logger.error(
                 'Loading "%(clspath)s" for scheme "%(scheme)s"',
                 {"clspath": path, "scheme": scheme},
@@ -72,6 +72,7 @@ class DownloadHandlers:
             self._notconfigured[scheme] = str(ex)
             return None
         else:
+            verifyObject(objcls, dh)
             self._handlers[scheme] = dh
             return dh
 
