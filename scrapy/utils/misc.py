@@ -23,9 +23,7 @@ from typing import (
     Optional,
     Union,
     cast,
-)
-
-from scrapy.item import Item
+)    from scrapy.item import Item
 from scrapy.utils.datatypes import LocalWeakReferencedCache
 
 if TYPE_CHECKING:
