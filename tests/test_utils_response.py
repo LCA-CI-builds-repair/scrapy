@@ -1,9 +1,7 @@
 import unittest
-import warnings
 from pathlib import Path
 from urllib.parse import urlparse
 
-from scrapy.exceptions import ScrapyDeprecationWarning
 from scrapy.http import HtmlResponse, Response, TextResponse
 from scrapy.utils.python import to_bytes
 from scrapy.utils.response import (
@@ -12,6 +10,8 @@ from scrapy.utils.response import (
     open_in_browser,
     response_status_message,
 )
+import warnings
+
 
 __doctests__ = ["scrapy.utils.response"]
 
