@@ -11,7 +11,6 @@ from twisted.python import log as twisted_log
 from twisted.python.failure import Failure
 
 import scrapy
-from scrapy.exceptions import ScrapyDeprecationWarning
 from scrapy.settings import Settings
 from scrapy.utils.versions import scrapy_components_versions
 
@@ -108,7 +107,7 @@ def configure_logging(
         logging.captureWarnings(True)
 
     observer = twisted_log.PythonLoggingObserver("twisted")
-    observer.start()
+    observer.start() 
 
     dictConfig(DEFAULT_LOGGING)
 
