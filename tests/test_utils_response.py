@@ -3,8 +3,7 @@ import warnings
 from pathlib import Path
 from urllib.parse import urlparse
 
-from scrapy.exceptions import ScrapyDeprecationWarning
-from scrapy.http import HtmlResponse, Response, TextResponse
+from scrapy.http import Response
 from scrapy.utils.python import to_bytes
 from scrapy.utils.response import (
     get_base_url,
