@@ -179,7 +179,7 @@ class Crawler:
             yield maybeDeferred(self.engine.stop)
 
     @staticmethod
-    def _get_component(cls, components):
+    def _get_component(cls, components: list):
         for component in components:
             if type(component) is cls:
                 return component
