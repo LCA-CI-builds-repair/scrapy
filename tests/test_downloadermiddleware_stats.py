@@ -22,13 +22,13 @@ class TestDownloaderStats(TestCase):
         self.crawler.stats.open_spider(self.spider)
 
         self.req = Request("http://scrapytest.org")
-        self.res = Response("scrapytest.org", status=400)
+        self.res = Response("http://scrapytest.org", status=400)
 
     def assertStatsEqual(self, key, value):
         self.assertEqual(
             self.crawler.stats.get_value(key, spider=self.spider),
             value,
-            str(self.crawler.stats.get_stats(self.spider)),
+            f"Stats: {self.crawler.stats.get_stats(self.spider)}"
         )
 
     def test_process_request(self):
@@ -40,17 +40,14 @@ class TestDownloaderStats(TestCase):
         self.assertStatsEqual("downloader/response_count", 1)
 
     def test_response_len(self):
-        body = (b"", b"not_empty")  # empty/notempty body
-        headers = (
-            {},
-            {"lang": "en"},
-            {"lang": "en", "User-Agent": "scrapy"},
-        )  # 0 headers, 1h and 2h
-        test_responses = [  # form test responses with all combinations of body/headers
-            Response(url="scrapytest.org", status=200, body=r[0], headers=r[1])
-            for r in product(body, headers)
-        ]
-        for test_response in test_responses:
+        # Test with different response body and header sizes
+        for body, headers in [
+            (b"", {}),
+            (b"not_empty", {}),
+            (b"", {"lang": "en"}),
+            (b"", {"lang": "en", "User-Agent": "scrapy"}),
+        ]:
+            test_response = Response(url="http://scrapytest.org", status=200, body=body, headers=headers)
             self.crawler.stats.set_value("downloader/response_bytes", 0)
             self.mw.process_response(self.req, test_response, self.spider)
             with warnings.catch_warnings():
@@ -62,7 +59,7 @@ class TestDownloaderStats(TestCase):
         self.mw.process_exception(self.req, MyException(), self.spider)
         self.assertStatsEqual("downloader/exception_count", 1)
         self.assertStatsEqual(
-            "downloader/exception_type_count/tests.test_downloadermiddleware_stats.MyException",
+            "downloader/exception_type_count/MyException",
             1,
         )
 

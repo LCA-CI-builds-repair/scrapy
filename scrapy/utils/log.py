@@ -24,14 +24,18 @@ logger = logging.getLogger(__name__)
 def failure_to_exc_info(
     failure: Failure,
 ) -> Optional[Tuple[Type[BaseException], BaseException, Optional[TracebackType]]]:
-    """Extract exc_info from Failure instances"""
+    """
+    Extract exc_info from Failure instances.
+
+    :return: a tuple of (exception type, exception value, traceback) or None if the input is not a Failure instance
+    """
     if isinstance(failure, Failure):
         assert failure.type
         assert failure.value
         return (
             failure.type,
             failure.value,
-            cast(Optional[TracebackType], failure.getTracebackObject()),
+            cast(Optional[TracebackType], failure.getTracebackObject())
         )
     return None
 

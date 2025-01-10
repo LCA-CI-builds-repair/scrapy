@@ -39,7 +39,13 @@ def get_meta_refresh(
     response: "scrapy.http.response.text.TextResponse",
     ignore_tags: Iterable[str] = ("script", "noscript"),
 ) -> Union[Tuple[None, None], Tuple[float, str]]:
-    """Parse the http-equiv refresh parameter from the given response"""
+    """
+    Parse the http-equiv refresh parameter from the given response.
+
+    :param response: the response object
+    :param ignore_tags: HTML tags to ignore when parsing the refresh parameter
+    :return: a tuple of (refresh time, redirect URL) or (None, None) if no refresh parameter is found
+    """
     if response not in _metaref_cache:
         text = response.text[0:4096]
         _metaref_cache[response] = html.get_meta_refresh(
