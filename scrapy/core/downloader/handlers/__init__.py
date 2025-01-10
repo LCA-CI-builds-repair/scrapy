@@ -57,7 +57,6 @@ class DownloadHandlers:
                 return None
             dh = build_from_crawler(
                 objcls=dhcls,
-                crawler=self._crawler,
             )
         except NotConfigured as ex:
             self._notconfigured[scheme] = str(ex)
@@ -82,7 +81,7 @@ class DownloadHandlers:
             raise NotSupported(
                 f"Unsupported URL scheme '{scheme}': {self._notconfigured[scheme]}"
             )
-        return cast(Deferred, handler.download_request(request, spider))
+        return handler.download_request(request, spider)
 
     @defer.inlineCallbacks
     def _close(self, *_a: Any, **_kw: Any) -> Generator[Deferred, Any, None]:
