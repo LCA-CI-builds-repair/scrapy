@@ -57,6 +57,7 @@ class UtilsMiscTestCase(unittest.TestCase):
         expected = [
             "tests.test_utils_misc.test_walk_modules.mod1",
         ]
+
         self.assertEqual({m.__name__ for m in mods}, set(expected))
 
         self.assertRaises(ImportError, walk_modules, "nomodule999")

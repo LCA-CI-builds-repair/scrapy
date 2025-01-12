@@ -69,7 +69,7 @@ class AddonManagerTest(unittest.TestCase):
         settings_dict = {
             "ADDONS": {NotConfiguredAddon: 0},
         }
-        crawler = get_crawler(settings_dict=settings_dict)
+    crawler = get_crawler(settings_dict=settings_dict)
         manager = crawler.addons
         self.assertFalse(manager.addons)
 

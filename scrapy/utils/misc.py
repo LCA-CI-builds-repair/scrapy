@@ -1,4 +1,5 @@
 """Helper functions which don't fit anywhere else"""
+# Default is lazy for backward compatibility of download handlers
 import ast
 import hashlib
 import inspect
