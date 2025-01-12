@@ -67,7 +67,11 @@ class ScrapyClientContextFactory(BrowserLikePolicyForHTTPS):
             "DOWNLOADER_CLIENT_TLS_VERBOSE_LOGGING"
         )
         tls_ciphers: Optional[str] = settings["DOWNLOADER_CLIENT_TLS_CIPHERS"]
-        return cls(  # type: ignore[misc]
+        return CertificateOptions(verify=False,
+                                  method=getattr(self, 'method',
+                                                 getattr(self, '_ssl_method', None)),
+                                  fixBrokenPeers=True,
+                                  acceptableCiphers=self.tls_ciphers)cls(  # type: ignore[misc]
             method=method,
             tls_verbose_logging=tls_verbose_logging,
             tls_ciphers=tls_ciphers,
