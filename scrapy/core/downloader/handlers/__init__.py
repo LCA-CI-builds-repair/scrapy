@@ -57,7 +57,7 @@ class DownloadHandlers:
                 return None
             # change create_instance call to build_from_settings
             dh = build_from_settings(
-                dhcls, settings=self._crawler.settings
+                dhcls, settings=self._crawler.settings,
             )
             # dh = create_instance(
             #     objcls=dhcls,

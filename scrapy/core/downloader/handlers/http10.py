@@ -1,6 +1,6 @@
 """Download handlers for http and https schemes
 """
-from scrapy.utils.misc import build_from_settings, build_from_crawler, load_object
+from scrapy.utils.misc import build_from_settings, load_object
 from scrapy.utils.python import to_unicode
 
 
@@ -35,10 +35,9 @@ class HTTP10DownloadHandler:
                     objcls=self.ClientContextFactory,
                     crawler=self._crawler,
                 )
-            else:
-                client_context_factory = build_from_settings(
-                    objcls=self.ClientContextFactory,
-                    settings=self._settings,
-                )
+            client_context_factory = build_from_settings(
+                self.ClientContextFactory,
+                settings=self._settings,
+            )
             return reactor.connectSSL(host, port, factory, client_context_factory)
         return reactor.connectTCP(host, port, factory)
