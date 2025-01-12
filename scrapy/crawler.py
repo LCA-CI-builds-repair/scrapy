@@ -241,12 +241,12 @@ class CrawlerRunner:
     )
 
     @staticmethod
-    def _get_spider_loader(settings: BaseSettings):
+    def _get_spider_loader(settings_obj: BaseSettings):
         """Get SpiderLoader instance from settings"""
-        cls_path = settings.get("SPIDER_LOADER_CLASS")
+        cls_path = settings_obj.get("SPIDER_LOADER_CLASS")
         loader_cls = load_object(cls_path)
         verifyClass(ISpiderLoader, loader_cls)
-        return loader_cls.from_settings(settings.frozencopy())
+        return loader_cls.from_settings(settings_obj.frozencopy())
 
     def __init__(self, settings: Union[Dict[str, Any], Settings, None] = None):
         if isinstance(settings, dict) or settings is None:
