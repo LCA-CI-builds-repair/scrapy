@@ -109,7 +109,7 @@ class Crawler:
         lf_cls: Type[LogFormatter] = load_object(self.settings["LOG_FORMATTER"])
         self.logformatter = lf_cls.from_crawler(self)
 
-        self.request_fingerprinter = build_from_crawler(
+        self.request_fingerprinter = cast(RequestFingerprinter, build_from_crawler(
             load_object(self.settings["REQUEST_FINGERPRINTER_CLASS"]),
             self,
         )
@@ -249,7 +249,7 @@ class CrawlerRunner:
         return loader_cls.from_settings(settings.frozencopy())
 
     def __init__(self, settings: Union[Dict[str, Any], Settings, None] = None):
-        if isinstance(settings, dict) or settings is None:
+        if isinstance(settings, (dict, type(None))):
             settings = Settings(settings)
         self.settings = settings
         self.spider_loader = self._get_spider_loader(settings)
