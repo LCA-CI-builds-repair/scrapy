@@ -87,10 +87,11 @@ class Crawler:
         self.spider: Optional[Spider] = None
         self.engine: Optional[ExecutionEngine] = None
 
-    def _update_root_log_handler(self) -> None:
+    @classmethod
+    def _update_root_log_handler(cls) -> None:
         if get_scrapy_root_handler() is not None:
             # scrapy root handler already installed: update it with new settings
-            install_scrapy_root_handler(self.settings)
+            install_scrapy_root_handler(cls.settings)
 
     def _apply_settings(self) -> None:
         if self.settings.frozen:
