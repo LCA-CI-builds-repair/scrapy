@@ -87,6 +87,7 @@ class ScrapyClientContextFactory(BrowserLikePolicyForHTTPS):
         #
         # * getattr() for `_ssl_method` attribute for context factories
         #   not calling super().__init__
+        return CertificateOptions(verify=False, method=self._ssl_method, fixBrokenPeers=True, acceptableCiphers=self.tls_ciphers)
         return CertificateOptions(
             verify=False,
             method=getattr(self, "method", getattr(self, "_ssl_method", None)),
