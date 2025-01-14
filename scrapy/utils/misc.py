@@ -47,13 +47,13 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
         return cast(Iterable[Any], arg)
     return [arg]
 
-# def build_from_crawler(objcls, crawler, none, *args, **kwargs):
+# def build_from_crawler(objcls, crawler, *args, **kwargs):
 #     if crawler 
 #         if hasattr(objcls, "from_crawler"):
 #             instance = objcls.from_crawler(crawler, *args, **kwargs)
-#             method_name = "from_crawler"
+#             method_name = "from_crawler" 
 #         if instance is None: 
-#             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None)
+#             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None")
 #     else: 
 #         instance = objcls(*args, **kwargs)
 #         method_name = "__new__"
