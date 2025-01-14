@@ -61,8 +61,8 @@ class TestDownloaderStats(TestCase):
     def test_process_exception(self):
         self.mw.process_exception(self.req, MyException(), self.spider)
         self.assertStatsEqual("downloader/exception_count", 1)
-        self.assertStatsEqual(
-            "downloader/exception_type_count/tests.test_downloadermiddleware_stats.MyException",
+        exc_class_path = f"{MyException.__module__}.{MyException.__name__}"
+        self.assertStatsEqual(f"downloader/exception_type_count/{exc_class_path}",
             1,
         )
 
