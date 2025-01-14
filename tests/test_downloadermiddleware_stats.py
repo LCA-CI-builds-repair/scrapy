@@ -9,6 +9,7 @@ from scrapy.spiders import Spider
 from scrapy.utils.test import get_crawler
 from scrapy.utils.python import to_bytes
 
+
 class MyException(Exception):
     pass
 
