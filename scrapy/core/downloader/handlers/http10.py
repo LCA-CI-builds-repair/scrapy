@@ -1,8 +1,8 @@
 """Download handlers for http and https schemes
 """
-from scrapy.utils.misc import build_from_settings, build_from_crawler, load_object
 from scrapy.utils.python import to_unicode
 
+from scrapy.utils.misc import build_from_settings, build_from_crawler, load_object
 
 class HTTP10DownloadHandler:
     lazy = False
@@ -31,9 +31,9 @@ class HTTP10DownloadHandler:
         host, port = to_unicode(factory.host), factory.port
         if factory.scheme == b"https":
             if self._settings is None:
-                client_context_factory = build_from_crawler(
+                client_context_factory = build_from_settings(
                     objcls=self.ClientContextFactory,
-                    crawler=self._crawler,
+                    settings=self._crawler.settings,
                 )
             else:
                 client_context_factory = build_from_settings(

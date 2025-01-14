@@ -14,10 +14,10 @@ from tempfile import NamedTemporaryFile
 from typing import IO, Any, Callable, Dict, List, Optional, Tuple, Union
 from urllib.parse import unquote, urlparse
 
-from twisted.internet import defer, threads
-from twisted.internet.defer import DeferredList
 from w3lib.url import file_uri_to_path
 from zope.interface import Interface, implementer
+from twisted.internet import defer, threads
+from twisted.internet.defer import DeferredList
 
 from scrapy import Spider, signals
 from scrapy.exceptions import NotConfigured, ScrapyDeprecationWarning
