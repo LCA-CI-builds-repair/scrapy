@@ -204,13 +204,14 @@ class Crawler:
             )
         return self._get_component(cls, self.extensions.middlewares)
 
-    def get_item_pipeline(self, cls):
+    @classmethod
+    def get_item_pipeline(cls, component_cls):
         if not self.engine:
             raise RuntimeError(
                 "Crawler.get_item_pipeline() can only be called after the "
                 "crawl engine has been created."
             )
-        return self._get_component(cls, self.engine.scraper.itemproc.middlewares)
+        return cls._get_component(component_cls, cls.engine.scraper.itemproc.middlewares)
 
     def get_spider_middleware(self, cls):
         if not self.engine:
@@ -218,7 +219,7 @@ class Crawler:
                 "Crawler.get_spider_middleware() can only be called after the "
                 "crawl engine has been created."
             )
-        return self._get_component(cls, self.engine.scraper.spidermw.middlewares)
+        return self._get_component(component_cls, self.engine.scraper.spidermw.middlewares)
 
 
 class CrawlerRunner:
