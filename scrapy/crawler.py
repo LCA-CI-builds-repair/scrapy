@@ -119,6 +119,7 @@ class Crawler:
         if self._init_reactor:
             # this needs to be done after the spider settings are merged,
             # but before something imports twisted.internet.reactor
+            self._start_reactor()
             if reactor_class:
                 install_reactor(reactor_class, event_loop)
             else:
