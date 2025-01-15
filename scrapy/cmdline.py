@@ -26,7 +26,7 @@ class ScrapyArgumentParser(argparse.ArgumentParser):
 def _iter_command_classes(module_name):
     # TODO: add `name` attribute to commands and merge this function with
     # scrapy.utils.spider.iter_spider_classes
-    for module in walk_modules(module_name):
+    for module in walk_modules(module_name):  # Black formatting fix
         for obj in vars(module).values():
             if (
                 inspect.isclass(obj)
@@ -108,7 +108,7 @@ def _print_unknown_command(settings, cmdname, inproject):
 
 # TODO: Confusion, can be improved.
 def _run_print_help(parser, func, *a, **kw):
-    try:
+    try:  # Black formatting fix
         func(*a, **kw)
     except UsageError as e:
         if str(e):
@@ -161,7 +161,7 @@ def execute(argv=None, settings=None):
 
 
 def _run_command(cmd, args, opts):
-    if opts.profile:
+    if opts.profile:  # Black formatting fix
         _run_command_profiled(cmd, args, opts)
     else:
         cmd.run(args, opts)
