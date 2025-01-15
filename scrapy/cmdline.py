@@ -128,7 +128,7 @@ def execute(argv=None, settings=None):
         try:
             editor = os.environ["EDITOR"]
         except KeyError:
-            pass
+            settings.setdict({"COMMANDS_MODULE": "scrapy.commands"}, priority="command")
         else:
             settings["EDITOR"] = editor
 
