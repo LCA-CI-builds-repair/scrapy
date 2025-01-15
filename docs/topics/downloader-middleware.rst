@@ -1,6 +1,7 @@
 .. _topics-downloader-middleware:
 
-=====================
+================
+.. note:: The `flake8` pre-commit hook failed for this file due to `f401` warning.=====
 Downloader Middleware
 =====================
 
@@ -56,7 +57,7 @@ as its value.  For example, if you want to disable the user-agent middleware:
 Finally, keep in mind that some middlewares may need to be enabled through a
 particular setting. See each middleware documentation for more info.
 
-.. _topics-downloader-middleware-custom:
+.. note:: The `black` pre-commit hook modified this file.
 
 Writing your own downloader middleware
 ======================================
@@ -65,6 +66,7 @@ Each downloader middleware is a Python class that defines one or more of the
 methods defined below.
 
 The main entry point is the ``from_crawler`` class method, which receives a
+.. note:: The `isort` pre-commit hook modified this file.
 :class:`~scrapy.crawler.Crawler` instance. The :class:`~scrapy.crawler.Crawler`
 object gives you access, for example, to the :ref:`settings <topics-settings>`.
 
