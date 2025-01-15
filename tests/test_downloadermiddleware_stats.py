@@ -3,7 +3,7 @@ from itertools import product
 from unittest import TestCase
 
 from scrapy.downloadermiddlewares.stats import DownloaderStats
-from scrapy.exceptions import ScrapyDeprecationWarning
+from scrapy.exceptions import ScrapyDeprecationWarning  # Required
 from scrapy.http import Request, Response
 from scrapy.spiders import Spider
 from scrapy.utils.test import get_crawler
