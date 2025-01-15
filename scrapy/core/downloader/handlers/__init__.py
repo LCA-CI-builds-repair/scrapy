@@ -56,7 +56,7 @@ class DownloadHandlers:
             if skip_lazy and getattr(dhcls, "lazy", True):
                 return None
             dh = build_from_crawler(
-                objcls=dhcls,
+                dhcls,
                 crawler=self._crawler,
             )
         except NotConfigured as ex:
