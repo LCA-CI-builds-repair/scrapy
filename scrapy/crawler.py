@@ -143,7 +143,8 @@ class Crawler:
             raise RuntimeError("Crawling already taking place")
         if self._started:
             warnings.warn(
-                "Running Crawler.crawl() more than once is deprecated.",
+                "Running Crawler.crawl() more than once is deprecated.\n"
+                "Consider using CrawlerProcess for running processes concurrently.",
                 ScrapyDeprecationWarning,
                 stacklevel=2,
             )
