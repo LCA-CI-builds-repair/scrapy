@@ -58,7 +58,7 @@ class S3DownloadHandler:
 
     @classmethod
     def from_crawler(cls, crawler, **kwargs):
-        return cls(crawler.settings, crawler=crawler, **kwargs)
+        return cls(crawler.settings, **kwargs)
 
     def download_request(self, request, spider):
         p = urlparse_cached(request)

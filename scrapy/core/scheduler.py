@@ -65,7 +65,7 @@ class BaseScheduler(metaclass=BaseSchedulerMeta):
         """
         Factory method which receives the current :class:`~scrapy.crawler.Crawler` object as argument.
         """
-        return cls()
+        return cls(crawler=crawler)
 
     def open(self, spider: Spider) -> Optional[Deferred]:
         """

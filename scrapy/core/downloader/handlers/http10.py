@@ -17,7 +17,7 @@ class HTTP10DownloadHandler:
 
     @classmethod
     def from_crawler(cls, crawler):
-        return cls(crawler.settings, crawler)
+        return cls(crawler.settings)
 
     def download_request(self, request, spider):
         """Return a deferred for the HTTP download"""
