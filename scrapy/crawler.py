@@ -62,6 +62,7 @@ class Crawler:
         settings: Union[None, Dict[str, Any], Settings] = None,
         init_reactor: bool = False,
     ):
+        self._static_methods: Set[str] = set()
         if isinstance(spidercls, Spider):
             raise ValueError("The spidercls argument must be a class, not an object")
 
@@ -88,6 +89,7 @@ class Crawler:
         self.engine: Optional[ExecutionEngine] = None
 
     def _update_root_log_handler(self) -> None:
+        # Added check for existing root handler
         if get_scrapy_root_handler() is not None:
             # scrapy root handler already installed: update it with new settings
             install_scrapy_root_handler(self.settings)
