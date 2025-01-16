@@ -53,9 +53,7 @@ class TestDownloaderStats(TestCase):
         for test_response in test_responses:
             self.crawler.stats.set_value("downloader/response_bytes", 0)
             self.mw.process_response(self.req, test_response, self.spider)
-            with warnings.catch_warnings():
-                warnings.simplefilter("ignore", ScrapyDeprecationWarning)
-                resp_size = to_bytes(test_response)
+            resp_size = len(test_response.body)
             self.assertStatsEqual("downloader/response_bytes", resp_size)
 
     def test_process_exception(self):
