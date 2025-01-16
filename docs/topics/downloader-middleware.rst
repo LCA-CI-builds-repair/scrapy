@@ -17,7 +17,7 @@ To activate a downloader middleware component, add it to the
 :setting:`DOWNLOADER_MIDDLEWARES` setting, which is a dict whose keys are the
 middleware class paths and their values are the middleware orders.
 
-Here's an example:
+Here's an example::
 
 .. code-block:: python
 
@@ -44,7 +44,7 @@ previous (or subsequent) middleware being applied.
 If you want to disable a built-in middleware (the ones defined in
 :setting:`DOWNLOADER_MIDDLEWARES_BASE` and enabled by default) you must define it
 in your project's :setting:`DOWNLOADER_MIDDLEWARES` setting and assign ``None``
-as its value.  For example, if you want to disable the user-agent middleware:
+as its value.  For example, if you want to disable the user-agent middleware::
 
 .. code-block:: python
 
