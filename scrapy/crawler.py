@@ -59,19 +59,8 @@ class Crawler:
     def __init__(
         self,
         spidercls: Type[Spider],
-        settings: Union[None, Dict[str, Any], Settings] = None,
         init_reactor: bool = False,
     ):
-        if isinstance(spidercls, Spider):
-            raise ValueError("The spidercls argument must be a class, not an object")
-
-        if isinstance(settings, dict) or settings is None:
-            settings = Settings(settings)
-
-        self.spidercls: Type[Spider] = spidercls
-        self.settings: Settings = settings.copy()
-        self.spidercls.update_settings(self.settings)
-        self._update_root_log_handler()
 
         self.addons: AddonManager = AddonManager(self)
         self.signals: SignalManager = SignalManager(self)

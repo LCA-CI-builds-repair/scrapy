@@ -9,8 +9,9 @@ class HTTP10DownloadHandler:
 
     def __init__(self, settings, crawler=None):
         self.HTTPClientFactory = load_object(settings["DOWNLOADER_HTTPCLIENTFACTORY"])
-        self.ClientContextFactory = load_object(
-            settings["DOWNLOADER_CLIENTCONTEXTFACTORY"]
+        self.ClientContextFactory = build_from_crawler(
+            objcls=self.ClientContextFactory,
+            crawler=self._crawler,
         )
         self._settings = settings
         self._crawler = crawler
