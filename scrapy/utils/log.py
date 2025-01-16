@@ -16,7 +16,7 @@ from scrapy.settings import Settings
 from scrapy.utils.versions import scrapy_components_versions
 
 if TYPE_CHECKING:
-    from scrapy.crawler import Crawler
+    from scrapy.crawler import Crawler, ExcInfo
 
 logger = logging.getLogger(__name__)
 
@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 def failure_to_exc_info(
     failure: Failure,
 ) -> Optional[Tuple[Type[BaseException], BaseException, Optional[TracebackType]]]:
-    """Extract exc_info from Failure instances"""
+    """Extract exc_info from Failure instances as ExcInfo tuple"""
     if isinstance(failure, Failure):
         assert failure.type
         assert failure.value
