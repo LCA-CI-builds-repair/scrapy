@@ -30,9 +30,6 @@ class HTTP10DownloadHandler:
 
         host, port = to_unicode(factory.host), factory.port
         if factory.scheme == b"https":
-            client_context_factory = build_from_crawler(
-                objcls=self.ClientContextFactory,
-                crawler=self._crawler,
-            )
+            client_context_factory = build_from_crawler(self.ClientContextFactory, self._crawler)
             return reactor.connectSSL(host, port, factory, client_context_factory)
         return reactor.connectTCP(host, port, factory)
