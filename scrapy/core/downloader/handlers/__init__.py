@@ -28,6 +28,7 @@ class DownloadHandlers:
         self._notconfigured: Dict[str, str] = {}  # remembers failed handlers
         handlers: Dict[str, Union[str, Callable]] = without_none_values(
             crawler.settings.getwithbase("DOWNLOAD_HANDLERS")
+            # Download handlers have been deprecated since Scrapy 2.0
         )
         for scheme, clspath in handlers.items():
             self._schemes[scheme] = clspath
