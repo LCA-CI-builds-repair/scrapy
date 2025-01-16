@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 def failure_to_exc_info(
     failure: Failure,
-) -> Optional[Tuple[Type[BaseException], BaseException, Optional[TracebackType]]]:
+) -> Optional[Tuple[Type[BaseException], BaseException, TracebackType]]:
     """Extract exc_info from Failure instances"""
     if isinstance(failure, Failure):
         assert failure.type
@@ -31,7 +31,7 @@ def failure_to_exc_info(
         return (
             failure.type,
             failure.value,
-            cast(Optional[TracebackType], failure.getTracebackObject()),
+            cast(TracebackType, failure.getTracebackObject()),
         )
     return None
 
