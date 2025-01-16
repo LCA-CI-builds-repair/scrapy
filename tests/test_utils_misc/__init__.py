@@ -31,6 +31,7 @@ class UtilsMiscTestCase(unittest.TestCase):
         obj = load_object("scrapy.utils.misc.load_object")
         self.assertIs(obj, load_object)
 
+
     def test_load_object_exceptions(self):
         self.assertRaises(ImportError, load_object, "nomodule999.mod.function")
         self.assertRaises(NameError, load_object, "scrapy.utils.misc.load_object999")
