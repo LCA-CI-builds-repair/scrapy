@@ -51,6 +51,7 @@ class ScrapyClientContextFactory(BrowserLikePolicyForHTTPS):
         self.tls_verbose_logging: bool = tls_verbose_logging
         self.tls_ciphers: AcceptableCiphers
         if tls_ciphers:
+            _setAcceptableProtocols(tls_ciphers)
             self.tls_ciphers = AcceptableCiphers.fromOpenSSLCipherString(tls_ciphers)
         else:
             self.tls_ciphers = DEFAULT_CIPHERS
