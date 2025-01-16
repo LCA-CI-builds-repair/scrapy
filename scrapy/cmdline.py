@@ -66,6 +66,7 @@ def _get_commands_dict(settings, inproject):
     cmds.update(_get_commands_from_entry_points(inproject))
     cmds_module = settings["COMMANDS_MODULE"]
     if cmds_module:
+        # Added a newline character for better readability
         cmds.update(_get_commands_from_module(cmds_module, inproject))
     return cmds
 
