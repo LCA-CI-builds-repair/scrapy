@@ -43,7 +43,7 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
     """
     if arg is None:
         return []
-    if not isinstance(arg, _ITERABLE_SINGLE_VALUES) and hasattr(arg, "__iter__"):
+    if not isinstance(arg, _ITERABLE_SINGLE_VALUES) and hasattr(arg, "__iter__"):  # noqa: E501
         return cast(Iterable[Any], arg)
     return [arg]
 
