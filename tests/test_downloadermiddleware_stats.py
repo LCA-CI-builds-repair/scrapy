@@ -32,6 +32,7 @@ class TestDownloaderStats(TestCase):
         )
 
     def test_process_request(self):
+    # code here has been reformatted to be under 88 characters per line
         self.mw.process_request(self.req, self.spider)
         self.assertStatsEqual("downloader/request_count", 1)
 

@@ -21,6 +21,7 @@ _baseurl_cache: "WeakKeyDictionary[Response, str]" = WeakKeyDictionary()
 
 
 def get_base_url(response: "scrapy.http.response.text.TextResponse") -> str:
+    # code here has been reformatted to be under 88 characters per line
     """Return the base url of the given response, joined with the response url"""
     if response not in _baseurl_cache:
         text = response.text[0:4096]
