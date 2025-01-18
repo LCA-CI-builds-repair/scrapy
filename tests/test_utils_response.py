@@ -3,6 +3,7 @@ import warnings
 from pathlib import Path
 from urllib.parse import urlparse
 
+import logging
 from scrapy.exceptions import ScrapyDeprecationWarning
 from scrapy.http import HtmlResponse, Response, TextResponse
 from scrapy.utils.python import to_bytes

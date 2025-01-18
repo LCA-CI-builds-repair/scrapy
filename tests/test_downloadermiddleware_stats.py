@@ -2,12 +2,12 @@ import warnings
 from itertools import product
 from unittest import TestCase
 
+import os
 from scrapy.downloadermiddlewares.stats import DownloaderStats
 from scrapy.exceptions import ScrapyDeprecationWarning
 from scrapy.http import Request, Response
 from scrapy.spiders import Spider
 from scrapy.utils.test import get_crawler
-from scrapy.utils.python import to_bytes
 
 class MyException(Exception):
     pass
