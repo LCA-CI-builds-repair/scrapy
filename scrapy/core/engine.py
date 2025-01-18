@@ -82,6 +82,8 @@ class Slot:
 
 
 class ExecutionEngine:
+    def _get_scheduler_class(self, settings):
+        return settings.get("SCHEDULER_CLASS")
     def __init__(self, crawler: "Crawler", spider_closed_callback: Callable) -> None:
         self.crawler: "Crawler" = crawler
         self.settings: Settings = crawler.settings

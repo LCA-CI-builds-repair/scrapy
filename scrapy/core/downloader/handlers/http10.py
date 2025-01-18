@@ -5,6 +5,9 @@ from scrapy.utils.python import to_unicode
 
 
 class HTTP10DownloadHandler:
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler.settings, crawler=crawler)
     lazy = False
 
     def __init__(self, settings, crawler=None):

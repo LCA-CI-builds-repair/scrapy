@@ -62,6 +62,7 @@ class Crawler:
         settings: Union[None, Dict[str, Any], Settings] = None,
         init_reactor: bool = False,
     ):
+        self.scheduler_cls: Type["BaseScheduler"] = load_object(settings["SCHEDULER_CLASS"])
         if isinstance(spidercls, Spider):
             raise ValueError("The spidercls argument must be a class, not an object")
 

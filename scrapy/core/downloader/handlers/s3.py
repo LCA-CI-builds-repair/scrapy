@@ -6,6 +6,9 @@ from scrapy.utils.misc import build_from_crawler
 
 
 class S3DownloadHandler:
+    @classmethod
+    def from_crawler(cls, crawler, **kwargs):
+        return cls(crawler.settings, crawler=crawler, **kwargs)
     def __init__(
         self,
         settings,

@@ -19,6 +19,9 @@ logger = logging.getLogger(__name__)
 
 
 class DownloadHandlers:
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls(crawler)
     def __init__(self, crawler: "Crawler"):
         self._crawler: "Crawler" = crawler
         self._schemes: Dict[

@@ -28,6 +28,9 @@ if TYPE_CHECKING:
 
 @implementer(IPolicyForHTTPS)
 class ScrapyClientContextFactory(BrowserLikePolicyForHTTPS):
+    @classmethod
+    def from_crawler(cls, crawler):
+        return cls.from_settings(crawler.settings, crawler=crawler)
     """
     Non-peer-certificate verifying HTTPS context factory
 
