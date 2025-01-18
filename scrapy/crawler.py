@@ -240,8 +240,8 @@ class CrawlerRunner:
         ":meth:`crawl` and managed by this class.",
     )
 
-    @staticmethod
-    def _get_spider_loader(settings: BaseSettings):
+    @classmethod
+    def _get_spider_loader(cls, settings: BaseSettings):
         """Get SpiderLoader instance from settings"""
         cls_path = settings.get("SPIDER_LOADER_CLASS")
         loader_cls = load_object(cls_path)
