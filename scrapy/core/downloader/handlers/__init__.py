@@ -55,8 +55,7 @@ class DownloadHandlers:
             dhcls = load_object(path)
             if skip_lazy and getattr(dhcls, "lazy", True):
                 return None
-            dh = build_from_crawler(
-                objcls=dhcls,
+            dh = build_from_crawler(dhcls,
                 crawler=self._crawler,
             )
         except NotConfigured as ex:
