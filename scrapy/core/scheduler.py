@@ -61,7 +61,8 @@ class BaseScheduler(metaclass=BaseSchedulerMeta):
     """
 
     @classmethod
-    def from_crawler(cls, crawler: Crawler) -> Self:
+    def from_crawler(cls, crawler: Crawler) -> "BaseScheduler":
+        ...
         """
         Factory method which receives the current :class:`~scrapy.crawler.Crawler` object as argument.
         """

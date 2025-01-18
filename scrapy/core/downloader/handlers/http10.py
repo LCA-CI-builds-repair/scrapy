@@ -16,7 +16,7 @@ class HTTP10DownloadHandler:
         self._crawler = crawler
 
     @classmethod
-    def from_crawler(cls, crawler):
+    def from_crawler(cls, crawler) -> "HTTP10DownloadHandler":
         return cls(crawler.settings, crawler)
 
     def download_request(self, request, spider):

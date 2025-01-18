@@ -63,7 +63,15 @@ def getPage(url, contextFactory=None, response_transform=None, *args, **kwargs):
 class ParseUrlTestCase(unittest.TestCase):
     """Test URL parsing facility and defaults values."""
 
-    def _parse(self, url):
+    def _parse(self, url) -> Tuple[str, str, str, int, str]:
+        ...
+        return (
+            f.scheme,
+            f.netloc,
+            f.host,
+            f.port,
+            f.path,
+        )
         f = client.ScrapyHTTPClientFactory(Request(url))
         return (f.scheme, f.netloc, f.host, f.port, f.path)
 
