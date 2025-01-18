@@ -73,6 +73,14 @@ class LoadTestCase(unittest.TestCase):
         self.assertIn("scheme", dh._schemes)
         self.assertIn("scheme", dh._handlers)
         self.assertNotIn("scheme", dh._notconfigured)
+        # verify that the handler is properly loaded
+        self.assertIsInstance(dh._handlers["scheme"], DummyDH)
+        handlers = {"scheme": DummyDH}
+        crawler = get_crawler(settings_dict={"DOWNLOAD_HANDLERS": handlers})
+        dh = DownloadHandlers(crawler)
+        self.assertIn("scheme", dh._schemes)
+        self.assertIn("scheme", dh._handlers)
+        self.assertNotIn("scheme", dh._notconfigured)
 
     def test_not_configured_handler(self):
         handlers = {"scheme": OffDH}

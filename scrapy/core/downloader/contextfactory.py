@@ -28,6 +28,9 @@ if TYPE_CHECKING:
 
 @implementer(IPolicyForHTTPS)
 class ScrapyClientContextFactory(BrowserLikePolicyForHTTPS):
+    def getCertificateOptions(self) -> CertificateOptions:
+        # set verify=True to require CAs to verify against
+        return CertificateOptions(verify=True)
     """
     Non-peer-certificate verifying HTTPS context factory
 
