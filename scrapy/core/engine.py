@@ -96,6 +96,10 @@ class ExecutionEngine:
             crawler.settings
         )
         downloader_cls: Type[Downloader] = load_object(self.settings["DOWNLOADER"])
+        self.downloader = build_from_crawler(
+            objcls=downloader_cls,
+            crawler=crawler,
+        )(self.settings["DOWNLOADER"])
         self.downloader: Downloader = downloader_cls(crawler)
         self.scraper = Scraper(crawler)
         self._spider_closed_callback: Callable = spider_closed_callback
