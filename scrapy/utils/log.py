@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 
 def failure_to_exc_info(
     failure: Failure,
-) -> Optional[Tuple[Type[BaseException], BaseException, Optional[TracebackType]]]:
+) -> Tuple[Type[BaseException], BaseException, Optional[TracebackType]]:
     """Extract exc_info from Failure instances"""
     if isinstance(failure, Failure):
         assert failure.type
@@ -33,7 +33,7 @@ def failure_to_exc_info(
             failure.value,
             cast(Optional[TracebackType], failure.getTracebackObject()),
         )
-    return None
+    raise TypeError("Argument must be a Failure instance")
 
 
 class TopLevelFormatter(logging.Filter):
