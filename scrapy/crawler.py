@@ -181,7 +181,7 @@ class Crawler:
     @staticmethod
     def _get_component(cls, components):
         for component in components:
-            if type(component) is cls:
+            if isinstance(component, cls):
                 return component
         return None
 
