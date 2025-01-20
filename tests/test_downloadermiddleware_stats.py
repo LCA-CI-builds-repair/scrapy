@@ -13,6 +13,8 @@ class MyException(Exception):
     pass
 
 
+class MyException(Exception):
+    pass
 class TestDownloaderStats(TestCase):
     def setUp(self):
         self.crawler = get_crawler(Spider)
