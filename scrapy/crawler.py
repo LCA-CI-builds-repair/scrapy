@@ -186,7 +186,7 @@ class Crawler:
         return None
 
     def get_addon(self, cls):
-        return self._get_component(cls, self.addons.addons)
+        return next((addon for addon in self.addons.addons if isinstance(addon, cls)), None)
 
     def get_downloader_middleware(self, cls):
         if not self.engine:
@@ -194,7 +194,7 @@ class Crawler:
                 "Crawler.get_downloader_middleware() can only be called after "
                 "the crawl engine has been created."
             )
-        return self._get_component(cls, self.engine.downloader.middleware.middlewares)
+        return next((middleware for middleware in self.engine.downloader.middleware.middlewares if isinstance(middleware, cls)), None)
 
     def get_extension(self, cls):
         if not self.extensions:
@@ -202,7 +202,7 @@ class Crawler:
                 "Crawler.get_extension() can only be called after the "
                 "extension manager has been created."
             )
-        return self._get_component(cls, self.extensions.middlewares)
+        return next((middleware for middleware in self.extensions.middlewares if isinstance(middleware, cls)), None)
 
     def get_item_pipeline(self, cls):
         if not self.engine:
@@ -210,7 +210,7 @@ class Crawler:
                 "Crawler.get_item_pipeline() can only be called after the "
                 "crawl engine has been created."
             )
-        return self._get_component(cls, self.engine.scraper.itemproc.middlewares)
+        return next((middleware for middleware in self.engine.scraper.itemproc.middlewares if isinstance(middleware, cls)), None)
 
     def get_spider_middleware(self, cls):
         if not self.engine:
@@ -218,7 +218,7 @@ class Crawler:
                 "Crawler.get_spider_middleware() can only be called after the "
                 "crawl engine has been created."
             )
-        return self._get_component(cls, self.engine.scraper.spidermw.middlewares)
+        return next((middleware for middleware in self.engine.scraper.spidermw.middlewares if isinstance(middleware, cls)), None)
 
 
 class CrawlerRunner:
