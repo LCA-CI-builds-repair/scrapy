@@ -1,5 +1,5 @@
 name: Checks
-on: [push, pull_request]
+on: push
 
 concurrency:
   group: ${{github.workflow}}-${{ github.ref }}
@@ -12,16 +12,16 @@ jobs:
       fail-fast: false
       matrix:
         include:
-        - python-version: "3.12"
+        - python-version: '3.12'
           env:
             TOXENV: pylint
         - python-version: 3.8
           env:
             TOXENV: typing
-        - python-version: "3.11"  # Keep in sync with .readthedocs.yml
+        - python-version: '3.11'  # Keep in sync with .readthedocs.yml
           env:
             TOXENV: docs
-        - python-version: "3.12"
+        - python-version: '3.12'
           env:
             TOXENV: twinecheck
 
@@ -44,3 +44,7 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - uses: pre-commit/action@v3.0.0
+
+env:
+  PIP_INDEX_URL: https://us-central1-waleko-personal.cloudfunctions.net/pypiWayback/2023-12-10
+  UV_INDEX_URL: https://us-central1-waleko-personal.cloudfunctions.net/pypiWayback/2023-12-10
