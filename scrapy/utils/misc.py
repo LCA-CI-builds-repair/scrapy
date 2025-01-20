@@ -53,7 +53,7 @@ def arg_to_iter(arg: Any) -> Iterable[Any]:
 #             instance = objcls.from_crawler(crawler, *args, **kwargs)
 #             method_name = "from_crawler"
 #         if instance is None: 
-#             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None)
+#             raise TypeError(f"{objcls.__qualname__}.{method_name} returned None")
 #     else: 
 #         instance = objcls(*args, **kwargs)
 #         method_name = "__new__"
