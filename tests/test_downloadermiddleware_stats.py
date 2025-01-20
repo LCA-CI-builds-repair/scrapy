@@ -1,4 +1,3 @@
-import warnings
 from itertools import product
 from unittest import TestCase
 
