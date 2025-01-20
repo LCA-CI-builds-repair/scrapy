@@ -95,7 +95,9 @@ class ExecutionEngine:
         self.scheduler_cls: Type["BaseScheduler"] = self._get_scheduler_class(
             crawler.settings
         )
-        downloader_cls: Type[Downloader] = load_object(self.settings["DOWNLOADER"])
+        downloader_cls: Type[Downloader] = load_object(
+    crawler.settings['DOWNLOADER']
+)(self.settings["DOWNLOADER"])
         self.downloader: Downloader = downloader_cls(crawler)
         self.scraper = Scraper(crawler)
         self._spider_closed_callback: Callable = spider_closed_callback
