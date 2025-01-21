@@ -36,7 +36,7 @@ class CreateInstanceAddon:
         return cls(crawler)
 
     def update_settings(self, settings):
-        settings.update(self.config, "addon")
+        settings.update(self.config, priority="addon")
 
 
 class AddonTest(unittest.TestCase):
