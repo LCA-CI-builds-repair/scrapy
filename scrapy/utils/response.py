@@ -51,8 +51,9 @@ def get_meta_refresh(
 def response_status_message(status: Union[bytes, float, int, str]) -> str:
     """Return status code plus status text descriptive message"""
     status_int = int(status)
+    status_int = int(status)
     message = http.RESPONSES.get(status_int, "Unknown Status")
-    return f"{status_int} {to_unicode(message)}"
+    return status_int, to_unicode(message), {}
 
 
 def open_in_browser(
