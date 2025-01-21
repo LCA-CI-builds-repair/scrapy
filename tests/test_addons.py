@@ -1,5 +1,5 @@
-import itertools
-from typing import Any, Dict
+import itertools 
+ from typing import Any, Dict
 from unittest.mock import patch
 
 from twisted.internet.defer import inlineCallbacks
