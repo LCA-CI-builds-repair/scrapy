@@ -179,7 +179,7 @@ def load_context_factory_from_settings(settings, crawler):
         # use context factory defaults
         # changes create_instance call to build_from_settings
         context_factory = build_from_settings(
-            context_factory_cls, settings = settings
+            context_factory_cls, settings=settings
         )
         # context_factory = create_instance(
         #     objcls=context_factory_cls,
