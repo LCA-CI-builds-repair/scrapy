@@ -325,6 +325,7 @@ class Scheduler(BaseScheduler):
         return build_from_crawler(
             self.pqclass,
             crawler=self.crawler,
+            method=None,  # Add method argument if required by build_from_crawler
             downstream_queue_cls=self.mqclass,
             key="",
         )

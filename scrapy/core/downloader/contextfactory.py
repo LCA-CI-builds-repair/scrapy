@@ -174,6 +174,7 @@ def load_context_factory_from_settings(settings, crawler):
         context_factory = build_from_crawler(
             objcls=context_factory_cls,
             crawler=crawler,
+            method=ssl_method,  # Ensure we pass the method argument here as well
         )
         msg = (
             f"{settings['DOWNLOADER_CLIENTCONTEXTFACTORY']} does not accept "

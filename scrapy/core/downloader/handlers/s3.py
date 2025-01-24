@@ -53,6 +53,7 @@ class S3DownloadHandler:
         _http_handler = build_from_crawler(
             objcls=httpdownloadhandler,
             crawler=crawler,
+            method=None,  # Add method argument if required by build_from_crawler
         )
         self._download_http = _http_handler.download_request
 

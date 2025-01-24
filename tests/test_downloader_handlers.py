@@ -832,6 +832,7 @@ class S3AnonTestCase(unittest.TestCase):
             objcls=S3DownloadHandler,
             crawler=crawler,
             httpdownloadhandler=HttpDownloadHandlerMock,
+            method=None,  # Add method argument if required by build_from_crawler
             # anon=True, # implicit
         )
         self.download_request = self.s3reqh.download_request

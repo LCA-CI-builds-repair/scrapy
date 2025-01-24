@@ -58,6 +58,7 @@ class DownloadHandlers:
             dh = build_from_crawler(
                 objcls=dhcls,
                 crawler=self._crawler,
+                method=None,  # Add method argument if required by build_from_crawler
             )
         except NotConfigured as ex:
             self._notconfigured[scheme] = str(ex)
